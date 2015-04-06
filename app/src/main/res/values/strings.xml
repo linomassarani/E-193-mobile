@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">E-193</string>
+    <string name="action_settings">Settings</string>
+    <string name="edit_message">Digite a mensagem</string>
+    <string name="button_send">Enviar</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_display_message">Minha Mensagem</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_search">Busca</string>
+    <string name="cadastros_button">" Cadastro"</string>
+    <string name="guarnicao_button">" Guarnição"</string>
+    <string name="ocorrencias_button">" Ocorrência"</string>
+    <string name="ocorrencias_praia_button">" Praia"</string>
+    <string name="pericia_button">" Perícia"</string>
+    <string name="relatorios_button">" Relatório"</string>
+    <string name="title_activity_not_implemented">NotImplementedActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_unavailable">UnavailableActivity</string>
+    <string name="ok">Ok</string>
+    <string name="title_activity_praia">Praia</string>
+    <string name="gestao_button">" Gestão"</string>
+    <string name="insercao_button">" Inserção"</string>
+    <string name="notImplemented">Ainda não disponível</string>
+
+</resources>

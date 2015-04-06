@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/gestao_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/gestao_button"
+                android:textSize="@dimen/activity_main_buttons_text"
+                android:gravity="left|center_vertical"
+                android:drawableLeft="@drawable/ic_relatorios"
+                android:onClick="notImplemented"/>
+
+            <Button
+                android:id="@+id/insercao_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/insercao_button"
+                android:textSize="@dimen/activity_main_buttons_text"
+                android:gravity="left|center_vertical"
+                android:drawableLeft="@drawable/ic_insercao_ocorrencias_praia"
+                android:onClick="startInsercao"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
