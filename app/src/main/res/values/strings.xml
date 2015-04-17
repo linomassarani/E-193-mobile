@@ -23,5 +23,6 @@
     <string name="gestao_button">" Gestão"</string>
     <string name="insercao_button">" Inserção"</string>
     <string name="notImplemented">Ainda não disponível</string>
+    <string name="lorem_ipsum">nao sei</string>
 
 </resources>
