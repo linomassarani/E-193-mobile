@@ -1,4 +1,4 @@
-package com.mycompany.myfirstapp;
+package com.mycompany.e193;
 
 import android.content.Context;
 import android.view.LayoutInflater;

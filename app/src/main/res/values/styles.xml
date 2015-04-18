@@ -50,11 +50,11 @@
     <style name="PraiaActionBar"
         parent="@style/Widget.AppCompat.Light.ActionBar">
         <item name="android:background">@color/firefighter_red</item>
-        <item name="android:homeAsUpIndicator">@drawable/ic_ocorrencias_praia</item>
+        <!--item name="android:homeAsUpIndicator">@drawable/ic_ocorrencias_praia</item-->
 
         <!-- Support library compatibility -->
         <item name="background">@color/firefighter_red</item>
-        <item name="homeAsUpIndicator">@drawable/ic_ocorrencias_praia</item>
+        <!--item name="homeAsUpIndicator">@drawable/ic_ocorrencias_praia</item-->
     </style>
 
 

@@ -1,14 +1,12 @@
-package com.mycompany.myfirstapp;
+package com.mycompany.e193;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.GridView;
 import android.widget.Toast;
 
 
@@ -50,6 +48,7 @@ public class PraiaActivity extends ActionBarActivity {
     }
 
     public void startInsercao(View view) {
-        notImplemented(view);
+        Intent intent = new Intent(this, ScreenSlidePagerActivity.class);
+        startActivity(intent);
     }
 }

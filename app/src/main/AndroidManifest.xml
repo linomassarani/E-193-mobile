@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mycompany.myfirstapp" >
+    package="com.mycompany.e193" >
 
     <uses-sdk android:minSdkVersion="11" />
 
-    <!--android:uses-permission
+    <android:uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
     <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <android:uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18"/-->
+        android:maxSdkVersion="18" />
 
+    <!--
+android:uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18"/
+    -->
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_cbmsc_logo"
@@ -19,7 +28,7 @@
         android:logo="@drawable/ic_cbmsc_logo"
         android:theme="@style/MainTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.mycompany.e193.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/MainTheme" >
             <intent-filter>
@@ -29,31 +38,40 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DisplayMessageActivity"
+            android:name="com.mycompany.e193.DisplayMessageActivity"
             android:label="@string/title_activity_display_message"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="com.mycompany.e193.MainActivity"
             android:theme="@style/MainTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mycompany.myfirstapp.MainActivity" />
+                android:value="com.mycompany.e193.MainActivity" />
         </activity>
         <activity
-            android:name=".UnavailableActivity"
+            android:name="com.mycompany.e193.UnavailableActivity"
             android:label="@string/title_activity_unavailable"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="com.mycompany.e193.MainActivity"
             android:theme="@style/Theme.Transparent" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mycompany.myfirstapp.MainActivity" />
+                android:value="com.mycompany.e193.MainActivity" />
         </activity>
         <activity
-            android:name=".PraiaActivity"
+            android:name="com.mycompany.e193.PraiaActivity"
             android:label="@string/title_activity_praia"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="com.mycompany.e193.MainActivity"
+            android:theme="@style/PraiaTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mycompany.e193.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.mycompany.e193.ScreenSlidePagerActivity"
+            android:label="@string/title_activity_screen_slide_pager"
+            android:parentActivityName="com.mycompany.e193.PraiaActivity"
             android:theme="@style/PraiaTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mycompany.myfirstapp.MainActivity" />
+                android:value="com.mycompany.e193.PraiaActivity" />
         </activity>
     </application>
 

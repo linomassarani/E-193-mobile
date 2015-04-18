@@ -1,4 +1,4 @@
-package com.mycompany.myfirstapp;
+package com.mycompany.e193;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -7,14 +7,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
-    public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
+    public final static String EXTRA_MESSAGE = "com.mycompany.e193.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
