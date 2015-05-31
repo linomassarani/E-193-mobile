@@ -1,4 +1,4 @@
-package com.mycompany.e193;
+package org.sc.cbm.e193;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -9,9 +9,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import org.sc.cbm.e193.praia.PraiaActivity;
+
 
 public class MainActivity extends ActionBarActivity {
-    public final static String EXTRA_MESSAGE = "com.mycompany.e193.MESSAGE";
+    public final static String EXTRA_MESSAGE = "com.cmbsc.e193.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

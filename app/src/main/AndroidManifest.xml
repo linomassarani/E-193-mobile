@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mycompany.e193" >
+    package="org.sc.cbm.e193" >
 
     <uses-sdk android:minSdkVersion="11" />
 
@@ -28,7 +28,7 @@ android:uses-permission
         android:logo="@drawable/ic_cbmsc_logo"
         android:theme="@style/MainTheme" >
         <activity
-            android:name="com.mycompany.e193.MainActivity"
+            android:name="org.sc.cbm.e193.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/MainTheme" >
             <intent-filter>
@@ -38,40 +38,32 @@ android:uses-permission
             </intent-filter>
         </activity>
         <activity
-            android:name="com.mycompany.e193.DisplayMessageActivity"
-            android:label="@string/title_activity_display_message"
-            android:parentActivityName="com.mycompany.e193.MainActivity"
-            android:theme="@style/MainTheme" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mycompany.e193.MainActivity" />
-        </activity>
-        <activity
-            android:name="com.mycompany.e193.UnavailableActivity"
-            android:label="@string/title_activity_unavailable"
-            android:parentActivityName="com.mycompany.e193.MainActivity"
-            android:theme="@style/Theme.Transparent" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mycompany.e193.MainActivity" />
-        </activity>
-        <activity
-            android:name="com.mycompany.e193.PraiaActivity"
+            android:name=".praia.PraiaActivity"
             android:label="@string/title_activity_praia"
-            android:parentActivityName="com.mycompany.e193.MainActivity"
+            android:parentActivityName="org.sc.cbm.e193.MainActivity"
             android:theme="@style/PraiaTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mycompany.e193.MainActivity" />
+                android:value="org.sc.cbm.e193.MainActivity" />
         </activity>
         <activity
-            android:name="com.mycompany.e193.ScreenSlidePagerActivity"
+            android:name=".praia.insercao.InsercaoActivity"
             android:label="@string/title_activity_screen_slide_pager"
-            android:parentActivityName="com.mycompany.e193.PraiaActivity"
+            android:parentActivityName=".praia.PraiaActivity"
             android:theme="@style/PraiaTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mycompany.e193.PraiaActivity" />
+                android:value=".praia.PraiaActivity" />
+        </activity>
+
+        <activity
+            android:name=".praia.insercao.wizard.MainActivity"
+            android:label="@string/praia_insercao_wizard_name"
+            android:parentActivityName=".praia.PraiaActivity"
+            android:theme="@style/PraiaTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".praia.PraiaActivity" />
         </activity>
     </application>
 

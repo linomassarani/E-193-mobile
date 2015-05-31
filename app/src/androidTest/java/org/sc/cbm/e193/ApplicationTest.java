@@ -1,4 +1,4 @@
-package com.mycompany.e193;
+package org.sc.cbm.e193;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

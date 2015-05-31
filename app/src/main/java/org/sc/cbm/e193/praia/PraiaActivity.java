@@ -1,4 +1,4 @@
-package com.mycompany.e193;
+package org.sc.cbm.e193.praia;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -8,6 +8,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import org.sc.cbm.e193.praia.insercao.InsercaoActivity;
+import org.sc.cbm.e193.R;
 
 
 public class PraiaActivity extends ActionBarActivity {
@@ -48,7 +51,8 @@ public class PraiaActivity extends ActionBarActivity {
     }
 
     public void startInsercao(View view) {
-        Intent intent = new Intent(this, ScreenSlidePagerActivity.class);
+        Intent intent = new Intent(this, org.sc.cbm.e193.praia.insercao.wizard.MainActivity.class);
+//      Intent intent = new Intent(this, InsercaoActivity.class);
         startActivity(intent);
     }
 }

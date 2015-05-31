@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-
-    <color name="firefighter_red">#e03a3e</color>
-
     <!-- the theme applied to the application or activity -->
     <style name="MainTheme"
         parent="@style/Theme.AppCompat.Light">
@@ -57,5 +54,39 @@
         <!--item name="homeAsUpIndicator">@drawable/ic_ocorrencias_praia</item-->
     </style>
 
+    <!-- PRAIA ISERÇÃO WIZARD -->
+    <style name="PraiaInsercaoWizardTextAppearanceFinish" parent="android:TextAppearance.Holo.Medium">
+        <item name="android:textColor">#fff</item>
+    </style>
 
+    <style name="PraiaInsercaoWizardPageTitle">
+        <item name="android:id">@android:id/title</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:paddingLeft">?android:attr/listPreferredItemPaddingLeft</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">@color/praia_insercao_wizard_title</item>
+        <!--item name="android:fontFamily">sans-serif-thin</item-->
+    </style>
+
+    <style name="PraiaInsercaoWizardPageContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="PraiaInsercaoWizardFormLabel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+        <item name="android:textColor">@color/text_light</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+    </style>
 </resources>

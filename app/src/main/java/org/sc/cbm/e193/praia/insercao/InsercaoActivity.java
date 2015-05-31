@@ -1,4 +1,4 @@
-package com.mycompany.e193;
+package org.sc.cbm.e193.praia.insercao;
 
 import android.net.Uri;
 import android.support.v4.app.Fragment;
@@ -12,7 +12,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class ScreenSlidePagerActivity extends ActionBarActivity implements ScreenSlidePageFragment.OnFragmentInteractionListener {
+import org.sc.cbm.e193.R;
+
+public class InsercaoActivity extends ActionBarActivity implements ScreenSlidePageFragment.OnFragmentInteractionListener {
 
     /**
      * The number of pages (wizard steps) to show in this demo.
@@ -39,6 +41,7 @@ public class ScreenSlidePagerActivity extends ActionBarActivity implements Scree
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
+        mPager.setPageTransformer(true, new ZoomOutPageTransformer());
     }
 
     @Override
@@ -92,7 +95,27 @@ public class ScreenSlidePagerActivity extends ActionBarActivity implements Scree
 
         @Override
         public Fragment getItem(int position) {
-            return new ScreenSlidePageFragment();
+            Fragment screen = null;
+
+            switch (position) {
+                case 0:
+                    screen = new ScreenSlidePageFragment();
+                    break;
+                case 1:
+                    screen = new ScreenSlidePageFragment();
+                    break;
+                case 2:
+                    screen = new ScreenSlidePageFragment();
+                    break;
+                case 3:
+                    screen = new ScreenSlidePageFragment();
+                    break;
+                case 4:
+                    screen = new ScreenSlidePageFragment();
+                    break;
+            }
+
+            return screen;
         }
 
         @Override

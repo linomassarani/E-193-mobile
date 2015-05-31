@@ -26,4 +26,17 @@
     <string name="lorem_ipsum">nao sei</string>
     <string name="title_activity_screen_slide_pager">"INSERÇÃO"</string>
 
+    <!-- praia inserção wizard -->
+    <string name="review">Resumo</string>
+    <string name="next">Próximo</string>
+    <string name="prev">Anterior</string>
+    <string name="finish">Enviar</string>
+    <string name="label_your_name">Nome</string>
+    <string name="label_your_email">Email</string>
+    <string name="hint_your_name">e.g. Larry</string>
+    <string name="hint_your_email">Optional</string>
+    <string name="submit_confirm_message">Está tudo correto? Lembre-se que isso é fundamental pra melhoria do nosso serviço.</string>
+    <string name="submit_confirm_button">Enviar</string>
+    <string name="praia_insercao_wizard_name">NOVA OCORRÊNCIA</string>
+
 </resources>

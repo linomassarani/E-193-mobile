@@ -1,4 +1,4 @@
-package com.mycompany.e193;
+package org.sc.cbm.e193.praia.insercao;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import org.sc.cbm.e193.R;
 
 
 /**
@@ -65,7 +67,7 @@ public class ScreenSlidePageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
-                R.layout.fragment_screen_slide_page, container, false);
+                R.layout.fragment_praia_insercao_parte_1, container, false);
 
         return rootView;
     }
