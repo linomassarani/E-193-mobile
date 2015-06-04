@@ -47,16 +47,6 @@ android:uses-permission
                 android:value="org.sc.cbm.e193.MainActivity" />
         </activity>
         <activity
-            android:name=".praia.insercao.InsercaoActivity"
-            android:label="@string/title_activity_screen_slide_pager"
-            android:parentActivityName=".praia.PraiaActivity"
-            android:theme="@style/PraiaTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".praia.PraiaActivity" />
-        </activity>
-
-        <activity
             android:name=".praia.insercao.wizard.MainActivity"
             android:label="@string/praia_insercao_wizard_name"
             android:parentActivityName=".praia.PraiaActivity"

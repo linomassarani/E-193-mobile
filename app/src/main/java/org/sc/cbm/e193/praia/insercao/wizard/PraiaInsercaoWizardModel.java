@@ -25,8 +25,8 @@ import org.sc.cbm.e193.praia.insercao.wizard.model.SingleFixedChoicePage;
 
 import android.content.Context;
 
-public class SandwichWizardModel extends AbstractWizardModel {
-    public SandwichWizardModel(Context context) {
+public class PraiaInsercaoWizardModel extends AbstractWizardModel {
+    public PraiaInsercaoWizardModel(Context context) {
         super(context);
     }
 
