@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="contries_array">
+        <item>ÁFRICA DO SUL</item>
+        <item>ALBÂNIA</item>
+        <item>ALEMANHA</item>
+        <item>ANDORRA</item>
+        <item>ANGOLA</item>
+        <item>ANTÍGUA E BARBUDA</item>
+        <item>ARÁBIA SAUDITA</item>
+        <item>ARGÉLIA</item>
+        <item>ARGENTINA</item>
+        <item>ARMÉNIA</item>
+        <item>AUSTRÁLIA</item>
+        <item>ÁUSTRIA</item>
+        <item>AZERBAIJÃO</item>
+        <item>BAHAMAS</item>
+        <item>BAHREIN</item>
+        <item>BANGLADESH</item>
+        <item>BARBADOS</item>
+        <item>BÉLGICA</item>
+        <item>BELIZE</item>
+        <item>BENIM</item>
+        <item>BIELORRÚSSIA</item>
+        <item>BOLÍVIA</item>
+        <item>BÓSNIA E HERZEGOVINA</item>
+        <item>BOTSWANA</item>
+        <item>BRASIL</item>
+        <item>BRUNEI</item>
+        <item>BULGÁRIA</item>
+        <item>BURKINA FASO</item>
+        <item>BURUNDI</item>
+        <item>BUTÃO</item>
+        <item>CABO VERDE CABO VERDE</item>
+        <item>CAMARÕES</item>
+        <item>CAMBOJA</item>
+        <item>CANADÁ</item>
+        <item>CAZAQUISTÃO</item>
+        <item>CHADE</item>
+        <item>CHILE</item>
+        <item>CHINA</item>
+        <item>CHIPRE</item>
+        <item>COLÔMBIA</item>
+        <item>COMORES</item>
+        <item>CONGO</item>
+        <item>COREIA DO NORTE</item>
+        <item>COREIA DO SUL</item>
+        <item>COSTA DO MARFIM</item>
+        <item>COSTA RICA</item>
+        <item>CROÁCIA</item>
+        <item>CUBA</item>
+        <item>DINAMARCA</item>
+        <item>DJIBOUTI</item>
+        <item>DOMINICA</item>
+        <item>EGITO</item>
+        <item>EMIRADOS ÁRABES UNIDOS</item>
+        <item>EL SALVADOR</item>
+        <item>EQUADOR</item>
+        <item>ERITREIA</item>
+        <item>ESLOVÁQUIA</item>
+        <item>ESLOVÊNIA</item>
+        <item>ESPANHA</item>
+        <item>ESTADOS UNIDOS</item>
+        <item>ESTÓNIA</item>
+        <item>ETIÓPIA</item>
+        <item>FIJI</item>
+        <item>FILIPINAS</item>
+        <item>FINLÂNDIA</item>
+        <item>FRANÇA</item>
+        <item>GABÃO</item>
+        <item>GÂMBIA</item>
+        <item>GANA</item>
+        <item>GEÓRGIA</item>
+        <item>GRANADA</item>
+        <item>GRÉCIA</item>
+        <item>GUIANA</item>
+        <item>GUATEMALA</item>
+        <item>GUINÉ</item>
+        <item>GUINÉ-BISSAU</item>
+        <item>GUINÉ EQUATORIAL</item>
+        <item>HAITI</item>
+        <item>HONDURAS</item>
+        <item>HUNGRIA</item>
+        <item>IÉMEN/IÊMEN</item>
+        <item>ISLÂNDIA</item>
+        <item>ÍNDIA</item>
+        <item>INDONÉSIA</item>
+        <item>IRÃ</item>
+        <item>IRAQUE</item>
+        <item>IRLANDA</item>
+        <item>ISRAEL</item>
+        <item>ITÁLIA</item>
+        <item>JAMAICA</item>
+        <item>JAPÃO</item>
+        <item>JORDÂNIA</item>
+        <item>KIRIBATI</item>
+        <item>KUWAIT</item>
+        <item>LAOS</item>
+        <item>LESOTO</item>
+        <item>LETÔNIA</item>
+        <item>LÍBANO</item>
+        <item>LIBÉRIA</item>
+        <item>LÍBIA</item>
+        <item>LIECHTENSTEIN</item>
+        <item>LITUÂNIA</item>
+        <item>LUXEMBURGO</item>
+        <item>MACEDÓNIA</item>
+        <item>MADAGÁSCAR</item>
+        <item>MALAWI</item>
+        <item>MALÁSIA</item>
+        <item>MALDIVAS</item>
+        <item>MALI</item>
+        <item>MALTA</item>
+        <item>MARROCOS</item>
+        <item>ILHAS MARSHALL</item>
+        <item>MAURITÂNIA</item>
+        <item>MAURÍCIA</item>
+        <item>MÉXICO</item>
+        <item>ESTADOS FEDERADOS DA MICRONÉSIA</item>
+        <item>MOLDÁVIA</item>
+        <item>MÓNACO</item>
+        <item>MONGÓLIA</item>
+        <item>MONTENEGRO</item>
+        <item>MOÇAMBIQUE</item>
+        <item>MYANMAR</item>
+        <item>NAMÍBIA</item>
+        <item>NAURU</item>
+        <item>NEPAL</item>
+        <item>NICARÁGUA</item>
+        <item>NÍGER</item>
+        <item>NIGÉRIA</item>
+        <item>NORUEGA</item>
+        <item>NOVA ZELÂNDIA</item>
+        <item>OMÃ</item>
+        <item>PAÍSES BAIXOS</item>
+        <item>PAQUISTÃO</item>
+        <item>PALAU</item>
+        <item>PANAMÁ</item>
+        <item>PAPUA-NOVA GUINÉ</item>
+        <item>PARAGUAI</item>
+        <item>PERU</item>
+        <item>POLÓNIA</item>
+        <item>PORTUGAL</item>
+        <item>CATAR</item>
+        <item>QUÊNIA</item>
+        <item>QUIRGUISTÃO</item>
+        <item>REINO UNIDO</item>
+        <item>REPÚBLICA CENTRO-AFRICANA</item>
+        <item>REPÚBLICA CHECA</item>
+        <item>REPÚBLICA DOMINICANA</item>
+        <item>ROMÉNIA</item>
+        <item>RUANDA</item>
+        <item>RÚSSIA</item>
+        <item>ILHAS SALOMÃO</item>
+        <item>SÃO MARINO</item>
+        <item>SÃO CRISTÓVÃO E NEVIS</item>
+        <item>SANTA LÚCIA</item>
+        <item>SÃO TOMÉ E PRÍNCIPE</item>
+        <item>SÃO VICENTE E GRANADINAS</item>
+        <item>SAMOA</item>
+        <item>SENEGAL</item>
+        <item>SÉRVIA</item>
+        <item>SERRA LEOA</item>
+        <item>SEYCHELLES</item>
+        <item>SINGAPURA</item>
+        <item>SÍRIA</item>
+        <item>SOMÁLIA</item>
+        <item>SRI LANKA</item>
+        <item>SUAZILÂNDIA</item>
+        <item>SUDÃO</item>
+        <item>SUDÃO DO SUL</item>
+        <item>SUÉCIA</item>
+        <item>SUÍÇA</item>
+        <item>SURINAME</item>
+        <item>TAJIQUISTÃO</item>
+        <item>TAILÂNDIA</item>
+        <item>TANZÂNIA</item>
+        <item>TIMOR-LESTE</item>
+        <item>TOGO</item>
+        <item>TONGA</item>
+        <item>TRINIDAD E TOBAGO</item>
+        <item>TUNÍSIA</item>
+        <item>TURQUEMENISTÃO</item>
+        <item>TURQUIA</item>
+        <item>TUVALU</item>
+        <item>UCRÂNIA</item>
+        <item>UGANDA</item>
+        <item>URUGUAI</item>
+        <item>UZBEQUISTÃO</item>
+        <item>VANUATU</item>
+        <item>VENEZUELA</item>
+        <item>VIETNAME</item>
+        <item>ZÂMBIA</item>
+        <item>ZIMBABWE"</item>
+    </string-array>
+</resources>
