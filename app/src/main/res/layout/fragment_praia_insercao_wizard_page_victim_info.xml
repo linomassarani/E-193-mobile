@@ -14,133 +14,241 @@
   limitations under the License.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/PraiaInsercaoWizardPageContainer">
+<LinearLayout
+    style="@style/PraiaInsercaoWizardPageContainer"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView style="@style/PraiaInsercaoWizardPageTitle" />
+    <TextView style="@style/PraiaInsercaoWizardPageTitle"/>
 
-    <ScrollView android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:scrollbarStyle="outsideOverlay">
 
-        <LinearLayout android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView style="@style/PraiaInsercaoWizardFormLabel"
-                android:text="@string/label_your_name" />
+            <TextView
+                style="@style/PraiaInsercaoWizardFormLabel"
+                android:text="@string/label_your_name"/>
 
-            <EditText android:id="@+id/victim_name"
+            <EditText
+                android:id="@+id/victim_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:saveEnabled="false"
+                android:layout_marginBottom="16dp"
                 android:inputType="textCapWords"
-                android:layout_marginBottom="16dp" />
+                android:saveEnabled="false"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
-
+                <!--AGE/GENDER - FOREIGN/COUNTRY-->
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView style="@style/PraiaInsercaoWizardFormLabel"
-                        android:text="@string/label_victim_age" />
-
-                    <EditText android:id="@+id/victim_age"
-                        android:layout_width="200px"
+                    <!--AGE/GENDER-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:saveEnabled="false"
-                        android:inputType="textEmailAddress"/>
+                        android:layout_marginBottom="16dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.4"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/PraiaInsercaoWizardFormLabel"
+                                android:text="@string/label_victim_age"/>
+
+                            <EditText
+                                android:id="@+id/victim_age"
+                                android:layout_width="120dp"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:saveEnabled="false"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.6"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/PraiaInsercaoWizardFormLabel"
+                                android:text="@string/label_victim_gender"/>
+
+                            <RadioGroup
+                                android:id="@+id/victim_gender"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20px"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/victim_gender_male"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/victim_gender_male"/>
+
+                                <RadioButton
+                                    android:id="@+id/victim_gender_female"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/victim_gender_female"/>
+                            </RadioGroup>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!--FOREIGN/COUNTRY-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.4"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/PraiaInsercaoWizardFormLabel"
+                                android:layout_width="wrap_content"
+                                android:text="@string/label_victim_is_foreign"/>
+
+                            <RadioGroup
+                                android:id="@+id/victim_is_foreign"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20px"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/victim_is_foreign_true"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/victim_is_foreign_true"/>
+
+                                <RadioButton
+                                    android:id="@+id/victim_is_foreign_false"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/victim_is_foreign_false"/>
+                            </RadioGroup>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.6"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/PraiaInsercaoWizardFormLabel"
+                                android:text="@string/label_nationality"/>
+
+                            <Spinner
+                                android:id="@+id/victim_nationality"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20px"></Spinner>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <!--STATE/CITY - ADDRESS-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!--STATE/CITY-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="16dp">
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="0.4"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/PraiaInsercaoWizardFormLabel"
+                                    android:text="@string/label_state"
+                                    android:layout_width="136dp"/>
+
+                                <Spinner
+                                    android:id="@+id/victim_brazil_state"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="20px"
+                                    android:visibility="gone"
+                                    ></Spinner>
+
+                                <EditText
+                                    android:id="@+id/victim_state"
+                                    android:layout_width="120dp"
+                                    android:layout_height="wrap_content"
+                                    android:saveEnabled="false"
+                                    android:visibility="invisible"
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="0.6"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/PraiaInsercaoWizardFormLabel"
+                                    android:text="@string/label_city"/>
+
+                                <EditText
+                                    android:id="@+id/victim_city"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:saveEnabled="false"
+                                    android:inputType="textCapWords"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/PraiaInsercaoWizardFormLabel"
+                                android:text="@string/label_address"/>
+
+                            <EditText
+                                android:id="@+id/victim_address"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:saveEnabled="false"
+                                android:inputType="textCapWords"
+                                />
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="40px">
-
-                    <TextView style="@style/PraiaInsercaoWizardFormLabel"
-                        android:text="@string/label_victim_gender" />
-
-                    <RadioGroup
-                        android:id="@+id/victim_gender"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="20px">
-                        <RadioButton
-                            android:id="@+id/victim_gender_male"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/victim_gender_male"/>
-                        <RadioButton
-                            android:id="@+id/victim_gender_female"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/victim_gender_female"/>
-                    </RadioGroup>
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView style="@style/PraiaInsercaoWizardFormLabel"
-                        android:text="@string/label_victim_is_foreign"
-                        android:layout_width="wrap_content"/>
-
-                    <RadioGroup
-                        android:id="@+id/victim_is_foreign"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="20px">
-                        <RadioButton
-                            android:id="@+id/victim_is_foreign_true"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/victim_is_foreign_true"/>
-                        <RadioButton
-                            android:id="@+id/victim_is_foreign_false"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/victim_is_foreign_false"/>
-                    </RadioGroup>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="40px">
-
-                    <TextView style="@style/PraiaInsercaoWizardFormLabel"
-                        android:text="@string/label_nationality" />
-
-                    <Spinner
-                        android:id="@+id/victim_nationality"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20px">
-                    </Spinner>
-
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

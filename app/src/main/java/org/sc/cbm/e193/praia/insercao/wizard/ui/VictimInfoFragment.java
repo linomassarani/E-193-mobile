@@ -1,13 +1,11 @@
 package org.sc.cbm.e193.praia.insercao.wizard.ui;
 
-import org.sc.cbm.e193.R;
-import org.sc.cbm.e193.praia.insercao.wizard.model.VictimInfoPage;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +16,10 @@ import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.sc.cbm.e193.R;
+import org.sc.cbm.e193.praia.insercao.wizard.model.VictimInfoPage;
 
 public class VictimInfoFragment extends Fragment {
     private static final String ARG_KEY = "key";
@@ -27,10 +29,11 @@ public class VictimInfoFragment extends Fragment {
     private VictimInfoPage mPage;
     private TextView mNameView;
     private TextView mAgeView;
-    private TextView mAddressView;//TODO
-    private TextView mCityView;//TODO
+    private TextView mAddressView;
+    private TextView mCityView;
+    private TextView mStateView;
     private Spinner mNationalityView;
-    private Spinner mBrazilStateView;//TODO
+    private Spinner mBrazilStateView;
     private RadioGroup mGenderView;
     private RadioGroup mForeignView;
 
@@ -43,7 +46,9 @@ public class VictimInfoFragment extends Fragment {
 
         VictimInfoFragment fragment = new VictimInfoFragment();
         fragment.setArguments(args);
+
         return fragment;
+
     }
 
     @Override
@@ -61,7 +66,7 @@ public class VictimInfoFragment extends Fragment {
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_praia_insercao_wizard_page_victim_info, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(mPage.getTitle());
 
@@ -77,18 +82,39 @@ public class VictimInfoFragment extends Fragment {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mNationalityView.setAdapter(adapter);
         int nat = adapter.getPosition(mPage.getData().getString(VictimInfoPage.NACIONALITY_DATA_KEY));
-        if(nat == -1 ) {
+        if (nat == -1) {
             mNationalityView.setSelection(24);
         } else {
             mNationalityView.setSelection(nat);
+        }
+
+        /**
+         * If brazil is selected, turn state spinnter visible else turn state text visible
+         * The final data is changed based on state text only, so every time spinner state is
+         * changed, text state also is changed
+         */
+        mStateView = (TextView) rootView.findViewById(R.id.victim_state);
+
+        mBrazilStateView = (Spinner) rootView.findViewById(R.id.victim_brazil_state);
+        adapter = ArrayAdapter.createFromResource(rootView.getContext(),
+                R.array.brazil_states, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mBrazilStateView.setAdapter(adapter);
+
+        nat = adapter.getPosition(mPage.getData().getString(VictimInfoPage.STATE_DATA_KEY));
+        if(nat != -1) /*if current state not in state spinner list*/ {
+            mBrazilStateView.setSelection(nat);
+        } else if (mPage.getData().getString(VictimInfoPage.STATE_DATA_KEY) == null) {
+            mBrazilStateView.setSelection(23);
+        } else {
+            mStateView.setText(mPage.getData().getString(VictimInfoPage.STATE_DATA_KEY));
         }
 
         mGenderView = (RadioGroup) rootView.findViewById(R.id.victim_gender);
         String gender = mPage.getData().getString(VictimInfoPage.GENDER_DATA_KEY);
         if (gender == getResources().getString(R.string.victim_gender_male)) {
             mGenderView.check(R.id.victim_gender_male);
-        }
-        else if (gender == getResources().getString(R.string.victim_gender_female)) {
+        } else if (gender == getResources().getString(R.string.victim_gender_female)) {
             mGenderView.check(R.id.victim_gender_female);
         }
 
@@ -96,10 +122,15 @@ public class VictimInfoFragment extends Fragment {
         String foreign = mPage.getData().getString(VictimInfoPage.FOREIGN_DATA_KEY);
         if (foreign == getResources().getString(R.string.victim_is_foreign_true)) {
             mGenderView.check(R.id.victim_is_foreign_true);
-        }
-        else if (gender == getResources().getString(R.string.victim_is_foreign_false)) {
+        } else if (gender == getResources().getString(R.string.victim_is_foreign_false)) {
             mGenderView.check(R.id.victim_is_foreign_false);
         }
+
+        mCityView = ((TextView) rootView.findViewById(R.id.victim_city));
+        mCityView.setText(mPage.getData().getString(VictimInfoPage.CITY_DATA_KEY));
+
+        mAddressView = ((TextView) rootView.findViewById(R.id.victim_address));
+        mAddressView.setText(mPage.getData().getString(VictimInfoPage.ADDRESS_DATA_KEY));
 
         return rootView;
     }
@@ -131,7 +162,7 @@ public class VictimInfoFragment extends Fragment {
         mNameView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1,
-                    int i2) {
+                                          int i2) {
             }
 
             @Override
@@ -160,7 +191,7 @@ public class VictimInfoFragment extends Fragment {
             public void afterTextChanged(Editable editable) {
                 //TODO: RULES TO MODEL CLASS "^[0-9]{1,3}$"
                 mPage.getData().putString(VictimInfoPage.AGE_DATA_KEY,
-                (editable != null) ? editable.toString() : null);
+                        (editable != null) ? editable.toString() : null);
                 mPage.notifyDataChanged();
             }
         });
@@ -170,6 +201,13 @@ public class VictimInfoFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String country = (String) parent.getItemAtPosition(position);
                 mPage.getData().putString(VictimInfoPage.NACIONALITY_DATA_KEY, country);
+                if (position == 24) {
+                    mBrazilStateView.setVisibility(View.VISIBLE);
+                    mStateView.setVisibility(View.GONE);
+                } else {
+                    mBrazilStateView.setVisibility(View.GONE);
+                    mStateView.setVisibility(View.VISIBLE);
+                }
                 mPage.notifyDataChanged();
             }
 
@@ -186,6 +224,7 @@ public class VictimInfoFragment extends Fragment {
                         checkedId == R.id.victim_gender_male ?
                                 getResources().getString(R.string.victim_gender_male) :
                                 getResources().getString(R.string.victim_gender_female));
+                mPage.notifyDataChanged();
             }
         });
 
@@ -196,8 +235,78 @@ public class VictimInfoFragment extends Fragment {
                         checkedId == R.id.victim_is_foreign_true ?
                                 getResources().getString(R.string.victim_is_foreign_true) :
                                 getResources().getString(R.string.victim_is_foreign_false));
+                mPage.notifyDataChanged();
             }
         });
+
+        mBrazilStateView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(mNationalityView.getSelectedItemPosition() == 24) {
+                    mStateView.setText((String) parent.getItemAtPosition(position));
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        mStateView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1,
+                                          int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                mPage.getData().putString(VictimInfoPage.STATE_DATA_KEY,
+                        (editable != null) ? editable.toString() : null);
+                mPage.notifyDataChanged();
+            }
+        });
+
+        mCityView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1,
+                                          int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                mPage.getData().putString(VictimInfoPage.CITY_DATA_KEY,
+                        (editable != null) ? editable.toString() : null);
+                mPage.notifyDataChanged();
+            }
+        });
+
+        mAddressView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1,
+                                          int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                mPage.getData().putString(VictimInfoPage.ADDRESS_DATA_KEY,
+                        (editable != null) ? editable.toString() : null);
+                mPage.notifyDataChanged();
+            }
+        });
+
 
     }
 

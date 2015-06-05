@@ -2,32 +2,32 @@
 <resources>
 
     <string-array name="brazil_states">
-        <item>ACRE</item>
-        <item>ALAGOAS</item>
-        <item>AMAPA</item>
-        <item>AMAZONAS</item>
-        <item>BAHIA</item>
-        <item>CEARA</item>
-        <item>DISTRITO FEDERAL</item>
-        <item>ESPIRITO SANTO</item>
-        <item>GOIAS</item>
-        <item>MARANHAO</item>
-        <item>MATO GROSSO</item>
-        <item>MATO GROSSO DO SUL</item>
-        <item>MINAS GERAIS</item>
-        <item>PARA</item>
-        <item>PARAIBA</item>
-        <item>PARANA</item>
-        <item>PERNAMBUCO</item>
-        <item>PIAUI</item>
-        <item>RIO GRANDE DO NORTE</item>
-        <item>RIO GRANDE DO SUL</item>
-        <item>RIO DE JANEIRO</item>
-        <item>RONDONIA</item>
-        <item>RORAIMA</item>
-        <item>SANTA CATARINA</item>
-        <item>SAO PAULO</item>
-        <item>SERGIPE</item>
-        <item>TOCANTINS</item>
+        <item>Acre</item>
+        <item>Alagoas</item>
+        <item>Amapá</item>
+        <item>Amazonas</item>
+        <item>Bahia</item>
+        <item>Ceara</item>
+        <item>Distrito Federal</item>
+        <item>Espirito Santo</item>
+        <item>Goiás</item>
+        <item>Maranhão</item>
+        <item>Mato Grosso</item>
+        <item>Mato Grosso do Sul</item>
+        <item>Minas Gerais</item>
+        <item>Pará</item>
+        <item>Paraíba</item>
+        <item>Parana</item>
+        <item>Pernambuco</item>
+        <item>Piauí</item>
+        <item>Rio Grande do Norte</item>
+        <item>Rio Grande do Sul</item>
+        <item>Rio de Janeiro</item>
+        <item>Rondônia</item>
+        <item>Roraima</item>
+        <item>Santa Catarina</item>
+        <item>São Paulo</item>
+        <item>Sergipe</item>
+        <item>Tocantins</item>
     </string-array>
 </resources>

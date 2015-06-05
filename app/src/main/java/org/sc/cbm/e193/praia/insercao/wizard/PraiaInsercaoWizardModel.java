@@ -40,6 +40,8 @@ public class PraiaInsercaoWizardModel extends AbstractWizardModel {
                         .setRequired(true),
 
                 new BranchPage(this, "Tipo")
+//                                new SingleFixedChoicePage(this, "Dressing")
+//                                        .setChoices("No dressing", "Balsamic", "Oil & vinegar",
 //                        .addBranch("z",
 //                                new SingleFixedChoicePage(this, "Bread")
 //                                        .setChoices("White", "Wheat", "Rye", "Pretzel", "Ciabatta")
@@ -70,8 +72,6 @@ public class PraiaInsercaoWizardModel extends AbstractWizardModel {
 //                                        .setChoices("Greek", "Caesar")
 //                                        .setRequired(true),
 //
-//                                new SingleFixedChoicePage(this, "Dressing")
-//                                        .setChoices("No dressing", "Balsamic", "Oil & vinegar",
 //                                                "Thousand Island", "Italian")
 //                                        .setValue("No dressing")
 //                        )

@@ -47,4 +47,7 @@
     <string name="victim_is_foreign_false">Não</string>
     <string name="label_nationality">País</string>
     <string name="bad_value">Valor inválido</string>
+    <string name="label_state">Estado</string>
+    <string name="label_address">Endereço</string>
+    <string name="label_city">Cidade</string>
 </resources>
