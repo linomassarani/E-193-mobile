@@ -19,6 +19,7 @@ package org.sc.cbm.e193.praia.insercao.wizard;
 import org.sc.cbm.e193.praia.insercao.wizard.model.AbstractWizardModel;
 import org.sc.cbm.e193.praia.insercao.wizard.model.BranchPage;
 import org.sc.cbm.e193.praia.insercao.wizard.model.CustomerInfoPage;
+import org.sc.cbm.e193.praia.insercao.wizard.model.DateNTimePage;
 import org.sc.cbm.e193.praia.insercao.wizard.model.Page;
 import org.sc.cbm.e193.praia.insercao.wizard.model.PageList;
 import org.sc.cbm.e193.praia.insercao.wizard.model.SingleFixedChoicePage;
@@ -36,6 +37,8 @@ public class PraiaInsercaoWizardModel extends AbstractWizardModel {
     @Override
     protected PageList onNewRootPageList() {
         return new PageList(
+                new DateNTimePage(this, "Identificação")
+                        .setRequired(true),
                 new VictimInfoPage(this, "Vítima")
                         .setRequired(true),
 
@@ -83,11 +86,17 @@ public class PraiaInsercaoWizardModel extends AbstractWizardModel {
                         .addBranch("Afogamento com recuperação", appendBeachForm(
                                 new SingleFixedChoicePage(this, "Água")
                                         .setChoices("Doce", "Salgada")
+                                        .setRequired(true),
+                                new SingleFixedChoicePage(this, "Grau de afogamento")
+                                        .setChoices("1", "2", "3", "4", "5", "6")
                                         .setRequired(true)))
 
                         .addBranch("Afogamento seguido de morte", appendBeachForm(
                                 new SingleFixedChoicePage(this, "Água")
                                         .setChoices("Doce", "Salgada")
+                                        .setRequired(true),
+                                new SingleFixedChoicePage(this, "Grau de afogamento")
+                                        .setChoices("1", "2", "3", "4", "5", "6")
                                         .setRequired(true)))
 
                         .addBranch("Lesão ou corte",

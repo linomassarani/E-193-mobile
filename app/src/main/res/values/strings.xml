@@ -50,4 +50,6 @@
     <string name="label_state">Estado</string>
     <string name="label_address">Endereço</string>
     <string name="label_city">Cidade</string>
+    <string name="label_incident_date">Data</string>
+    <string name="label_incident_time">Horário</string>
 </resources>
