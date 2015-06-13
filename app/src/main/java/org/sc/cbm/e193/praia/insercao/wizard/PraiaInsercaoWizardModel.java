@@ -16,10 +16,11 @@
 
 package org.sc.cbm.e193.praia.insercao.wizard;
 
+import org.sc.cbm.e193.praia.insercao.DAO;
 import org.sc.cbm.e193.praia.insercao.wizard.model.AbstractWizardModel;
 import org.sc.cbm.e193.praia.insercao.wizard.model.BranchPage;
-import org.sc.cbm.e193.praia.insercao.wizard.model.CustomerInfoPage;
 import org.sc.cbm.e193.praia.insercao.wizard.model.DateNTimePage;
+import org.sc.cbm.e193.praia.insercao.wizard.model.LocationPage;
 import org.sc.cbm.e193.praia.insercao.wizard.model.Page;
 import org.sc.cbm.e193.praia.insercao.wizard.model.PageList;
 import org.sc.cbm.e193.praia.insercao.wizard.model.SingleFixedChoicePage;
@@ -39,8 +40,18 @@ public class PraiaInsercaoWizardModel extends AbstractWizardModel {
         return new PageList(
                 new DateNTimePage(this, "Identificação")
                         .setRequired(true),
+                new LocationPage(this, "Localização")
+                        .setRequired(true),
+                new SingleFixedChoicePage(this, "Serviço")
+                        .setChoices("Ativada", "Desativada", "Inexistente")
+                        .setRequired(true),
                 new VictimInfoPage(this, "Vítima")
                         .setRequired(true),
+
+                //TODO GVM
+                //TODO GVC
+                //TODO HISTÓRICO
+                //TODO FOTOS
 
                 new BranchPage(this, "Tipo")
 //                                new SingleFixedChoicePage(this, "Dressing")
@@ -78,11 +89,8 @@ public class PraiaInsercaoWizardModel extends AbstractWizardModel {
 //                                                "Thousand Island", "Italian")
 //                                        .setValue("No dressing")
 //                        )
-
                         .addBranch("Arrastamento",
-                                /* TODO: appendCommons()*/
                                 appendBeachForm())
-
                         .addBranch("Afogamento com recuperação", appendBeachForm(
                                 new SingleFixedChoicePage(this, "Água")
                                         .setChoices("Doce", "Salgada")
@@ -99,35 +107,11 @@ public class PraiaInsercaoWizardModel extends AbstractWizardModel {
                                         .setChoices("1", "2", "3", "4", "5", "6")
                                         .setRequired(true)))
 
-                        .addBranch("Lesão ou corte",
-                                new SingleFixedChoicePage(this, "Salad type")
-                                        .setChoices("Greek", "Caesar")
-                                        .setRequired(true)
-                        )
-
-                        .addBranch("Insolação",
-                                new SingleFixedChoicePage(this, "Salad type")
-                                        .setChoices("Greek", "Caesar")
-                                        .setRequired(true)
-                        )
-
-                        .addBranch("Queimadura por raios solares",
-                                new SingleFixedChoicePage(this, "Salad type")
-                                        .setChoices("Greek", "Caesar")
-                                        .setRequired(true)
-                        )
-
-                        .addBranch("Embarcação à deriva",
-                                new SingleFixedChoicePage(this, "Salad type")
-                                        .setChoices("Greek", "Caesar")
-                                        .setRequired(true)
-                        )
-
-                        .addBranch("Naufrágio de embarcação",
-                                new SingleFixedChoicePage(this, "Salad type")
-                                        .setChoices("Greek", "Caesar")
-                                        .setRequired(true)
-                        )
+                        .addBranch("Lesão ou corte")
+                        .addBranch("Insolação")
+                        .addBranch("Queimadura por raios solares")
+                        .addBranch("Embarcação à deriva")
+                        .addBranch("Naufrágio de embarcação")
                         .setRequired(true)
         );
     }
@@ -255,12 +239,10 @@ public class PraiaInsercaoWizardModel extends AbstractWizardModel {
                         .setRequired(true));
 
                 beachForm.add(new SingleFixedChoicePage(this, "Praia: temperatura da água")
-                        .setChoices("Não verificado", "1º", "2º", "3º", "4º",
-                                "5º", "6º", "7º", "8º", "9º", "10º", "11º", "12º"
-                                , "13º", "14º", "15º", "16º", "17º", "18º", "19º"
-                                , "20º", "21º", "22º", "23º", "24º", "25º", "26º"
-                                , "27º", "28º", "29º", "25º", "26º", "27º", "28º"
-                                , "29º", "30º", "31º", "32º", "33º", "34º", "35º")
+                        .setChoices("Não verificado", "35º", "34º", "33º", "32º", "31º", "30º",
+                                "29º", "28º", "27º", "26º", "25º", "24º", "23º", "22º", "21º",
+                                "20º", "19º", "18º", "17º", "16º", "15º", "14º", "13º", "12º",
+                                "11º", "10º", "9º", "8º", "7º", "6º", "5º", "4º", "3º", "2º", "1º")
                         .setRequired(true));
 
                 beachForm.add(new SingleFixedChoicePage(this, "Praia: pessoas por km/linear")

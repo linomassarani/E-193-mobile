@@ -52,4 +52,6 @@
     <string name="label_city">Cidade</string>
     <string name="label_incident_date">Data</string>
     <string name="label_incident_time">Horário</string>
+    <string name="label_beach">Praia</string>
+    <string name="label_lifeguard_post">Posto guarda-vida</string>
 </resources>
