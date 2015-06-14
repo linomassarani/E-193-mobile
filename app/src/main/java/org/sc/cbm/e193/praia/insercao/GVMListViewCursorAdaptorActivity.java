@@ -1,8 +1,9 @@
 package org.sc.cbm.e193.praia.insercao;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -11,13 +12,12 @@ import android.widget.EditText;
 import android.widget.FilterQueryProvider;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 import org.sc.cbm.e193.R;
 import org.sc.cbm.e193.praia.DbAdapter.GVMsDbAdapter;
 
-public class GVMListViewCursorAdaptorActivity extends Activity {
+public class GVMListViewCursorAdaptorActivity extends ActionBarActivity {
 
     private GVMsDbAdapter dbHelper;
     private SimpleCursorAdapter dataAdapter;
@@ -31,9 +31,9 @@ public class GVMListViewCursorAdaptorActivity extends Activity {
         dbHelper.open();
 
         //Clean all data
-        //dbHelper.deleteAllGVMs();
+//        dbHelper.deleteAllGVMs();
         //Add some data
-        //dbHelper.insertSomeGVMs();
+//        dbHelper.insertSomeGVMs();
 
         //Generate ListView from SQLite Database
         displayListView();
@@ -61,7 +61,7 @@ public class GVMListViewCursorAdaptorActivity extends Activity {
         // create the adapter using the cursor pointing to the desired data
         //as well as the layout information
         dataAdapter = new SimpleCursorAdapter(
-                this, R.layout.fragment_praia_insercao_wizard_list_gvm,
+                this, R.layout.fragment_praia_insercao_wizard_gvm,
                 cursor,
                 columns,
                 to,
@@ -78,12 +78,16 @@ public class GVMListViewCursorAdaptorActivity extends Activity {
                 // Get the cursor, positioned to the corresponding row in the result set
                 Cursor cursor = (Cursor) listView.getItemAtPosition(position);
 
-                // Get the state's capital from this row in the database.
-                /*String countryCode =
-                        cursor.getString(cursor.getColumnIndexOrThrow("code"));*/
-                Toast.makeText(getApplicationContext(),
-                        "TODO", Toast.LENGTH_SHORT).show();
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra(GVMsDbAdapter.KEY_NAME,
+                        cursor.getString(cursor.getColumnIndex(GVMsDbAdapter.KEY_NAME)));
+                returnIntent.putExtra(GVMsDbAdapter.KEY_RANK,
+                        cursor.getString(cursor.getColumnIndex(GVMsDbAdapter.KEY_RANK)));
+                returnIntent.putExtra(GVMsDbAdapter.KEY_REGISTRATION,
+                        cursor.getString(cursor.getColumnIndex(GVMsDbAdapter.KEY_REGISTRATION)));
 
+                setResult(RESULT_OK, returnIntent);
+                finish();
             }
         });
 

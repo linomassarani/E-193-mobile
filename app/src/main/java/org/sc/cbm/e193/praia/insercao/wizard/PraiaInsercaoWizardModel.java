@@ -40,7 +40,8 @@ public class PraiaInsercaoWizardModel extends AbstractWizardModel {
     protected PageList onNewRootPageList() {
         return new PageList(
 
-
+                new DateNTimePage(this, "Identificação")
+                        .setRequired(true),
 
                 new GVMPage(this, "GVM")
                         .setRequired(true),//TODO GVM
@@ -48,8 +49,7 @@ public class PraiaInsercaoWizardModel extends AbstractWizardModel {
 
 
 
-                new DateNTimePage(this, "Identificação")
-                        .setRequired(true),
+
                 new LocationPage(this, "Localização")
                         .setRequired(true),
                 new SingleFixedChoicePage(this, "Serviço")

@@ -55,4 +55,7 @@
     <string name="label_beach">Praia</string>
     <string name="label_lifeguard_post">Posto guarda-vida</string>
     <string name="gvm_search_hint">Digite um nome ou matrícula</string>
+    <string name="search">BUSCA</string>
+    <string name="click_to_add">Toque para incluir</string>
+    <string name="label_gvm_add">Guarda-vidas Militar</string>
 </resources>

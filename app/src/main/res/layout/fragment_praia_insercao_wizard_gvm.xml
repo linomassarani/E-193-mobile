@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_height="wrap_content"
+              android:layout_width="match_parent"
+              android:orientation="horizontal"
+              android:padding="6dip">
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_weight="0.9"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/list_gvm_registration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="Matrícula: "
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+        <TextView
+            android:id="@+id/list_gvm_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/list_gvm_registration"
+            android:layout_below="@+id/list_gvm_registration"
+            android:text="Nome: "
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+        <TextView
+            android:id="@+id/list_gvm_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/list_gvm_name"
+            android:layout_below="@+id/list_gvm_name"
+            android:text="Posto/patente: "
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/gvm_trash"
+        android:layout_width="0dp"
+        android:layout_weight="0.1"
+        android:layout_gravity="center|right"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_plus"
+        />
+</LinearLayout>

@@ -1,45 +1,25 @@
-<LinearLayout
+<FrameLayout
     style="@style/PraiaInsercaoWizardPageContainer"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto">
 
     <TextView style="@style/PraiaInsercaoWizardPageTitle"/>
 
-    <ScrollView
+    <ListView android:id="@+id/list_gvm_added"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:scrollbarStyle="outsideOverlay">
+        android:layout_marginTop="70px"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <Button
-                    android:id="@+id/add_gvm"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20px"></Button>
-                <!--<TextView-->
-                    <!--style="@style/PraiaInsercaoWizardFormLabel"-->
-                    <!--android:text="@string/label_lifeguard_post"/>-->
-
-                <!--<Button-->
-                    <!--android:id="@+id/add_gvm"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginTop="20px"></Button>-->
-
-            </LinearLayout>
-
-
-
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_add_white_24dp"
+        fab:fab_colorNormal="@color/primary"
+        fab:fab_colorPressed="@color/primary_pressed"
+        fab:fab_colorRipple="@color/ripple" />
+</FrameLayout>

@@ -11,6 +11,8 @@ public class GVM {
         this.registration = registration;
     }
 
+    public GVM(){}
+
     public String getName() {
         return name;
     }

@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import org.sc.cbm.e193.praia.pojo.GVM;
+
 /**
  * Based on www.mysamplecode.com/2012/07/android-listview-cursoradapter-sqlite.html
  */
@@ -23,7 +25,7 @@ public class GVMsDbAdapter {
 
     private static final String DATABASE_NAME = "E193";
     private static final String SQLITE_TABLE = "GVM";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     private final Context mCtx;
 
@@ -32,7 +34,28 @@ public class GVMsDbAdapter {
                     KEY_ROWID + " integer PRIMARY KEY autoincrement," +
                     KEY_REGISTRATION + "," +
                     KEY_NAME + "," +
-                    KEY_RANK + ");";
+                    KEY_RANK + "," +
+                    " UNIQUE (" + KEY_REGISTRATION +"));";
+
+    public GVM fetchGVMByRegistration(String reg) {
+        Log.w(TAG, reg);
+        Cursor mCursor = null;
+        if (reg == null || reg.length() == 0) {
+            return null;
+        } else {
+            mCursor = mDb.query(true, SQLITE_TABLE, new String[]{KEY_ROWID, KEY_REGISTRATION,
+                            KEY_NAME, KEY_RANK},
+                    KEY_REGISTRATION + " like '%" + reg + "%'", null,
+                    null, null, null, null);
+        }
+        mCursor.moveToNext();
+
+        GVM gvm = new GVM(mCursor.getString(mCursor.getColumnIndex(GVMsDbAdapter.KEY_RANK)),
+                mCursor.getString(mCursor.getColumnIndex(GVMsDbAdapter.KEY_NAME)),
+                mCursor.getString(mCursor.getColumnIndex(GVMsDbAdapter.KEY_REGISTRATION)));
+
+        return gvm;
+    }
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
 
