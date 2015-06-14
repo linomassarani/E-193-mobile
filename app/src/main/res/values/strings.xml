@@ -54,4 +54,5 @@
     <string name="label_incident_time">Horário</string>
     <string name="label_beach">Praia</string>
     <string name="label_lifeguard_post">Posto guarda-vida</string>
+    <string name="gvm_search_hint">Digite um nome ou matrícula</string>
 </resources>

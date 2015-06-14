@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.sc.cbm.e193" >
+          package="org.sc.cbm.e193" >
 
     <uses-sdk android:minSdkVersion="11" />
 
@@ -53,8 +53,17 @@ android:uses-permission
             android:theme="@style/PraiaTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".praia.PraiaActivity" />
+                android:value=".praia.PraiaActivity"
+                />
+            <meta-data android:name="android.app.default_searchable"
+                       android:value=".praia.insercao.wizard.SearchGVMActivity" />
         </activity>
+
+        <activity android:name=".praia.insercao.GVMListViewCursorAdaptorActivity"
+                  android:label="@string/app_name">
+
+        </activity>
+
     </application>
 
 </manifest>

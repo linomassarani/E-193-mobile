@@ -1,0 +1,45 @@
+<LinearLayout
+    style="@style/PraiaInsercaoWizardPageContainer"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView style="@style/PraiaInsercaoWizardPageTitle"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:scrollbarStyle="outsideOverlay">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/add_gvm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20px"></Button>
+                <!--<TextView-->
+                    <!--style="@style/PraiaInsercaoWizardFormLabel"-->
+                    <!--android:text="@string/label_lifeguard_post"/>-->
+
+                <!--<Button-->
+                    <!--android:id="@+id/add_gvm"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="20px"></Button>-->
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

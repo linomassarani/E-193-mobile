@@ -20,6 +20,7 @@ import org.sc.cbm.e193.praia.insercao.DAO;
 import org.sc.cbm.e193.praia.insercao.wizard.model.AbstractWizardModel;
 import org.sc.cbm.e193.praia.insercao.wizard.model.BranchPage;
 import org.sc.cbm.e193.praia.insercao.wizard.model.DateNTimePage;
+import org.sc.cbm.e193.praia.insercao.wizard.model.GVMPage;
 import org.sc.cbm.e193.praia.insercao.wizard.model.LocationPage;
 import org.sc.cbm.e193.praia.insercao.wizard.model.Page;
 import org.sc.cbm.e193.praia.insercao.wizard.model.PageList;
@@ -38,6 +39,15 @@ public class PraiaInsercaoWizardModel extends AbstractWizardModel {
     @Override
     protected PageList onNewRootPageList() {
         return new PageList(
+
+
+
+                new GVMPage(this, "GVM")
+                        .setRequired(true),//TODO GVM
+
+
+
+
                 new DateNTimePage(this, "Identificação")
                         .setRequired(true),
                 new LocationPage(this, "Localização")
@@ -47,8 +57,9 @@ public class PraiaInsercaoWizardModel extends AbstractWizardModel {
                         .setRequired(true),
                 new VictimInfoPage(this, "Vítima")
                         .setRequired(true),
-
-                //TODO GVM
+//
+//                new GVMPage(this, "GVM")
+//                        .setRequired(true),//TODO GVM
                 //TODO GVC
                 //TODO HISTÓRICO
                 //TODO FOTOS
