@@ -59,8 +59,13 @@ android:uses-permission
 
         <activity android:name=".praia.insercao.GVMListViewCursorAdaptorActivity"
                   android:parentActivityName=".praia.insercao.wizard.MainActivity"
-                  android:label="@string/search"
+                  android:label="GVMs"
                   android:theme="@style/PraiaTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                       android:resource="@xml/searchable"/>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".praia.insercao.wizard.MainActivity"

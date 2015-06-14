@@ -8,8 +8,10 @@
               android:layout_height="wrap_content"
               android:ems="10"
               android:hint="@string/gvm_search_hint"
-              android:singleLine="true">
-        <requestFocus />
+              android:singleLine="true"
+              android:visibility="gone"
+        >
+        <!--<requestFocus />-->
     </EditText>
 
     <!--<TextView android:layout_width="fill_parent"-->
