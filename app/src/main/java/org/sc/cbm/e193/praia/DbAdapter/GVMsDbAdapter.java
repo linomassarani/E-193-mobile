@@ -46,7 +46,7 @@ public class GVMsDbAdapter {
             mCursor = mDb.query(true, SQLITE_TABLE, new String[]{KEY_ROWID, KEY_REGISTRATION,
                             KEY_NAME, KEY_RANK},
                     KEY_REGISTRATION + " like '%" + reg + "%'", null,
-                    null, null, null, null);
+                    null, null, KEY_NAME, "50");
         }
         mCursor.moveToNext();
 
@@ -123,7 +123,7 @@ public class GVMsDbAdapter {
             mCursor = mDb.query(SQLITE_TABLE, new String[]{KEY_ROWID, KEY_REGISTRATION
                             , KEY_NAME
                             , KEY_RANK},
-                    null, null, null, null, null);
+                    null, null, null, KEY_NAME, "50");
 
         } else {
             String key = KEY_NAME;
@@ -135,7 +135,7 @@ public class GVMsDbAdapter {
             mCursor = mDb.query(true, SQLITE_TABLE, new String[]{KEY_ROWID, KEY_REGISTRATION,
                             KEY_NAME, KEY_RANK},
                     key + " like '%" + inputText + "%'", null,
-                    null, null, null, null);
+                    null, null, KEY_NAME, "50");
         }
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -148,7 +148,7 @@ public class GVMsDbAdapter {
 
             Cursor mCursor = mDb.query(SQLITE_TABLE, new String[]{KEY_ROWID, KEY_REGISTRATION,
                         KEY_NAME, KEY_RANK},
-                null, null, null, null, null);
+                null, null, null, null, KEY_NAME, "50");
 
         if (mCursor != null) {
             mCursor.moveToFirst();

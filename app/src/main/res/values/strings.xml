@@ -58,4 +58,5 @@
     <string name="search">BUSCA</string>
     <string name="click_to_add">Toque para incluir</string>
     <string name="label_gvm_add">Guarda-vidas Militar</string>
+    <string name="undo">Desfazer</string>
 </resources>

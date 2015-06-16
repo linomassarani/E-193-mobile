@@ -5,15 +5,16 @@ import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.melnykov.fab.FloatingActionButton;
 
@@ -23,15 +24,16 @@ import org.sc.cbm.e193.praia.insercao.GVMListViewCursorAdaptorActivity;
 import org.sc.cbm.e193.praia.insercao.wizard.model.GVMPage;
 import org.sc.cbm.e193.praia.pojo.GVM;
 import org.sc.cbm.e193.praia.pojo.GVMAdapter;
+import org.sc.cbm.e193.tools.Tools;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 public class GVMFragment extends Fragment {
+    public static final int UNDO_HEIGHT = 60;
     private static final String ARG_KEY = "key";
-
+    private static final int UNDO_TIME = 5000;
     private PageFragmentCallbacks mCallbacks;
     private String mKey;
     private GVMPage mPage;
@@ -40,6 +42,9 @@ public class GVMFragment extends Fragment {
     private ListView mGVMView;
     private FloatingActionButton mFabView;
     private GVMsDbAdapter dbHelper;
+    private LinearLayout mUndoView;
+    private Runnable mUnduVisibilityToGoneThread;
+    private GVM mGVMRemoved;
 
     public GVMFragment() {
     }
@@ -67,6 +72,13 @@ public class GVMFragment extends Fragment {
 
         dbHelper = new GVMsDbAdapter(getActivity());
         dbHelper.open();
+
+        mUnduVisibilityToGoneThread = new Runnable() {
+            @Override
+            public void run() {
+                makeUndoDesappear(getView());
+            }
+        };
     }
 
     /*
@@ -86,8 +98,10 @@ public class GVMFragment extends Fragment {
         mFabView = (FloatingActionButton) rootView.findViewById(R.id.fab);
         mFabView.attachToListView(mGVMView);
 
+        mUndoView = (LinearLayout) rootView.findViewById(R.id.undo);
+
         String sGVMList = mPage.getData().getString(GVMPage.GVM_LIST_DATA_KEY);
-        if(sGVMList != null) {
+        if (sGVMList != null) {
             loadGVMList(sGVMList);
         }
 
@@ -142,7 +156,11 @@ public class GVMFragment extends Fragment {
         mGVMView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mGVMRemoved = mGVMList.get(position);
                 mGVMList.remove(position);
+
+                makeUndoAppears(view);
+
                 mGVMAdapter.notifyDataSetChanged();
             }
         });
@@ -157,6 +175,63 @@ public class GVMFragment extends Fragment {
                 mPage.notifyDataChanged();
             }
         });
+
+        mUndoView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addToGVMList(mGVMRemoved);
+                mUndoView.removeCallbacks(mUnduVisibilityToGoneThread);
+                makeUndoDesappear(v);
+            }
+        });
+    }
+
+    private void addToGVMList(GVM gvm) {
+        for (GVM item : mGVMList) {
+            if (item.getRegistration().matches(gvm.getRegistration()))
+                return;
+        }
+
+        mGVMList.add(gvm);
+        mGVMAdapter.notifyDataSetChanged();
+    }
+
+    private void makeUndoDesappear(View view) {
+        mUndoView.setVisibility(View.GONE);
+
+        FrameLayout.LayoutParams lp =
+                new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
+                        FrameLayout.LayoutParams.MATCH_PARENT);
+        int margin = Tools.dpToPx(16, view.getContext());
+        lp.setMargins(margin, margin, margin, margin);
+        lp.gravity = Gravity.BOTTOM | Gravity.RIGHT;
+        mFabView.setLayoutParams(lp);
+
+        FrameLayout.LayoutParams lpListView =
+                new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
+                        FrameLayout.LayoutParams.MATCH_PARENT);
+        lpListView.setMargins(0, 70, 0, 0);
+        mGVMView.setLayoutParams(lpListView);
+    }
+
+    private void makeUndoAppears(View view) {
+        FrameLayout.LayoutParams lpFab =
+                new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
+                        FrameLayout.LayoutParams.MATCH_PARENT);
+        int margin = Tools.dpToPx(16, view.getContext());
+        lpFab.setMargins(margin, margin, margin, margin + Tools.dpToPx(UNDO_HEIGHT, view.getContext()));
+        lpFab.gravity = Gravity.BOTTOM | Gravity.RIGHT;
+        mFabView.setLayoutParams(lpFab);
+
+        FrameLayout.LayoutParams lpListView =
+                new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
+                        FrameLayout.LayoutParams.MATCH_PARENT);
+        lpListView.setMargins(0, 70, 0, Tools.dpToPx(UNDO_HEIGHT, view.getContext()));
+        mGVMView.setLayoutParams(lpListView);
+
+        mUndoView.removeCallbacks(mUnduVisibilityToGoneThread);
+        mUndoView.postDelayed(mUnduVisibilityToGoneThread, UNDO_TIME);
+        mUndoView.setVisibility(View.VISIBLE);
     }
 
     /**
@@ -170,7 +245,7 @@ public class GVMFragment extends Fragment {
         if (mGVMList.size() == 0) {
             gvmListReg = null;
         } else {
-            for(int i = 0; i < mGVMList.size() - 1; i++) {
+            for (int i = 0; i < mGVMList.size() - 1; i++) {
                 gvmListReg = gvmListReg + mGVMList.get(i).getRegistration() + ", ";
             }
             gvmListReg = gvmListReg + mGVMList.get(mGVMList.size() - 1).getRegistration();
@@ -182,16 +257,16 @@ public class GVMFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-                if (requestCode == 1) {
-                    if(resultCode == getActivity().RESULT_OK){
-                        GVM gvm = new GVM();
-                        gvm.setName(data.getStringExtra(GVMsDbAdapter.KEY_NAME));
-                        gvm.setRank(data.getStringExtra(GVMsDbAdapter.KEY_RANK));
-                        gvm.setRegistration(data.getStringExtra(GVMsDbAdapter.KEY_REGISTRATION));
+        if (requestCode == 1) {
+            if (resultCode == getActivity().RESULT_OK) {
+                GVM gvm = new GVM();
+                gvm.setName(data.getStringExtra(GVMsDbAdapter.KEY_NAME));
+                gvm.setRank(data.getStringExtra(GVMsDbAdapter.KEY_RANK));
+                gvm.setRegistration(data.getStringExtra(GVMsDbAdapter.KEY_REGISTRATION));
 
-                        mGVMAdapter.add(gvm);
-                    }
-                }
+                addToGVMList(gvm);
+            }
+        }
     }
 
     @Override
