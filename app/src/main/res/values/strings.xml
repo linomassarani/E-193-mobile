@@ -61,4 +61,7 @@
     <string name="undo">Desfazer</string>
     <string name="gvc_search_hint">Nome ou CPF</string>
     <string name="history_hint">Digite o histórico da ocorrência...</string>
+    <string name="label_incident_distance">Distância do posto</string>
+    <string name="label_distance_left">Esquerda</string>
+    <string name="label_distance">Distância do Posto (m)</string>
 </resources>
