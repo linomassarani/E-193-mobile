@@ -12,6 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ * modified by CBMSC
  */
 
 package org.sc.cbm.e193.praia.insercao.wizard.ui;
@@ -28,6 +30,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -121,5 +124,8 @@ public class SingleChoiceFragment extends ListFragment {
         mPage.getData().putString(Page.SIMPLE_DATA_KEY,
                 getListAdapter().getItem(position).toString());
         mPage.notifyDataChanged();
+
+        //Added by CMBSC to call next page when an item is just selected
+        ((Button) getActivity().findViewById(R.id.next_button)).callOnClick();
     }
 }

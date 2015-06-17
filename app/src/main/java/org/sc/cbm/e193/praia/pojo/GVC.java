@@ -4,6 +4,8 @@ public class GVC {
     private String name;
     private String cpf;
 
+    public GVC(){}
+
     public GVC(String name, String cpf) {
         this.name = name;
         this.cpf = cpf;

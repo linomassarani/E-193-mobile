@@ -25,7 +25,7 @@ public class GVMsDbAdapter {
 
     private static final String DATABASE_NAME = "E193";
     private static final String SQLITE_TABLE = "GVM";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
 
     private final Context mCtx;
 
@@ -156,6 +156,9 @@ public class GVMsDbAdapter {
         return mCursor;
     }
 
+    /**
+     * Use just for tests
+     */
     public void insertSomeGVMs() {
 
         createGVM("9133410","ABEL BARBOSA","3 SARGENTO");

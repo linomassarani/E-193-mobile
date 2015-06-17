@@ -59,4 +59,6 @@
     <string name="click_to_add">Toque para incluir</string>
     <string name="label_gvm_add">Guarda-vidas Militar</string>
     <string name="undo">Desfazer</string>
+    <string name="gvc_search_hint">Nome ou CPF</string>
+    <string name="history_hint">Digite o histórico da ocorrência...</string>
 </resources>
