@@ -47,7 +47,7 @@ public class GVCFragment extends Fragment {
     private ListView mGVCView;
     private FloatingActionButton mFabView;
     private GVCsDbAdapter dbHelper;
-    private LinearLayout mUndoView;
+    private LinearLayout mUndoView; //TODO EXTRACT CLASS OR USE com.github.jenzz.undobar:library:1.3:api15Release@aar
     private Runnable mUnduVisibilityToGoneThread;
     private GVC mGVCRemoved;
 
@@ -187,6 +187,8 @@ public class GVCFragment extends Fragment {
                 addToGVCList(mGVCRemoved);
                 mUndoView.removeCallbacks(mUnduVisibilityToGoneThread);
                 makeUndoDesappear(v);
+
+                mGVCAdapter.notifyDataSetChanged();
             }
         });
     }

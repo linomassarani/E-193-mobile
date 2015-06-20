@@ -27,6 +27,7 @@ import org.sc.cbm.e193.praia.insercao.wizard.model.HistoryPage;
 import org.sc.cbm.e193.praia.insercao.wizard.model.LocationPage;
 import org.sc.cbm.e193.praia.insercao.wizard.model.Page;
 import org.sc.cbm.e193.praia.insercao.wizard.model.PageList;
+import org.sc.cbm.e193.praia.insercao.wizard.model.PicturesPage;
 import org.sc.cbm.e193.praia.insercao.wizard.model.SingleFixedChoicePage;
 import org.sc.cbm.e193.praia.insercao.wizard.model.VictimInfoPage;
 
@@ -42,9 +43,9 @@ public class PraiaInsercaoWizardModel extends AbstractWizardModel {
     @Override
     protected PageList onNewRootPageList() {
         return new PageList(
-
                 new DateNTimePage(this, "Identificação")
                         .setRequired(true),
+                new PicturesPage(this, "Fotos"),
                 new LocationPage(this, "Localização")
                         .setRequired(true),
                 new SingleFixedChoicePage(this, "Serviço")
