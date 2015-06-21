@@ -11,10 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.sc.cbm.e193.R;
-import org.sc.cbm.e193.praia.insercao.wizard.model.DateNTimePage;
 import org.sc.cbm.e193.praia.insercao.wizard.model.HistoryPage;
-
-import java.util.Calendar;
 
 public class HistoryFragment extends Fragment {
     private static final String ARG_KEY = "key";
@@ -51,7 +48,7 @@ public class HistoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.fragment_praia_insercao_wizard_page_history, container, false);
+        final View rootView = inflater.inflate(R.layout.fr_pg_history, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(mPage.getTitle());
 
         mHistoryView = ((TextView) rootView.findViewById(R.id.incident_history));

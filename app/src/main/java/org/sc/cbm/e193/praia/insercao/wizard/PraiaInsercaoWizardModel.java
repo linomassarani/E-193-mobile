@@ -45,7 +45,6 @@ public class PraiaInsercaoWizardModel extends AbstractWizardModel {
         return new PageList(
                 new DateNTimePage(this, "Identificação")
                         .setRequired(true),
-                new PicturesPage(this, "Fotos"),
                 new LocationPage(this, "Localização")
                         .setRequired(true),
                 new SingleFixedChoicePage(this, "Serviço")
@@ -59,8 +58,8 @@ public class PraiaInsercaoWizardModel extends AbstractWizardModel {
                         .setRequired(true),
                 new HistoryPage(this, "Histórico")
                         .setRequired(true),
-                //TODO FOTOS
-
+                new PicturesPage(this, "Fotos")
+                        .setRequired(false),
                 new BranchPage(this, "Tipo")
                         .addBranch("Arrastamento",
                                 appendBeachForm())
@@ -217,6 +216,7 @@ public class PraiaInsercaoWizardModel extends AbstractWizardModel {
                         "29º", "28º", "27º", "26º", "25º", "24º", "23º", "22º", "21º",
                         "20º", "19º", "18º", "17º", "16º", "15º", "14º", "13º", "12º",
                         "11º", "10º", "9º", "8º", "7º", "6º", "5º", "4º", "3º", "2º", "1º")
+                        //TODO use https://github.com/ai212983/android-spinnerwheel instead
                 .setRequired(true));
 
         beachForm.add(new SingleFixedChoicePage(this, "Praia: pessoas por km/linear")

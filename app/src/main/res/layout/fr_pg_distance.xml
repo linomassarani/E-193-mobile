@@ -41,7 +41,6 @@
                 android:inputType="number"
                 android:singleLine="true"
                 android:saveEnabled="false"/>
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

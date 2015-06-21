@@ -88,7 +88,7 @@ public class GVMFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_praia_insercao_wizard_page_gvm, container, false);
+        View rootView = inflater.inflate(R.layout.fr_pg_gv, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(mPage.getTitle());
 
         mGVMAdapter = new GVMAdapter(getActivity(), mGVMList);
@@ -204,7 +204,7 @@ public class GVMFragment extends Fragment {
         FrameLayout.LayoutParams lp =
                 new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
                         FrameLayout.LayoutParams.MATCH_PARENT);
-        int margin = Tools.dpToPx(16, view.getContext());
+        int margin = Tools.dpToPx(16, getActivity().getBaseContext());
         lp.setMargins(margin, margin, margin, margin);
         lp.gravity = Gravity.BOTTOM | Gravity.RIGHT;
         mFabView.setLayoutParams(lp);

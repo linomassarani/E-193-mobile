@@ -75,7 +75,7 @@ public class MultipleChoiceFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_praia_insercao_wizard_page, container, false);
+        View rootView = inflater.inflate(R.layout.fr_pg, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(mPage.getTitle());
 
         final ListView listView = (ListView) rootView.findViewById(android.R.id.list);

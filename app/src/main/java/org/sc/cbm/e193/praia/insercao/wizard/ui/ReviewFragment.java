@@ -57,7 +57,7 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_praia_insercao_wizard_page, container, false);
+        View rootView = inflater.inflate(R.layout.fr_pg, container, false);
 
         TextView titleView = (TextView) rootView.findViewById(android.R.id.title);
         titleView.setText(R.string.review);
@@ -160,7 +160,7 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
         @Override
         public View getView(int position, View view, ViewGroup container) {
             LayoutInflater inflater = LayoutInflater.from(getActivity());
-            View rootView = inflater.inflate(R.layout.praia_insercao_wizard_list_item_review, container, false);
+            View rootView = inflater.inflate(R.layout.fr_pg_review, container, false);
 
             ReviewItem reviewItem = mCurrentReviewItems.get(position);
             String value = reviewItem.getDisplayValue();

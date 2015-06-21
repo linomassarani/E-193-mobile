@@ -30,20 +30,28 @@ public class GVMListViewCursorAdaptorActivity extends ActionBarActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_praia_insercao_wizard_list_gvm_main);
+        setContentView(R.layout.ac_gvm_search);
 
         dbHelper = new GVMsDbAdapter(this);
         dbHelper.open();
-
-        //Clean all data
-//        dbHelper.deleteAllGVMs();
-        //Add some data
-//        dbHelper.insertSomeGVMs();
 
         //Generate ListView from SQLite Database
         displayListView();
 
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dbHelper.close();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        dbHelper.close();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -97,7 +105,7 @@ public class GVMListViewCursorAdaptorActivity extends ActionBarActivity {
         // create the adapter using the cursor pointing to the desired data
         //as well as the layout information
         dataAdapter = new SimpleCursorAdapter(
-                this, R.layout.fragment_praia_insercao_wizard_gvm,
+                this, R.layout.item_gvm,
                 cursor,
                 columns,
                 to,
@@ -123,6 +131,7 @@ public class GVMListViewCursorAdaptorActivity extends ActionBarActivity {
                         cursor.getString(cursor.getColumnIndex(GVMsDbAdapter.KEY_REGISTRATION)));
 
                 setResult(RESULT_OK, returnIntent);
+                cursor.close();
                 finish();
             }
         });

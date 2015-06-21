@@ -20,15 +20,10 @@ import com.melnykov.fab.FloatingActionButton;
 
 import org.sc.cbm.e193.R;
 import org.sc.cbm.e193.praia.DbAdapter.GVCsDbAdapter;
-import org.sc.cbm.e193.praia.DbAdapter.GVMsDbAdapter;
 import org.sc.cbm.e193.praia.insercao.GVCListViewCursorAdaptorActivity;
-import org.sc.cbm.e193.praia.insercao.GVMListViewCursorAdaptorActivity;
 import org.sc.cbm.e193.praia.insercao.wizard.model.GVCPage;
-import org.sc.cbm.e193.praia.insercao.wizard.model.GVMPage;
 import org.sc.cbm.e193.praia.pojo.GVC;
 import org.sc.cbm.e193.praia.pojo.GVCAdapter;
-import org.sc.cbm.e193.praia.pojo.GVM;
-import org.sc.cbm.e193.praia.pojo.GVMAdapter;
 import org.sc.cbm.e193.tools.Tools;
 
 import java.util.ArrayList;
@@ -93,7 +88,7 @@ public class GVCFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_praia_insercao_wizard_page_gvm, container, false);
+        View rootView = inflater.inflate(R.layout.fr_pg_gv, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(mPage.getTitle());
 
         mGVCAdapter = new GVCAdapter(getActivity(), mGVCList);
@@ -209,7 +204,7 @@ public class GVCFragment extends Fragment {
         FrameLayout.LayoutParams lp =
                 new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
                         FrameLayout.LayoutParams.MATCH_PARENT);
-        int margin = Tools.dpToPx(16, view.getContext());
+        int margin = Tools.dpToPx(16, getActivity().getBaseContext());
         lp.setMargins(margin, margin, margin, margin);
         lp.gravity = Gravity.BOTTOM | Gravity.RIGHT;
         mFabView.setLayoutParams(lp);

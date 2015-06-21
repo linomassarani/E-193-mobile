@@ -80,8 +80,9 @@ public class PicturesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.fragment_praia_insercao_wizard_page_pictures, container, false);
-        ((TextView) rootView.findViewById(android.R.id.title)).setText(mPage.getTitle());
+        final View rootView = inflater.inflate(R.layout.fr_pg_pictures, container, false);
+        TextView textView  = ((TextView) rootView.findViewById(android.R.id.title));
+        textView.setText(mPage.getTitle());
 
         mGalleryView = (FloatingActionButton) rootView.findViewById(R.id.fab_gallery);
 

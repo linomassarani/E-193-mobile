@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.sc.cbm.e193.R;
 import org.sc.cbm.e193.praia.insercao.wizard.model.VictimInfoPage;
@@ -67,7 +65,7 @@ public class VictimInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_praia_insercao_wizard_page_victim_info, container, false);
+        View rootView = inflater.inflate(R.layout.fr_pg_victim_info, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(mPage.getTitle());
 
         mNameView = ((TextView) rootView.findViewById(R.id.victim_name));

@@ -129,7 +129,7 @@ public class PictureAdapter extends BaseAdapter {
         final ViewHolder holder;
         View view = convertView;
         if (view == null) {
-            view = inflater.inflate(R.layout.item_grid_picture, parent, false);
+            view = inflater.inflate(R.layout.item_picture, parent, false);
             holder = new ViewHolder();
             assert view != null;
             holder.imageView = (ImageView) view.findViewById(R.id.image);

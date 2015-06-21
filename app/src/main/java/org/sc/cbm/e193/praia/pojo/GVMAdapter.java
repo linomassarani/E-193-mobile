@@ -23,7 +23,7 @@ public class GVMAdapter extends ArrayAdapter<GVM> {
         GVM gvm = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_praia_insercao_wizard_gvm,
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_gvm,
                     parent, false);
         }
         // Lookup view for data population

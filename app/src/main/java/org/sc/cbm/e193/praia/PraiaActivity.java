@@ -17,7 +17,7 @@ public class PraiaActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_praia);
+        setContentView(R.layout.ac_praia);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

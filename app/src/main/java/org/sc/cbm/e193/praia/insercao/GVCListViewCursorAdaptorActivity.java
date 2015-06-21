@@ -33,20 +33,28 @@ public class GVCListViewCursorAdaptorActivity extends ActionBarActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_praia_insercao_wizard_list_gvc_main);
+        setContentView(R.layout.ac_gvc_search);
 
         dbHelper = new GVCsDbAdapter(this);
         dbHelper.open();
-
-        //Clean all data
-        //dbHelper.deleteAllGVCs();
-        //Add some data
-        //dbHelper.insertSomeGVCs();
 
         //Generate ListView from SQLite Database
         displayListView();
 
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dbHelper.close();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        dbHelper.close();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -97,9 +105,9 @@ public class GVCListViewCursorAdaptorActivity extends ActionBarActivity {
 
         // create the adapter using the cursor pointing to the desired data
         //as well as the layout information
-        //TODO: MODIFY TO USE wizard_gvm because redundant code
+        //TODO: MODIFY TO USE wizard_gvm: redundant code
         dataAdapter = new SimpleCursorAdapter(
-                this, R.layout.fragment_praia_insercao_wizard_gvc,
+                this, R.layout.item_gvc,
                 cursor,
                 columns,
                 to,
@@ -123,6 +131,8 @@ public class GVCListViewCursorAdaptorActivity extends ActionBarActivity {
                         cursor.getString(cursor.getColumnIndex(GVCsDbAdapter.KEY_CPF)));
 
                 setResult(RESULT_OK, returnIntent);
+                cursor.close();
+
                 finish();
             }
         });

@@ -17,4 +17,10 @@
         android:max="100"
         android:layout_gravity="bottom"
         style="@style/ProgressBarStyle" />
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_trash"/>
 </FrameLayout>

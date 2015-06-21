@@ -21,10 +21,12 @@
     <string name="ok">Ok</string>
     <string name="title_activity_praia">PRAIA</string>
     <string name="gestao_button">" Gestão"</string>
-    <string name="insercao_button">" Inserção"</string>
+    <string name="new_incident">" Nova Ocorrência"</string>
     <string name="notImplemented">Ainda não disponível</string>
     <string name="lorem_ipsum">nao sei</string>
     <string name="title_activity_screen_slide_pager">"INSERÇÃO"</string>
+    <string name="resources">" Editar Recursos"</string>
+    <string name="hazard">" Editar Riscos"</string>
 
     <!-- praia inserção wizard -->
     <string name="review">Resumo</string>

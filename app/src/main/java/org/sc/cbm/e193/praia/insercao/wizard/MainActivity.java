@@ -61,7 +61,7 @@ public class MainActivity extends ActionBarActivity implements
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_praia_insercao_wizard_main);
+        setContentView(R.layout.ac_wizard_main);
 
         if (savedInstanceState != null) {
             mWizardModel.load(savedInstanceState.getBundle("model"));
