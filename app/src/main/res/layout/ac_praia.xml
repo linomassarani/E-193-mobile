@@ -35,6 +35,16 @@
                 android:onClick="startInsercao"/>
 
             <Button
+                android:id="@+id/preventions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/preventions"
+                android:textSize="@dimen/activity_main_buttons_text"
+                android:gravity="left|center_vertical"
+                android:drawableLeft="@drawable/ic_prevention"
+                android:onClick="notImplemented"/>
+
+            <Button
                 android:id="@+id/resources"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
