@@ -8,9 +8,11 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.sc.cbm.e193.R;
+import org.sc.cbm.e193.praia.insercao.automation.Automator;
 import org.sc.cbm.e193.praia.insercao.wizard.model.DateNTimePage;
 
 import java.util.Calendar;
@@ -23,6 +25,7 @@ public class DateNTimeFragment extends Fragment {
     private DateNTimePage mPage;
     private TextView mTimeView;
     private TextView mDateView;
+    private Button mNextButton;
 
     public static DateNTimeFragment create(String key) {
         Bundle args = new Bundle();
@@ -54,6 +57,8 @@ public class DateNTimeFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.fr_pg_date_n_time, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(mPage.getTitle());
 
+        mNextButton = ((Button) getActivity().findViewById(R.id.next_button));
+
         mDateView = ((TextView) rootView.findViewById(R.id.incident_data));
         mDateView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,14 +68,17 @@ public class DateNTimeFragment extends Fragment {
                 newFragment.show(getFragmentManager(), "datePicker");
             }
         });
-        if(mPage.getData().getString(DateNTimePage.DATE_DATA_KEY) == null) {
-            String date = getCurrentDate();
 
-            mDateView.setText(date);
-            mPage.getData().putString(DateNTimePage.DATE_DATA_KEY, date);
-            mPage.notifyDataChanged();
+        if(mPage.getData().getString(DateNTimePage.DATE_DATA_KEY) == null) {
+            String date = Automator.getInstance().getDate();
+            if(date != null) {
+                mDateView.setText(Automator.getInstance().removeFlag(date));
+                mPage.getData().putString(DateNTimePage.DATE_DATA_KEY, date);
+                mPage.notifyDataChanged();
+            }
         } else {
-            mDateView.setText(mPage.getData().getString(DateNTimePage.DATE_DATA_KEY));
+            mDateView.setText(Automator.getInstance().removeFlag(
+                    mPage.getData().getString(DateNTimePage.DATE_DATA_KEY)));
         }
 
 
@@ -84,48 +92,19 @@ public class DateNTimeFragment extends Fragment {
             }
         });
         if(mPage.getData().getString(DateNTimePage.TIME_DATA_KEY) == null) {
-            String time = getCurrentTime();
-
-            mTimeView.setText(time);
-            mPage.getData().putString(DateNTimePage.TIME_DATA_KEY, time);
-            mPage.notifyDataChanged();
+            String time = Automator.getInstance().getTime();
+            if(time != null) {
+                mTimeView.setText(Automator.getInstance().removeFlag(time));
+                mPage.getData().putString(DateNTimePage.TIME_DATA_KEY, time);
+                mPage.notifyDataChanged();
+                if(!mDateView.getText().toString().isEmpty()) mNextButton.callOnClick();
+            }
         } else {
-            mTimeView.setText(mPage.getData().getString(DateNTimePage.TIME_DATA_KEY));
+            mTimeView.setText(Automator.getInstance().removeFlag(
+                    mPage.getData().getString(DateNTimePage.TIME_DATA_KEY)));
         }
 
         return rootView;
-    }
-
-    private String getCurrentDate() {
-        final Calendar c = Calendar.getInstance();
-        String month_zero = "";
-        String day_zero = "";
-        int month = c.get(Calendar.MONTH);
-        int day = c.get(Calendar.DAY_OF_MONTH);
-        int year = c.get(Calendar.YEAR);
-
-        month_zero = month < 10 ? "0" : "";
-        day_zero = day < 10 ? "0" : "";
-
-        return day_zero + String.valueOf(day)
-                + "/" + month_zero
-                + String.valueOf(month)
-                + "/"
-                + String.valueOf(year);
-    }
-
-    private String getCurrentTime() {
-        final Calendar c = Calendar.getInstance();
-        String hour_zero = "";
-        String minute_zero = "";
-        int hourOfDay = c.get(Calendar.HOUR_OF_DAY);
-        int minute = c.get(Calendar.MINUTE);
-
-        hour_zero = hourOfDay < 10 ? "0" : "";
-        minute_zero = minute < 10 ? "0" : "";
-
-        return hour_zero + String.valueOf(hourOfDay) + ":" + minute_zero
-                + String.valueOf(minute);
     }
 
     @Override

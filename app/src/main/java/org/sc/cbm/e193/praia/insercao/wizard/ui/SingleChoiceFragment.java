@@ -19,20 +19,26 @@
 package org.sc.cbm.e193.praia.insercao.wizard.ui;
 
 import org.sc.cbm.e193.R;
+import org.sc.cbm.e193.praia.insercao.automation.Automator;
 import org.sc.cbm.e193.praia.insercao.wizard.model.Page;
 import org.sc.cbm.e193.praia.insercao.wizard.model.SingleFixedChoicePage;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
+import android.support.v4.view.ViewPager;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,22 +90,50 @@ public class SingleChoiceFragment extends ListFragment {
                 android.R.id.text1,
                 mChoices));
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-
+        setUserVisibleHint(false);
         // Pre-select currently selected item.
+        // modified by CBMSC
         new Handler().post(new Runnable() {
             @Override
             public void run() {
                 String selection = mPage.getData().getString(Page.SIMPLE_DATA_KEY);
-                for (int i = 0; i < mChoices.size(); i++) {
-                    if (mChoices.get(i).equals(selection)) {
-                        listView.setItemChecked(i, true);
-                        break;
+                if (!selectChoice(listView, selection)) {
+                    String choice = Automator.getInstance().getSingleChoice(mPage.getTitle());
+                    if(choice != null) {
+                        mPage.getData().putString(Page.SIMPLE_DATA_KEY, choice);
+                        mPage.notifyDataChanged();
+                        selectChoice(listView, choice);
+                        setUserVisibleHint(false);
+                        //TODO: ((Button) getActivity().findViewById(R.id.next_button)).callOnClick();
+                        // não funciona, pois já aperta botão antes da página estar visível =S
+                        // setar o uservisible hint como "a vontade" do fragment de ser mostrado,
+                        // então perguntar no mainactivity se o fragment quer ser mostrado,
+                        // se ele não quiser ser mostrado, já colocar próximo como outro
                     }
                 }
             }
         });
-
         return rootView;
+    }
+
+    /**
+     * Select choice
+     * @param listView choice's listView
+     * @param selection choice to select
+     * @return wether item were checked
+     */
+    private boolean selectChoice(ListView listView, String selection) {
+        boolean choiceChecked = false;
+        selection = Automator.getInstance().removeFlag(selection);
+        for (int i = 0; i < mChoices.size(); i++) {
+            if (mChoices.get(i).equals(selection)) {
+                listView.setItemChecked(i, true);
+                choiceChecked = true;
+                getUserVisibleHint();
+                break;
+            }
+        }
+        return choiceChecked;
     }
 
     @Override
@@ -125,7 +159,7 @@ public class SingleChoiceFragment extends ListFragment {
                 getListAdapter().getItem(position).toString());
         mPage.notifyDataChanged();
 
-        //Added by CMBSC to call next page when an item is just selected
+        //Added by CBMSC to call next page when an item is just selected
         ((Button) getActivity().findViewById(R.id.next_button)).callOnClick();
     }
 }

@@ -120,7 +120,12 @@ public class MainActivity extends ActionBarActivity implements
                     if (mEditingAfterReview) {
                         mPager.setCurrentItem(mPagerAdapter.getCount() - 1);
                     } else {
+                        Fragment frag = ((MyPagerAdapter) mPager.getAdapter()).getItem(mPager.getCurrentItem() + 1);
+                        boolean nextWantsToBeShown = frag.getUserVisibleHint();
+
                         mPager.setCurrentItem(mPager.getCurrentItem() + 1);
+                        if(!nextWantsToBeShown)
+                            mNextButton.callOnClick();
                     }
                 }
             }

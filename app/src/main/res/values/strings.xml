@@ -69,4 +69,5 @@
     <string name="label_distance_left">Esquerda</string>
     <string name="label_distance">Distância do Posto (m)</string>
     <string name="descr_image">Imagem</string>
+    <string name="none">(NÃO INFORMADO)</string>
 </resources>
