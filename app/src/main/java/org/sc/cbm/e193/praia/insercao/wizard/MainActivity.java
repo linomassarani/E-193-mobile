@@ -16,14 +16,6 @@
 
 package org.sc.cbm.e193.praia.insercao.wizard;
 
-import org.sc.cbm.e193.R;
-import org.sc.cbm.e193.praia.insercao.wizard.model.AbstractWizardModel;
-import org.sc.cbm.e193.praia.insercao.wizard.model.ModelCallbacks;
-import org.sc.cbm.e193.praia.insercao.wizard.model.Page;
-import org.sc.cbm.e193.praia.insercao.wizard.ui.PageFragmentCallbacks;
-import org.sc.cbm.e193.praia.insercao.wizard.ui.ReviewFragment;
-import org.sc.cbm.e193.praia.insercao.wizard.ui.StepPagerStrip;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -37,6 +29,14 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import org.sc.cbm.e193.R;
+import org.sc.cbm.e193.praia.insercao.wizard.model.AbstractWizardModel;
+import org.sc.cbm.e193.praia.insercao.wizard.model.ModelCallbacks;
+import org.sc.cbm.e193.praia.insercao.wizard.model.Page;
+import org.sc.cbm.e193.praia.insercao.wizard.ui.PageFragmentCallbacks;
+import org.sc.cbm.e193.praia.insercao.wizard.ui.ReviewFragment;
+import org.sc.cbm.e193.praia.insercao.wizard.ui.StepPagerStrip;
 
 import java.util.List;
 
@@ -120,12 +120,16 @@ public class MainActivity extends ActionBarActivity implements
                     if (mEditingAfterReview) {
                         mPager.setCurrentItem(mPagerAdapter.getCount() - 1);
                     } else {
-                        Fragment frag = ((MyPagerAdapter) mPager.getAdapter()).getItem(mPager.getCurrentItem() + 1);
-                        boolean nextWantsToBeShown = frag.getUserVisibleHint();
+                        //modified by CBMSC
+                        boolean nextShownDesire = true;
+                        if(mPager.getCurrentItem() + 1 != mCurrentPageSequence.size())
+                            nextShownDesire = mCurrentPageSequence.get(mPager.getCurrentItem() + 1).getShownDesire();
+
+                        mCurrentPageSequence.get(1).notifyDataChanged();
 
                         mPager.setCurrentItem(mPager.getCurrentItem() + 1);
-                        if(!nextWantsToBeShown)
-                            mNextButton.callOnClick();
+
+                        if(!nextShownDesire) mNextButton.callOnClick();
                     }
                 }
             }
@@ -134,7 +138,12 @@ public class MainActivity extends ActionBarActivity implements
         mPrevButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //modified by CBMSC
+                boolean prevShownDesire = mCurrentPageSequence.get(mPager.getCurrentItem() - 1).getShownDesire();
+
                 mPager.setCurrentItem(mPager.getCurrentItem() - 1);
+                if(!prevShownDesire)
+                    mPrevButton.callOnClick();
             }
         });
 

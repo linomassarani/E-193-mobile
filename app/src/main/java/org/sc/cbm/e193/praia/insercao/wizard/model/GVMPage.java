@@ -4,7 +4,6 @@ import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
 import org.sc.cbm.e193.praia.insercao.wizard.ui.GVMFragment;
-import org.sc.cbm.e193.praia.insercao.wizard.ui.VictimInfoFragment;
 
 import java.util.ArrayList;
 

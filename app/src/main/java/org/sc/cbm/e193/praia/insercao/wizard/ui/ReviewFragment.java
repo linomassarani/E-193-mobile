@@ -16,12 +16,6 @@
 
 package org.sc.cbm.e193.praia.insercao.wizard.ui;
 
-import org.sc.cbm.e193.R;
-import org.sc.cbm.e193.praia.insercao.wizard.model.AbstractWizardModel;
-import org.sc.cbm.e193.praia.insercao.wizard.model.ModelCallbacks;
-import org.sc.cbm.e193.praia.insercao.wizard.model.Page;
-import org.sc.cbm.e193.praia.insercao.wizard.model.ReviewItem;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
@@ -30,15 +24,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import org.sc.cbm.e193.R;
+import org.sc.cbm.e193.praia.insercao.automation.Automator;
+import org.sc.cbm.e193.praia.insercao.wizard.model.AbstractWizardModel;
+import org.sc.cbm.e193.praia.insercao.wizard.model.ModelCallbacks;
+import org.sc.cbm.e193.praia.insercao.wizard.model.Page;
+import org.sc.cbm.e193.praia.insercao.wizard.model.ReviewItem;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class ReviewFragment extends ListFragment implements ModelCallbacks {
+public class ReviewFragment extends ListFragment implements ModelCallbacks{
     private Callbacks mCallbacks;
     private AbstractWizardModel mWizardModel;
     private List<ReviewItem> mCurrentReviewItems;
@@ -167,6 +169,13 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
             if (TextUtils.isEmpty(value)) {
                 value = getString(R.string.none);
             }
+
+            //modified by CBMSC
+            if(Automator.getInstance().isFlagged(value)) {
+                value = Automator.getInstance().removeFlag(value);
+                ((LinearLayout) rootView.findViewById(R.id.itemLayout)).setBackgroundColor(getResources().getColor(R.color.text_hilight));
+            }
+
             ((TextView) rootView.findViewById(android.R.id.text1)).setText(reviewItem.getTitle());
             ((TextView) rootView.findViewById(android.R.id.text2)).setText(value);
             return rootView;

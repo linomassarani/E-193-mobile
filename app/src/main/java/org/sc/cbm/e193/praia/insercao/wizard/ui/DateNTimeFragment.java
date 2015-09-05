@@ -15,8 +15,6 @@ import org.sc.cbm.e193.R;
 import org.sc.cbm.e193.praia.insercao.automation.Automator;
 import org.sc.cbm.e193.praia.insercao.wizard.model.DateNTimePage;
 
-import java.util.Calendar;
-
 public class DateNTimeFragment extends Fragment {
     private static final String ARG_KEY = "key";
 

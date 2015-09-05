@@ -3,7 +3,6 @@ package org.sc.cbm.e193.praia.insercao.wizard.model;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
-import org.sc.cbm.e193.praia.insercao.wizard.ui.DistanceToLifeguardPostFragment;
 import org.sc.cbm.e193.praia.insercao.wizard.ui.PicturesFragment;
 
 import java.util.ArrayList;

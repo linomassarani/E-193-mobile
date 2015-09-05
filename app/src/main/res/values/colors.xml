@@ -12,6 +12,7 @@
     <color name="text_light">#66000000</color>
     <color name="firefighter_red">#e03a3e</color>
     <color name="highlighted_yellow">#ffe6f732</color>
+    <color name="text_hilight">#97e03a3e</color>
 
 
     <color name="primary">#3f51b5</color>

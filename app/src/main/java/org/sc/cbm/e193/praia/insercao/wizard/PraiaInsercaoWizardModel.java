@@ -16,7 +16,8 @@
 
 package org.sc.cbm.e193.praia.insercao.wizard;
 
-import org.sc.cbm.e193.praia.insercao.DAO;
+import android.content.Context;
+
 import org.sc.cbm.e193.praia.insercao.wizard.model.AbstractWizardModel;
 import org.sc.cbm.e193.praia.insercao.wizard.model.BranchPage;
 import org.sc.cbm.e193.praia.insercao.wizard.model.DateNTimePage;
@@ -31,8 +32,6 @@ import org.sc.cbm.e193.praia.insercao.wizard.model.PageList;
 import org.sc.cbm.e193.praia.insercao.wizard.model.PicturesPage;
 import org.sc.cbm.e193.praia.insercao.wizard.model.SingleFixedChoicePage;
 import org.sc.cbm.e193.praia.insercao.wizard.model.VictimInfoPage;
-
-import android.content.Context;
 
 import java.util.ArrayList;
 

@@ -16,10 +16,11 @@
 
 package org.sc.cbm.e193.praia.insercao.wizard.model;
 
-import org.sc.cbm.e193.praia.insercao.wizard.ui.SingleChoiceFragment;
-
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+
+import org.sc.cbm.e193.praia.insercao.automation.Automator;
+import org.sc.cbm.e193.praia.insercao.wizard.ui.SingleChoiceFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +56,8 @@ public class BranchPage extends SingleFixedChoicePage {
     public void flattenCurrentPageSequence(ArrayList<Page> destination) {
         super.flattenCurrentPageSequence(destination);
         for (Branch branch : mBranches) {
-            if (branch.choice.equals(mData.getString(Page.SIMPLE_DATA_KEY))) {
+            //modified by CBMSC
+            if (branch.choice.equals(Automator.getInstance().removeFlag(mData.getString(Page.SIMPLE_DATA_KEY)))) {
                 branch.childPageList.flattenCurrentPageSequence(destination);
                 break;
             }

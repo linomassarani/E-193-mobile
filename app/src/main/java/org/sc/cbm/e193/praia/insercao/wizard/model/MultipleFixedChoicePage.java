@@ -16,9 +16,9 @@
 
 package org.sc.cbm.e193.praia.insercao.wizard.model;
 
-import org.sc.cbm.e193.praia.insercao.wizard.ui.MultipleChoiceFragment;
-
 import android.support.v4.app.Fragment;
+
+import org.sc.cbm.e193.praia.insercao.wizard.ui.MultipleChoiceFragment;
 
 import java.util.ArrayList;
 

@@ -2,8 +2,6 @@ package org.sc.cbm.e193.praia.insercao.wizard.model;
 
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import android.util.Log;
-import android.widget.Toast;
 
 import org.sc.cbm.e193.praia.insercao.wizard.ui.DateNTimeFragment;
 

@@ -19,6 +19,8 @@ package org.sc.cbm.e193.praia.insercao.wizard.model;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import org.sc.cbm.e193.praia.insercao.automation.Automator;
+
 import java.util.ArrayList;
 
 /**
@@ -39,11 +41,15 @@ public abstract class Page implements PageTreeNode {
     protected String mTitle;
     protected boolean mRequired = false;
     protected String mParentKey;
+    protected boolean mShownDesire = true;
 
     protected Page(ModelCallbacks callbacks, String title) {
         mCallbacks = callbacks;
         mTitle = title;
     }
+
+    public boolean getShownDesire() { return mShownDesire; }
+    public void setShownDesire(boolean shownDesire) { mShownDesire = shownDesire; }
 
     public Bundle getData() {
         return mData;
@@ -90,6 +96,11 @@ public abstract class Page implements PageTreeNode {
 
     public void notifyDataChanged() {
         mCallbacks.onPageDataChanged(this);
+
+        if(Automator.getInstance().isFlagged(mData.getString(SIMPLE_DATA_KEY)))
+            setShownDesire(false);
+        else
+            setShownDesire(true);
     }
 
     public Page setRequired(boolean required) {

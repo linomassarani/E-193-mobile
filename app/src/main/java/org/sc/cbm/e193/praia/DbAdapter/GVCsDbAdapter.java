@@ -9,8 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import org.sc.cbm.e193.praia.pojo.GVC;
-import org.sc.cbm.e193.praia.pojo.GVCAdapter;
-import org.sc.cbm.e193.praia.pojo.GVM;
 import org.sc.cbm.e193.tools.Tools;
 
 /**

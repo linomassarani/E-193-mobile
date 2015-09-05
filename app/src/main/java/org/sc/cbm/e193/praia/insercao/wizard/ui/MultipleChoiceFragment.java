@@ -16,10 +16,6 @@
 
 package org.sc.cbm.e193.praia.insercao.wizard.ui;
 
-import org.sc.cbm.e193.R;
-import org.sc.cbm.e193.praia.insercao.wizard.model.MultipleFixedChoicePage;
-import org.sc.cbm.e193.praia.insercao.wizard.model.Page;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,6 +27,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import org.sc.cbm.e193.R;
+import org.sc.cbm.e193.praia.insercao.wizard.model.MultipleFixedChoicePage;
+import org.sc.cbm.e193.praia.insercao.wizard.model.Page;
 
 import java.util.ArrayList;
 import java.util.HashSet;

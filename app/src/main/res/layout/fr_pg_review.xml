@@ -23,7 +23,8 @@
     android:paddingLeft="?android:listPreferredItemPaddingLeft"
     android:paddingRight="?android:listPreferredItemPaddingRight"
     android:paddingTop="12dp"
-    android:paddingBottom="12dp">
+    android:paddingBottom="12dp"
+    android:id="@+id/itemLayout">
 
     <TextView android:id="@android:id/text1"
         style="?android:textAppearanceSmall"

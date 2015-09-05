@@ -3,7 +3,6 @@ package org.sc.cbm.e193.praia.insercao.wizard.model;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
-import org.sc.cbm.e193.praia.insercao.wizard.ui.DateNTimeFragment;
 import org.sc.cbm.e193.praia.insercao.wizard.ui.HistoryFragment;
 
 import java.util.ArrayList;

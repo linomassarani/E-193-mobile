@@ -16,8 +16,6 @@
 
 package org.sc.cbm.e193.praia.insercao.wizard.ui;
 
-import org.sc.cbm.e193.R;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -28,6 +26,8 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+
+import org.sc.cbm.e193.R;
 
 public class StepPagerStrip extends View {
     private static final int[] ATTRS = new int[]{
@@ -237,7 +237,7 @@ public class StepPagerStrip extends View {
 //        int viewWidth = getWidth();
 //
 //        int startScrollX = getScrollX();
-//        int destScrollX = (widthToActive > viewWidth) ? (int) (widthToActive - viewWidth) : 0;
+//       create int destScrollX = (widthToActive > viewWidth) ? (int) (widthToActive - viewWidth) : 0;
 //
 //        if (mScroller == null) {
 //            mScroller = new Scroller(getContext());
