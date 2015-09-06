@@ -17,7 +17,7 @@ public class BeachActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ac_praia);
+        setContentView(R.layout.ac_beach);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -26,7 +26,7 @@ public class BeachActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_praia, menu);
+        inflater.inflate(R.menu.menu_beach, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
