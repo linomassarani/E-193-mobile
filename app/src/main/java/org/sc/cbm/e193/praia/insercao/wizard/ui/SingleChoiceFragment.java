@@ -92,16 +92,7 @@ public class SingleChoiceFragment extends ListFragment {
             @Override
             public void run() {
                 String selection = mPage.getData().getString(Page.SIMPLE_DATA_KEY);
-                if (!selectChoice(listView, selection)) {
-                    String choice = Automator.getInstance().getSingleChoice(mPage.getTitle());//
-                    if(choice != null) {//
-                        selectChoice(listView, choice);//
-                        mPage.getData().putString(Page.SIMPLE_DATA_KEY, choice);//
-                        mPage.notifyDataChanged();//
-                        //
-                    }//
-                }
-
+                selectChoice(listView, selection);
             }
         });
         return rootView;

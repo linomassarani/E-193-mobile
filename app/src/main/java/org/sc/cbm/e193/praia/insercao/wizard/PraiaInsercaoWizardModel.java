@@ -123,8 +123,8 @@ public class PraiaInsercaoWizardModel extends AbstractWizardModel {
                 .setChoices("Atendeu a orientação do G.V.", "Tentou " +
                         "agarrar o G.V."));
 // DADOS DO RESGATE
-        beachForm.add(new MultipleFixedChoicePage(this, "Resgate: atendimento")
-                .setChoices("Nadadeira", "Flutuador", "Prancha", "Moto Aquática", "Lancha", "Boia" +
+        beachForm.add(new MultipleFixedChoicePage(this, "Resgate: equipamentos usados")
+                .setChoices("Nadadeira", "Flutuador", "Prancha", "Moto Aquática", "Lancha", "Boia",
                         "Helicóptero", "Outros"));
 
         beachForm.add(new SingleFixedChoicePage(this, "Resgate: atendimento")

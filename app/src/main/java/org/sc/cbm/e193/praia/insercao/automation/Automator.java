@@ -1,5 +1,6 @@
 package org.sc.cbm.e193.praia.insercao.automation;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -22,8 +23,16 @@ public class Automator {
         return mAutomator;
     }
 
-    private String addFlag(String s) {
+    public String addFlag(String s) {
         return AUTOMATION_FLAG + s;
+    }
+
+    public ArrayList<String> addFlag(ArrayList<String> strings) {
+        ArrayList<String> result = new ArrayList<>();
+        for(String s : strings)
+            result.add(AUTOMATION_FLAG + s);
+
+        return result;
     }
 
     public String removeFlag(String s) {
@@ -31,6 +40,22 @@ public class Automator {
     }
 
     public boolean isFlagged(String s) {return s == null ? false : s.contains("$");}
+
+    public boolean isFlagged(ArrayList<String> strings) {
+        boolean result = true;
+
+        if(strings == null)
+            return false;
+
+        for(String s : strings) {
+            if(!isFlagged(s)) {
+                result = false;
+                break;
+            }
+        }
+
+        return result;
+    }
 
 
     public String getDate() {
@@ -90,9 +115,13 @@ public class Automator {
         return null;
     }
 
-    public String[] getUsedEquipaments() {
+    public ArrayList<String> getUsedEquipaments() {
         //TODO: Use history if some choice occurs more then 50%
-        return new String[]{"Nadadeira", "Flutuador"};
+        ArrayList<String> usedEquipaments = new ArrayList<String>();
+        usedEquipaments.add("Nadadeira");
+        usedEquipaments.add("Flutuador");
+
+        return addFlag(usedEquipaments);
     }
 
     //single choice itens ------------------------------------
@@ -233,8 +262,10 @@ public class Automator {
     }
 
     private String getIncidentType() {
-         //TODO: Use history if some choice occurs more then 50%
-        return addFlag("Arrastamento");
+        //TODO: Use history if some choice occurs more then 50%
+        // Is better user choose the occurrence type
+        //return addFlag("Arrastamento");
+        return null;
     }
 
     private String getWhaterType() {

@@ -19,6 +19,7 @@ package org.sc.cbm.e193.praia.insercao.wizard.model;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
+import org.sc.cbm.e193.praia.insercao.automation.Automator;
 import org.sc.cbm.e193.praia.insercao.wizard.ui.SingleChoiceFragment;
 
 import java.util.ArrayList;
@@ -32,6 +33,14 @@ public class SingleFixedChoicePage extends Page {
 
     public SingleFixedChoicePage(ModelCallbacks callbacks, String title) {
         super(callbacks, title);
+
+        //modified by CBMSC
+        String choice = Automator.getInstance().getSingleChoice(mTitle);
+        if(choice != null) {
+            mData.putString(Page.SIMPLE_DATA_KEY, choice);
+            setShownDesire(false);
+            notifyDataChanged();
+        }
     }
 
     @Override

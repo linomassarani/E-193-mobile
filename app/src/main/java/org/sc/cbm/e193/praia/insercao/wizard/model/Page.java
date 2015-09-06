@@ -97,8 +97,10 @@ public abstract class Page implements PageTreeNode {
     public void notifyDataChanged() {
         mCallbacks.onPageDataChanged(this);
 
-        if(Automator.getInstance().isFlagged(mData.getString(SIMPLE_DATA_KEY)))
+        if(Automator.getInstance().isFlagged(mData.getString(SIMPLE_DATA_KEY)) ||
+                Automator.getInstance().isFlagged(mData.getStringArrayList(SIMPLE_DATA_KEY))) {
             setShownDesire(false);
+        }
         else
             setShownDesire(true);
     }

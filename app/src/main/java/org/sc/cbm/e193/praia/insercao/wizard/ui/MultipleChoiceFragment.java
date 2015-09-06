@@ -29,6 +29,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import org.sc.cbm.e193.R;
+import org.sc.cbm.e193.praia.insercao.automation.Automator;
 import org.sc.cbm.e193.praia.insercao.wizard.model.MultipleFixedChoicePage;
 import org.sc.cbm.e193.praia.insercao.wizard.model.Page;
 
@@ -97,8 +98,10 @@ public class MultipleChoiceFragment extends ListFragment {
 
                 Set<String> selectedSet = new HashSet<String>(selectedItems);
 
+                //modified by CBMSC
                 for (int i = 0; i < mChoices.size(); i++) {
-                    if (selectedSet.contains(mChoices.get(i))) {
+                    if (selectedSet.contains(mChoices.get(i)) ||
+                            selectedSet.contains(Automator.getInstance().addFlag(mChoices.get(i)))) {
                         listView.setItemChecked(i, true);
                     }
                 }

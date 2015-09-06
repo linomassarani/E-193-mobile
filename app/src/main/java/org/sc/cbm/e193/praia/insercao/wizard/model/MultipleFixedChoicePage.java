@@ -18,6 +18,7 @@ package org.sc.cbm.e193.praia.insercao.wizard.model;
 
 import android.support.v4.app.Fragment;
 
+import org.sc.cbm.e193.praia.insercao.automation.Automator;
 import org.sc.cbm.e193.praia.insercao.wizard.ui.MultipleChoiceFragment;
 
 import java.util.ArrayList;
@@ -28,6 +29,14 @@ import java.util.ArrayList;
 public class MultipleFixedChoicePage extends SingleFixedChoicePage {
     public MultipleFixedChoicePage(ModelCallbacks callbacks, String title) {
         super(callbacks, title);
+
+        //modified by CBMSC
+        ArrayList<String> choice = Automator.getInstance().getUsedEquipaments();
+        if(choice != null) {
+            mData.putStringArrayList(Page.SIMPLE_DATA_KEY, choice);
+            setShownDesire(false);
+            notifyDataChanged();
+        }
     }
 
     @Override
@@ -38,18 +47,25 @@ public class MultipleFixedChoicePage extends SingleFixedChoicePage {
     @Override
     public void getReviewItems(ArrayList<ReviewItem> dest) {
         StringBuilder sb = new StringBuilder();
+        boolean flagReview = false;
+
 
         ArrayList<String> selections = mData.getStringArrayList(Page.SIMPLE_DATA_KEY);
         if (selections != null && selections.size() > 0) {
             for (String selection : selections) {
+                if(Automator.getInstance().isFlagged(selection))
+                    flagReview = true;
+
                 if (sb.length() > 0) {
                     sb.append(", ");
                 }
-                sb.append(selection);
+                sb.append(Automator.getInstance().removeFlag(selection));
             }
         }
 
-        dest.add(new ReviewItem(getTitle(), sb.toString(), getKey()));
+        dest.add(new ReviewItem(getTitle(),
+                flagReview ? Automator.getInstance().addFlag(sb.toString()) : sb.toString(),
+                getKey()));
     }
 
     @Override
