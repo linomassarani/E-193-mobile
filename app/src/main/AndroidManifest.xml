@@ -12,6 +12,7 @@
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <!--
 android:uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -20,6 +21,7 @@ android:uses-permission
     <android:uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="18"/
+        http://stackoverflow.com/questions/456211/activity-restart-on-rotation-android
     -->
     <application
         android:allowBackup="true"
@@ -38,6 +40,7 @@ android:uses-permission
             </intent-filter>
         </activity>
         <activity
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:name=".praia.PraiaActivity"
             android:label="@string/title_activity_praia"
             android:parentActivityName="org.sc.cbm.e193.MainActivity"
@@ -47,6 +50,7 @@ android:uses-permission
                 android:value="org.sc.cbm.e193.MainActivity" />
         </activity>
         <activity
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:name=".praia.insercao.wizard.MainActivity"
             android:label="@string/praia_insercao_wizard_name"
             android:parentActivityName=".praia.PraiaActivity"
