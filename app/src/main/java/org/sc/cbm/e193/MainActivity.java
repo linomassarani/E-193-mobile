@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import org.sc.cbm.e193.praia.PraiaActivity;
+import org.sc.cbm.e193.beach.BeachActivity;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -35,7 +35,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void startPraia(View view) {
-        Intent intent = new Intent(this, PraiaActivity.class);
+        Intent intent = new Intent(this, BeachActivity.class);
         startActivity(intent);
     }
 

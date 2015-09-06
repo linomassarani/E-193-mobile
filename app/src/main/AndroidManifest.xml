@@ -41,7 +41,7 @@ android:uses-permission
         </activity>
         <activity
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:name=".praia.PraiaActivity"
+            android:name=".beach.BeachActivity"
             android:label="@string/title_activity_praia"
             android:parentActivityName="org.sc.cbm.e193.MainActivity"
             android:theme="@style/PraiaTheme" >
@@ -51,18 +51,18 @@ android:uses-permission
         </activity>
         <activity
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:name=".praia.insercao.wizard.MainActivity"
+            android:name=".beach.insertion.wizard.MainActivity"
             android:label="@string/praia_insercao_wizard_name"
-            android:parentActivityName=".praia.PraiaActivity"
+            android:parentActivityName=".beach.BeachActivity"
             android:theme="@style/PraiaTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".praia.PraiaActivity"
+                android:value=".beach.BeachActivity"
                 />
         </activity>
 
-        <activity android:name=".praia.insercao.GVMListViewCursorAdaptorActivity"
-                  android:parentActivityName=".praia.insercao.wizard.MainActivity"
+        <activity android:name=".beach.insertion.GVMListViewCursorAdaptorActivity"
+                  android:parentActivityName=".beach.insertion.wizard.MainActivity"
                   android:label="GVMs"
                   android:theme="@style/PraiaTheme">
             <intent-filter>
@@ -72,13 +72,13 @@ android:uses-permission
                        android:resource="@xml/searchable"/>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".praia.insercao.wizard.MainActivity"
+                android:value=".beach.insertion.wizard.MainActivity"
                 />
 
         </activity>
 
-        <activity android:name=".praia.insercao.GVCListViewCursorAdaptorActivity"
-                  android:parentActivityName=".praia.insercao.wizard.MainActivity"
+        <activity android:name=".beach.insertion.GVCListViewCursorAdaptorActivity"
+                  android:parentActivityName=".beach.insertion.wizard.MainActivity"
                   android:label="GVCs"
                   android:theme="@style/PraiaTheme">
             <intent-filter>
@@ -88,7 +88,7 @@ android:uses-permission
                        android:resource="@xml/searchable"/>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".praia.insercao.wizard.MainActivity"
+                android:value=".beach.insertion.wizard.MainActivity"
                 />
 
         </activity>
