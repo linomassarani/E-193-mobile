@@ -29,7 +29,6 @@
     <string name="resources">" Editar Recursos"</string>
     <string name="hazard">" Editar Riscos"</string>
 
-
     <!-- praia inserção wizard -->
     <string name="review">Resumo</string>
     <string name="next">Próximo</string>
@@ -70,4 +69,8 @@
     <string name="label_distance">Distância do Posto (m)</string>
     <string name="descr_image">Imagem</string>
     <string name="none">(NÃO INFORMADO)</string>
+    <string name="title_activity_hazards_edition">EDITAR RISCOS</string>
+    <string name="choose_lifeguard_post">Escolha o local</string>
+    <string name="select_an_item">Selecione uma opção...</string>
+
 </resources>

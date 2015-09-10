@@ -15,6 +15,9 @@ import java.util.Calendar;
  */
 public class Automator {
     public static final String AUTOMATION_FLAG = "$";
+    public static final int LOGIN_USER_CITY = 1;
+    public static final int LOGIN_USER_BEACH = 2;
+    public static final int LOGIN_USER_LIFEGUARDPOST = 3;
     private static Automator mAutomator = new Automator();
 
     private Automator() {}
@@ -40,6 +43,20 @@ public class Automator {
     }
 
     public boolean isFlagged(String s) {return s == null ? false : s.contains("$");}
+
+    public String getLoginInfo(int info) {
+
+        switch (info) {
+            case LOGIN_USER_BEACH:
+                break;
+            case LOGIN_USER_CITY:
+                break;
+            case LOGIN_USER_LIFEGUARDPOST:
+                break;
+        }
+
+        return null;
+    }
 
     public boolean isFlagged(ArrayList<String> strings) {
         boolean result = true;
@@ -90,20 +107,35 @@ public class Automator {
                 + String.valueOf(minute));
     }
 
-    public String getIncidentCity() {
+    public String getUserCity() {
         //TODO: Use last inserted data; if there's no data inserted, use login data
         return null;
     }
 
-    public String getIncidentBeach() {
+    public String getUserBeach() {
         //TODO: Use last inserted data; if there's no data inserted, use login data
         return null;
     }
 
-    public String getIncidentLifeguardPost() {
+    public String getUserLifeguardPost() {
         //TODO: Use last inserted data; if there's no data inserted, use login data
         return null;
     }
+//
+//    public String getIncidentCity() {
+//        //TODO: Use last inserted data; if there's no data inserted, use login data
+//        return null;
+//    }
+//
+//    public String getIncidentBeach() {
+//        //TODO: Use last inserted data; if there's no data inserted, use login data
+//        return null;
+//    }
+//
+//    public String getIncidentLifeguardPost() {
+//        //TODO: Use last inserted data; if there's no data inserted, use login data
+//        return null;
+//    }
 
     public String getCiviliansLifeguards() {
         //TODO: Use last locally inserted data;
@@ -327,6 +359,7 @@ public class Automator {
         //TODO: Use the last data inserted locally in today's day; if there's none, use history if some choice occurs more then 50%
         return null;
     }
+
 }
 //.add(new MultipleFixedChoicePage(this, "Resgate: atendimento")
 //        ("Nadadeira", "Flutuador", "Prancha", "Moto Aquática", "Lancha", "Boia" +

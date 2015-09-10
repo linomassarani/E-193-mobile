@@ -32,7 +32,7 @@
                 android:textSize="@dimen/activity_main_buttons_text"
                 android:gravity="left|center_vertical"
                 android:drawableLeft="@drawable/ic_insercao_ocorrencias_praia"
-                android:onClick="startInsercao"/>
+                android:onClick="startInsertion"/>
 
             <Button
                 android:id="@+id/preventions"
@@ -62,7 +62,7 @@
                 android:textSize="@dimen/activity_main_buttons_text"
                 android:gravity="left|center_vertical"
                 android:drawableLeft="@drawable/ic_hazards"
-                android:onClick="notImplemented"/>
+                android:onClick="startHazardsEdition"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

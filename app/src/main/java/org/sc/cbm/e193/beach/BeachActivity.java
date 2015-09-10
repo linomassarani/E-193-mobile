@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import org.sc.cbm.e193.R;
-
+import org.sc.cbm.e193.beach.hazardsEdition.HazardsEditionActivity;
 
 public class BeachActivity extends ActionBarActivity {
 
@@ -49,8 +49,13 @@ public class BeachActivity extends ActionBarActivity {
         Toast.makeText(this, R.string.notImplemented, Toast.LENGTH_SHORT).show();
     }
 
-    public void startInsercao(View view) {
+    public void startInsertion(View view) {
         Intent intent = new Intent(this, org.sc.cbm.e193.beach.insertion.wizard.MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void startHazardsEdition(View view) {
+        Intent intent = new Intent(this, HazardsEditionActivity.class);
         startActivity(intent);
     }
 }
