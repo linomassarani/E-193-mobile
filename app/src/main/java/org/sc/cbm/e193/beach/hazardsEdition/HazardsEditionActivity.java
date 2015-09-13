@@ -1,6 +1,10 @@
 package org.sc.cbm.e193.beach.hazardsEdition;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -10,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -18,9 +23,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.sc.cbm.e193.R;
-import org.sc.cbm.e193.beach.insertion.DAO;
+import org.sc.cbm.e193.beach.DAO;
 import org.sc.cbm.e193.beach.insertion.automation.Automator;
-import org.sc.cbm.e193.beach.insertion.wizard.model.LocationPage;
+import org.sc.cbm.e193.beach.pojo.HazardFlag;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,15 +53,32 @@ public class HazardsEditionActivity extends ActionBarActivity {
         mFlagClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mRedFlag.setBackgroundColor(getResources().getColor(R.color.none));
-                mBlackFlag.setBackgroundColor(getResources().getColor(R.color.none));
-                mGreenFlag.setBackgroundColor(getResources().getColor(R.color.none));
-                mYellowFlag.setBackgroundColor(getResources().getColor(R.color.none));
+                undoHilightFlag();
 
                 v.setBackgroundColor(getResources().getColor(R.color.text_hilight));
+
+                DialogFragment dg = new DialogFragment() {
+                    @Override
+                    public Dialog onCreateDialog(Bundle savedInstanceState) {
+                        return new AlertDialog.Builder(getActivity())
+                                .setMessage(R.string.submit_confirm_message)
+                                .setPositiveButton(R.string.submit_confirm_button, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        submitChangesE193();
+                                        submitChangesGoogleMaps();
+                                        finish();
+                                    }
+                                })
+                                .setNegativeButton(android.R.string.cancel, null)
+                                .create();
+                    }
+                };
+                dg.show(getSupportFragmentManager(), "place_order_dialog");
             }
         };
 
+        findViewById(R.id.flags).setVisibility(View.GONE);
         mRedFlag = (ImageButton) findViewById(R.id.redflag);
         mBlackFlag = (ImageButton) findViewById(R.id.blackflag);
         mYellowFlag = (ImageButton) findViewById(R.id.yellowflag);
@@ -97,6 +119,7 @@ public class HazardsEditionActivity extends ActionBarActivity {
                 if(!item.matches(getResources().getString(R.string.select_an_item)) && position != -1)
                     initiateBeachView();
                 else {
+                    setFlagsAsGone();
                     mBeachView.setAdapter(new ArrayAdapter<String>(view.getContext(),
                             android.R.layout.simple_spinner_item));
                     mLifeguardPostView.setAdapter(new ArrayAdapter<String>(view.getContext(),
@@ -119,6 +142,7 @@ public class HazardsEditionActivity extends ActionBarActivity {
                         && mCityView.getSelectedItemPosition() != -1)
                     initiateLifeguardPostView();
                 else {
+                    setFlagsAsGone();
                     mLifeguardPostView.setAdapter(new ArrayAdapter<String>(view.getContext(),
                             android.R.layout.simple_spinner_item));
                 }
@@ -135,7 +159,9 @@ public class HazardsEditionActivity extends ActionBarActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String item = (String) parent.getItemAtPosition(position);
                 if(item != null && !item.matches(getResources().getString(R.string.select_an_item)))
-                    requestFlagChange();
+                    spinnersCompleted();
+                else
+                    setFlagsAsGone();
             }
 
             @Override
@@ -145,12 +171,63 @@ public class HazardsEditionActivity extends ActionBarActivity {
         });
     }
 
+    private void submitChangesGoogleMaps() {
+        //TODO
+    }
+
+    private void submitChangesE193() {
+        //TODO
+    }
+
+    private void setFlagsAsGone() {
+        findViewById(R.id.flags).setVisibility(View.GONE);
+        findViewById(R.id.flag_text).setVisibility(View.GONE);
+    }
+
     /**
      * Called when all spinners (beach, lifeguard post, city are complete)
      * The purpose is request flag change
      */
-    private void requestFlagChange() {
-        Toast.makeText(this, "SPINNERS COMPLETOS", Toast.LENGTH_SHORT).show();
+    private void spinnersCompleted() {
+        findViewById(R.id.flags).setVisibility(View.VISIBLE);
+        findViewById(R.id.flag_text).setVisibility(View.VISIBLE);
+
+        HazardFlag hf = DAO.getInstance().getFlag((String) mCityView.getSelectedItem(),
+                (String) mBeachView.getSelectedItem(),
+                (String) mLifeguardPostView.getSelectedItem());
+
+        highlightHazardFlag(hf.getColor());
+
+        Toast.makeText(this,
+                getResources().getString(R.string.last_modified) +
+                hf.getLastModifiedString(),
+                Toast.LENGTH_LONG).show();
+    }
+
+    private void highlightHazardFlag(int color) {
+        undoHilightFlag();
+
+        switch (color) {
+            case HazardFlag.BLACK:
+                mBlackFlag.setBackgroundColor(getResources().getColor(R.color.text_hilight));
+                break;
+            case HazardFlag.GREEN:
+                mGreenFlag.setBackgroundColor(getResources().getColor(R.color.text_hilight));
+                break;
+            case HazardFlag.RED:
+                mRedFlag.setBackgroundColor(getResources().getColor(R.color.text_hilight));
+                break;
+            case HazardFlag.YELLOW:
+                mYellowFlag.setBackgroundColor(getResources().getColor(R.color.text_hilight));
+                break;
+        }
+    }
+
+    private void undoHilightFlag() {
+        mRedFlag.setBackgroundColor(getResources().getColor(R.color.none));
+        mBlackFlag.setBackgroundColor(getResources().getColor(R.color.none));
+        mGreenFlag.setBackgroundColor(getResources().getColor(R.color.none));
+        mYellowFlag.setBackgroundColor(getResources().getColor(R.color.none));
     }
 
     private void initiateLifeguardPostView() {

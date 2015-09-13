@@ -41,9 +41,9 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         if(day < 10)
             day_zero = "0";
 
-        TextView mDateView = (TextView) mRootView.findViewById(R.id.incident_data);
+        TextView dateView = (TextView) mRootView.findViewById(R.id.incident_data);
 
-        mDateView.setText(day_zero + String.valueOf(day)
+        dateView.setText(day_zero + String.valueOf(day)
                 + "/" + month_zero
                 + String.valueOf(month)
                 + "/"

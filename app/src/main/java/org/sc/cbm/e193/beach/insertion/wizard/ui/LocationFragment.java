@@ -12,7 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.sc.cbm.e193.R;
-import org.sc.cbm.e193.beach.insertion.DAO;
+import org.sc.cbm.e193.beach.DAO;
 import org.sc.cbm.e193.beach.insertion.wizard.model.LocationPage;
 
 public class LocationFragment extends Fragment {

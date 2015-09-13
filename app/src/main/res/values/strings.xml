@@ -72,5 +72,7 @@
     <string name="title_activity_hazards_edition">EDITAR RISCOS</string>
     <string name="choose_lifeguard_post">Escolha o local</string>
     <string name="select_an_item">Selecione uma opção...</string>
+    <string name="last_modified">"Última modificação: "</string>
+    <string name="select_flag">Escolha a bandeira</string>
 
 </resources>
