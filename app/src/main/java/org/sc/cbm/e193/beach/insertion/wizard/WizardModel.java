@@ -61,18 +61,18 @@ public class WizardModel extends AbstractWizardModel {
                         .addBranch("Afogamento com recuperação", appendBeachForm(
                                 new SingleFixedChoicePage(this, "Água")
                                         .setChoices("Doce", "Salgada")
-                                        .setRequired(true),
+                                        .setRequired(false),
                                 new SingleFixedChoicePage(this, "Grau de afogamento")
                                         .setChoices("1", "2", "3", "4", "5", "6")
-                                        .setRequired(true)))
+                                        .setRequired(false)))
 
                         .addBranch("Afogamento seguido de morte", appendBeachForm(
                                 new SingleFixedChoicePage(this, "Água")
                                         .setChoices("Doce", "Salgada")
-                                        .setRequired(true),
+                                        .setRequired(false),
                                 new SingleFixedChoicePage(this, "Grau de afogamento")
                                         .setChoices("1", "2", "3", "4", "5", "6")
-                                        .setRequired(true)))
+                                        .setRequired(false)))
 
                         .addBranch("Lesão ou corte")
                         .addBranch("Insolação")
