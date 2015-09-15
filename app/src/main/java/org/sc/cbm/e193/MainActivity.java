@@ -122,6 +122,7 @@ public class MainActivity extends ActionBarActivity {
                 // code for matching password TODO
                 String user = etUsername.getText().toString();
                 String pass = etPassword.getText().toString();
+                //TODO
                 Toast.makeText(getBaseContext(), "Username: " + user + " Password: " + pass, Toast.LENGTH_SHORT).show();
             }
         });

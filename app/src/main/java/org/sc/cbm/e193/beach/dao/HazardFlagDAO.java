@@ -6,6 +6,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class HazardFlagDAO {
+
+    //TODO Just a mock implemented here, must provide a real impl
     public static HazardFlag getLastFlag(String city, String beach, String lifeguardPost) {
         Date date = new Date(Calendar.getInstance().get(Calendar.YEAR),
                 Calendar.getInstance().get(Calendar.MONTH),
