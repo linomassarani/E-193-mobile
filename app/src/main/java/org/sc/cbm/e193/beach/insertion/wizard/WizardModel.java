@@ -35,8 +35,8 @@ import org.sc.cbm.e193.beach.insertion.wizard.model.VictimInfoPage;
 
 import java.util.ArrayList;
 
-public class PraiaInsercaoWizardModel extends AbstractWizardModel {
-    public PraiaInsercaoWizardModel(Context context) {
+public class WizardModel extends AbstractWizardModel {
+    public WizardModel(Context context) {
         super(context);
     }
 

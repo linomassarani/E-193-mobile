@@ -12,7 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.sc.cbm.e193.R;
-import org.sc.cbm.e193.beach.DAO;
+import org.sc.cbm.e193.beach.dao.OthersDAO;
 import org.sc.cbm.e193.beach.insertion.wizard.model.LocationPage;
 
 public class LocationFragment extends Fragment {
@@ -62,7 +62,7 @@ public class LocationFragment extends Fragment {
 
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(rootView.getContext(),
                android.R.layout.simple_spinner_item,
-                DAO.getInstance().getCities());
+                OthersDAO.getCities());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         mCityView.setAdapter(adapter);
@@ -84,7 +84,7 @@ public class LocationFragment extends Fragment {
         if(cityPos != -1 && beachPos != -1) {
             ArrayAdapter<CharSequence> lifeguardPostAdapter = new ArrayAdapter<CharSequence>(rootView.getContext(),
                     android.R.layout.simple_spinner_item,
-                    DAO.getInstance().getLifeguardPosts(
+                    OthersDAO.getLifeguardPosts(
                             (String) mCityView.getSelectedItem(),
                             (String) mBeachView.getSelectedItem()));
             lifeguardPostAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -103,7 +103,7 @@ public class LocationFragment extends Fragment {
         if(cityPos != -1) {
             ArrayAdapter<CharSequence> beachAdapter = new ArrayAdapter<CharSequence>(rootView.getContext(),
                     android.R.layout.simple_spinner_item,
-                    DAO.getInstance().getBeaches((String) mCityView.getSelectedItem()));
+                    OthersDAO.getBeaches((String) mCityView.getSelectedItem()));
             beachAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             mBeachView.setAdapter(beachAdapter);
 

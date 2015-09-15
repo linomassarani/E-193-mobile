@@ -49,7 +49,7 @@ public class MainActivity extends ActionBarActivity implements
 
     private boolean mEditingAfterReview;
 
-    private AbstractWizardModel mWizardModel = new PraiaInsercaoWizardModel(this);
+    private AbstractWizardModel mWizardModel = new WizardModel(this);
 
     private boolean mConsumePageSelectedEvent;
 

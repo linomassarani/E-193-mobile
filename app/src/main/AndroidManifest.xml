@@ -2,17 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.sc.cbm.e193" >
 
-    <uses-sdk android:minSdkVersion="11" />
-
-    <android:uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
+    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="15" android:maxSdkVersion="21"/>
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
@@ -69,7 +63,7 @@ android:uses-permission
                 android:value=".beach.BeachActivity" />
         </activity>
         <activity
-            android:name=".beach.insertion.GVMListViewCursorAdaptorActivity"
+            android:name=".beach.insertion.wizard.ui.gvm.GVMListViewCursorAdaptorActivity"
             android:label="GVMs"
             android:parentActivityName=".beach.insertion.wizard.MainActivity"
             android:theme="@style/PraiaTheme" >
@@ -85,7 +79,7 @@ android:uses-permission
                 android:value=".beach.insertion.wizard.MainActivity" />
         </activity>
         <activity
-            android:name=".beach.insertion.GVCListViewCursorAdaptorActivity"
+            android:name=".beach.insertion.wizard.ui.gvc.GVCListViewCursorAdaptorActivity"
             android:label="GVCs"
             android:parentActivityName=".beach.insertion.wizard.MainActivity"
             android:theme="@style/PraiaTheme" >

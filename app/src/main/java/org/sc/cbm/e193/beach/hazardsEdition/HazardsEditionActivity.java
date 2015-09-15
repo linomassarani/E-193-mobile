@@ -14,7 +14,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -23,7 +22,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.sc.cbm.e193.R;
-import org.sc.cbm.e193.beach.DAO;
+import org.sc.cbm.e193.beach.dao.HazardFlagDAO;
+import org.sc.cbm.e193.beach.dao.OthersDAO;
 import org.sc.cbm.e193.beach.insertion.automation.Automator;
 import org.sc.cbm.e193.beach.pojo.HazardFlag;
 
@@ -93,7 +93,7 @@ public class HazardsEditionActivity extends ActionBarActivity {
 
         ArrayList<String> al = new ArrayList();
         al.add(getResources().getString(R.string.select_an_item));
-        al.addAll(new ArrayList(Arrays.asList(DAO.getInstance().getCities())));
+        al.addAll(new ArrayList(Arrays.asList(OthersDAO.getCities())));
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item,al);
@@ -192,7 +192,7 @@ public class HazardsEditionActivity extends ActionBarActivity {
         findViewById(R.id.flags).setVisibility(View.VISIBLE);
         findViewById(R.id.flag_text).setVisibility(View.VISIBLE);
 
-        HazardFlag hf = DAO.getInstance().getFlag((String) mCityView.getSelectedItem(),
+        HazardFlag hf = HazardFlagDAO.getLastFlag((String) mCityView.getSelectedItem(),
                 (String) mBeachView.getSelectedItem(),
                 (String) mLifeguardPostView.getSelectedItem());
 
@@ -233,9 +233,9 @@ public class HazardsEditionActivity extends ActionBarActivity {
     private void initiateLifeguardPostView() {
             ArrayList<String> al = new ArrayList();
             al.add(getResources().getString(R.string.select_an_item));
-            al.addAll(Arrays.asList(DAO.getInstance().getLifeguardPosts(
-                (String) mCityView.getSelectedItem(),
-                (String) mBeachView.getSelectedItem())));
+            al.addAll(Arrays.asList(OthersDAO.getLifeguardPosts(
+                    (String) mCityView.getSelectedItem(),
+                    (String) mBeachView.getSelectedItem())));
 
             ArrayAdapter<String> lifeguardPostAdapter = new ArrayAdapter(this,
                     android.R.layout.simple_spinner_item, al);
@@ -252,7 +252,7 @@ public class HazardsEditionActivity extends ActionBarActivity {
     private void initiateBeachView() {
         ArrayList<String> al = new ArrayList<String>();
         al.add(getResources().getString(R.string.select_an_item));
-        al.addAll(new ArrayList<String>(Arrays.asList(DAO.getInstance().getBeaches((String) mCityView.getSelectedItem()))));
+        al.addAll(new ArrayList<String>(Arrays.asList(OthersDAO.getBeaches((String) mCityView.getSelectedItem()))));
 
         ArrayAdapter<String> beachAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, al);

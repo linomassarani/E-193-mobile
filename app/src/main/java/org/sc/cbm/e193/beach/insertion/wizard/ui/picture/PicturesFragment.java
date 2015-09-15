@@ -1,4 +1,4 @@
-package org.sc.cbm.e193.beach.insertion.wizard.ui;
+package org.sc.cbm.e193.beach.insertion.wizard.ui.picture;
 
 import android.app.Activity;
 import android.content.Context;
@@ -26,8 +26,8 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 
 import org.sc.cbm.e193.R;
-import org.sc.cbm.e193.beach.insertion.wizard.PictureAdapter;
 import org.sc.cbm.e193.beach.insertion.wizard.model.PicturesPage;
+import org.sc.cbm.e193.beach.insertion.wizard.ui.PageFragmentCallbacks;
 import org.sc.cbm.e193.tools.Tools;
 
 public class PicturesFragment extends Fragment {

@@ -3,7 +3,7 @@ package org.sc.cbm.e193.beach.insertion.wizard.model;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
-import org.sc.cbm.e193.beach.insertion.wizard.ui.GVCFragment;
+import org.sc.cbm.e193.beach.insertion.wizard.ui.gvc.GVCFragment;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package org.sc.cbm.e193.beach.insertion;
+package org.sc.cbm.e193.beach.insertion.wizard.ui.gvm;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -20,11 +20,11 @@ import android.widget.SearchView;
 import android.widget.SimpleCursorAdapter;
 
 import org.sc.cbm.e193.R;
-import org.sc.cbm.e193.beach.DbAdapter.GVMsDbAdapter;
+import org.sc.cbm.e193.beach.dao.GVMDAO;
+import org.sc.cbm.e193.db.LocalDBHelper;
 
 public class GVMListViewCursorAdaptorActivity extends ActionBarActivity {
 
-    private GVMsDbAdapter dbHelper;
     private SimpleCursorAdapter dataAdapter;
 
     @Override
@@ -32,24 +32,9 @@ public class GVMListViewCursorAdaptorActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ac_gvm_search);
 
-        dbHelper = new GVMsDbAdapter(this);
-        dbHelper.open();
-
         //Generate ListView from SQLite Database
         displayListView();
 
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        dbHelper.close();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        dbHelper.close();
     }
 
     @Override
@@ -86,13 +71,13 @@ public class GVMListViewCursorAdaptorActivity extends ActionBarActivity {
 
     private void displayListView() {
 
-        Cursor cursor = dbHelper.fetchAllGVMs();
+        Cursor cursor = GVMDAO.fetchAllGVMs(this);
 
         // The desired columns to be bound
         String[] columns = new String[]{
-                GVMsDbAdapter.KEY_REGISTRATION,
-                GVMsDbAdapter.KEY_NAME,
-                GVMsDbAdapter.KEY_RANK
+                LocalDBHelper.TABLE_GVM_KEY_REGISTRATION,
+                LocalDBHelper.TABLE_GVM_KEY_NAME,
+                LocalDBHelper.TABLE_GVM_KEY_RANK
         };
 
         // the XML defined views which the data will be bound to
@@ -123,12 +108,12 @@ public class GVMListViewCursorAdaptorActivity extends ActionBarActivity {
                 Cursor cursor = (Cursor) listView.getItemAtPosition(position);
 
                 Intent returnIntent = new Intent();
-                returnIntent.putExtra(GVMsDbAdapter.KEY_NAME,
-                        cursor.getString(cursor.getColumnIndex(GVMsDbAdapter.KEY_NAME)));
-                returnIntent.putExtra(GVMsDbAdapter.KEY_RANK,
-                        cursor.getString(cursor.getColumnIndex(GVMsDbAdapter.KEY_RANK)));
-                returnIntent.putExtra(GVMsDbAdapter.KEY_REGISTRATION,
-                        cursor.getString(cursor.getColumnIndex(GVMsDbAdapter.KEY_REGISTRATION)));
+                returnIntent.putExtra(LocalDBHelper.TABLE_GVM_KEY_NAME,
+                        cursor.getString(cursor.getColumnIndex(LocalDBHelper.TABLE_GVM_KEY_NAME)));
+                returnIntent.putExtra(LocalDBHelper.TABLE_GVM_KEY_RANK,
+                        cursor.getString(cursor.getColumnIndex(LocalDBHelper.TABLE_GVM_KEY_RANK)));
+                returnIntent.putExtra(LocalDBHelper.TABLE_GVM_KEY_REGISTRATION,
+                        cursor.getString(cursor.getColumnIndex(LocalDBHelper.TABLE_GVM_KEY_REGISTRATION)));
 
                 setResult(RESULT_OK, returnIntent);
                 cursor.close();
@@ -154,7 +139,7 @@ public class GVMListViewCursorAdaptorActivity extends ActionBarActivity {
 
         dataAdapter.setFilterQueryProvider(new FilterQueryProvider() {
             public Cursor runQuery(CharSequence constraint) {
-                return dbHelper.fetchGVMsByNameOrRegistration(constraint.toString());
+                return GVMDAO.fetchGVMsByNameOrRegistration(constraint.toString(), getApplicationContext());
             }
         });
 

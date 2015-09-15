@@ -1,4 +1,4 @@
-package org.sc.cbm.e193.beach.insertion;
+package org.sc.cbm.e193.beach.insertion.wizard.ui.gvc;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -20,14 +20,14 @@ import android.widget.SearchView;
 import android.widget.SimpleCursorAdapter;
 
 import org.sc.cbm.e193.R;
-import org.sc.cbm.e193.beach.DbAdapter.GVCsDbAdapter;
+import org.sc.cbm.e193.beach.dao.GVCDAO;
+import org.sc.cbm.e193.db.LocalDBHelper;
 
 /**
  * Shows GVCs and allow user to filter then by CPF or Name
  */
 public class GVCListViewCursorAdaptorActivity extends ActionBarActivity {
 
-    private GVCsDbAdapter dbHelper;
     private SimpleCursorAdapter dataAdapter;
 
     @Override
@@ -35,24 +35,9 @@ public class GVCListViewCursorAdaptorActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ac_gvc_search);
 
-        dbHelper = new GVCsDbAdapter(this);
-        dbHelper.open();
-
         //Generate ListView from SQLite Database
         displayListView();
 
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        dbHelper.close();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        dbHelper.close();
     }
 
     @Override
@@ -89,12 +74,12 @@ public class GVCListViewCursorAdaptorActivity extends ActionBarActivity {
 
     private void displayListView() {
 
-        Cursor cursor = dbHelper.fetchAllGVCs();
+        Cursor cursor = GVCDAO.fetchAllGVCs(this);
 
         // The desired columns to be bound
         String[] columns = new String[]{
-                GVCsDbAdapter.KEY_CPF,
-                GVCsDbAdapter.KEY_NAME,
+                LocalDBHelper.TABLE_GVC_KEY_CPF,
+                LocalDBHelper.TABLE_GVC_KEY_NAME,
         };
 
         // the XML defined views which the data will be bound to
@@ -105,7 +90,6 @@ public class GVCListViewCursorAdaptorActivity extends ActionBarActivity {
 
         // create the adapter using the cursor pointing to the desired data
         //as well as the layout information
-        //TODO: MODIFY TO USE wizard_gvm: redundant code
         dataAdapter = new SimpleCursorAdapter(
                 this, R.layout.item_gvc,
                 cursor,
@@ -125,10 +109,10 @@ public class GVCListViewCursorAdaptorActivity extends ActionBarActivity {
                 Cursor cursor = (Cursor) listView.getItemAtPosition(position);
 
                 Intent returnIntent = new Intent();
-                returnIntent.putExtra(GVCsDbAdapter.KEY_NAME,
-                        cursor.getString(cursor.getColumnIndex(GVCsDbAdapter.KEY_NAME)));
-                returnIntent.putExtra(GVCsDbAdapter.KEY_CPF,
-                        cursor.getString(cursor.getColumnIndex(GVCsDbAdapter.KEY_CPF)));
+                returnIntent.putExtra(LocalDBHelper.TABLE_GVC_KEY_NAME,
+                        cursor.getString(cursor.getColumnIndex(LocalDBHelper.TABLE_GVC_KEY_NAME)));
+                returnIntent.putExtra(LocalDBHelper.TABLE_GVC_KEY_CPF,
+                        cursor.getString(cursor.getColumnIndex(LocalDBHelper.TABLE_GVC_KEY_CPF)));
 
                 setResult(RESULT_OK, returnIntent);
                 cursor.close();
@@ -155,7 +139,7 @@ public class GVCListViewCursorAdaptorActivity extends ActionBarActivity {
 
         dataAdapter.setFilterQueryProvider(new FilterQueryProvider() {
             public Cursor runQuery(CharSequence constraint) {
-                return dbHelper.fetchGVCsByNameOrRegistration(constraint.toString());
+                return GVCDAO.fetchGVCsByNameOrRegistration(constraint.toString(), getApplicationContext());
             }
         });
 

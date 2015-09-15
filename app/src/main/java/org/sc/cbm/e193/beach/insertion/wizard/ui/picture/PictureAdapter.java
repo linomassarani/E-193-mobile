@@ -1,4 +1,4 @@
-package org.sc.cbm.e193.beach.insertion.wizard;
+package org.sc.cbm.e193.beach.insertion.wizard.ui.picture;
 
 import android.content.Context;
 import android.graphics.Bitmap;

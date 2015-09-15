@@ -1,12 +1,19 @@
 package org.sc.cbm.e193;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.method.PasswordTransformationMethod;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import org.sc.cbm.e193.beach.BeachActivity;
@@ -21,6 +28,7 @@ public class MainActivity extends ActionBarActivity {
 
         setContentView(R.layout.ac_main);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        displayLoginDialog();
 //        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
@@ -76,5 +84,48 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void openSearch() {
+    }
+
+    /**
+     *
+     * by: http://www.pcsalt.com/android/create-alertdialog-with-custom-layout-using-xml-layout/
+     */
+    public void displayLoginDialog() {
+        LayoutInflater inflater = getLayoutInflater();
+        View alertLayout = inflater.inflate(R.layout.ad_login, null);
+
+        final EditText etUsername = (EditText) alertLayout.findViewById(R.id.username);
+        final EditText etPassword = (EditText) alertLayout.findViewById(R.id.password);
+
+        final CheckBox cbShowPassword = (CheckBox) alertLayout.findViewById(R.id.show_password);
+        cbShowPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                    etPassword.setTransformationMethod(null);
+                else
+                    etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance()); }
+        });
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setView(alertLayout);
+        alert.setCancelable(false);
+        alert.setNegativeButton(getResources().getString(android.R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        alert.setPositiveButton(getResources().getString(R.string.login), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // code for matching password TODO
+                String user = etUsername.getText().toString();
+                String pass = etPassword.getText().toString();
+                Toast.makeText(getBaseContext(), "Username: " + user + " Password: " + pass, Toast.LENGTH_SHORT).show();
+            }
+        });
+        AlertDialog dialog = alert.create();
+        dialog.show();
     }
 }

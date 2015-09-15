@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingTop="15dp"
+              android:paddingRight="15dp"
+              android:paddingLeft="15dp"
+              android:paddingBottom="0dp">
+
+    <TextView
+        style="@style/PraiaInsercaoWizardPageTitle"
+        android:text="@string/login"
+        android:padding="0dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_weight=".2"
+            android:layout_height="wrap_content"
+            android:text="@string/username" />
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="0dip"
+            android:layout_weight=".8"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:imeOptions="actionDone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_weight=".2"
+            android:layout_height="wrap_content"
+            android:text="@string/password" />
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="0dip"
+            android:layout_weight=".8"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:imeOptions="actionDone"
+            android:password="true" />
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/show_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Show Password" />
+
+</LinearLayout>

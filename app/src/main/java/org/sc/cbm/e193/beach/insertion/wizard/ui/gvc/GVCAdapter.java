@@ -1,4 +1,4 @@
-package org.sc.cbm.e193.beach.pojo;
+package org.sc.cbm.e193.beach.insertion.wizard.ui.gvc;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.sc.cbm.e193.R;
+import org.sc.cbm.e193.beach.pojo.GVC;
 
 import java.util.ArrayList;
 

@@ -74,5 +74,9 @@
     <string name="select_an_item">Selecione uma opção...</string>
     <string name="last_modified">"Última modificação: "</string>
     <string name="select_flag">Escolha a bandeira</string>
+    <string name="username">Usuario:</string>
+    <string name="password">Senha:</string>
+    <string name="do_login">Fazer login</string>
+    <string name="login">Login</string>
 
 </resources>
