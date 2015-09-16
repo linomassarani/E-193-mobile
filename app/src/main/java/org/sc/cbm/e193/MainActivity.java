@@ -87,7 +87,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     /**
-     *
+     * ##
      * by: http://www.pcsalt.com/android/create-alertdialog-with-custom-layout-using-xml-layout/
      */
     public void displayLoginDialog() {
