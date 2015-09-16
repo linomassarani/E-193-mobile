@@ -17,4 +17,8 @@ public class HazardFlagDAO {
 
         return new HazardFlag(HazardFlag.BLACK, date, city, beach, lifeguardPost, "", "", "933474");
     }
+
+    public static void insertHazardFlagChanges(HazardFlag hf) {
+        //TODO
+    }
 }

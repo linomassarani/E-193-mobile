@@ -29,6 +29,7 @@ import org.sc.cbm.e193.beach.pojo.HazardFlag;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 
 public class HazardsEditionActivity extends ActionBarActivity {
 
@@ -40,6 +41,7 @@ public class HazardsEditionActivity extends ActionBarActivity {
     private ImageButton mBlackFlag;
     private ImageButton mYellowFlag;
     private ImageButton mGreenFlag;
+    private HazardFlag mHazardFlag;
     private View.OnClickListener mFlagClickListener;
 
 
@@ -66,7 +68,6 @@ public class HazardsEditionActivity extends ActionBarActivity {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         submitChangesE193();
-                                        submitChangesGoogleMaps();
                                         finish();
                                     }
                                 })
@@ -171,10 +172,6 @@ public class HazardsEditionActivity extends ActionBarActivity {
         });
     }
 
-    private void submitChangesGoogleMaps() {
-        //TODO
-    }
-
     private void submitChangesE193() {
         //TODO
     }
@@ -192,15 +189,15 @@ public class HazardsEditionActivity extends ActionBarActivity {
         findViewById(R.id.flags).setVisibility(View.VISIBLE);
         findViewById(R.id.flag_text).setVisibility(View.VISIBLE);
 
-        HazardFlag hf = HazardFlagDAO.getLastFlag((String) mCityView.getSelectedItem(),
+        mHazardFlag = HazardFlagDAO.getLastFlag((String) mCityView.getSelectedItem(),
                 (String) mBeachView.getSelectedItem(),
                 (String) mLifeguardPostView.getSelectedItem());
 
-        highlightHazardFlag(hf.getColor());
+        highlightHazardFlag(mHazardFlag.getColor());
 
         Toast.makeText(this,
                 getResources().getString(R.string.last_modified) +
-                hf.getLastModifiedString(),
+                        mHazardFlag.getLastModifiedString(),
                 Toast.LENGTH_LONG).show();
     }
 

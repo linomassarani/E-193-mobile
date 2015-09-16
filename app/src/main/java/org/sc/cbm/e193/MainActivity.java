@@ -28,7 +28,7 @@ public class MainActivity extends ActionBarActivity {
 
         setContentView(R.layout.ac_main);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        displayLoginDialog();
+        displayLoginDialog();
 //        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
@@ -119,7 +119,7 @@ public class MainActivity extends ActionBarActivity {
         alert.setPositiveButton(getResources().getString(R.string.login), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // code for matching password TODO
+
                 String user = etUsername.getText().toString();
                 String pass = etPassword.getText().toString();
                 //TODO
