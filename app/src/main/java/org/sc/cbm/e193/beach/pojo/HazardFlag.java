@@ -3,21 +3,18 @@ package org.sc.cbm.e193.beach.pojo;
 import java.util.Date;
 
 public class HazardFlag {
-    public static final int BLACK = 1;
-    public static final int GREEN = 2;
-    public static final int YELLOW = 3;
-    public static final int RED = 4;
+    public enum Color {BLACK, GREEN, YELLOW, RED}
 
-    private int color;
     private Date lastModified;
     private String city;
     private String beach;
     private String lifeguardPost;
     private String latitude;
     private String longitude;
+    private Color color;
     //who edit last time
 
-    public HazardFlag(int color, Date lastModified, String city, String beach, String lifeguardPost, String latitude, String longitude, String owner) {
+    public HazardFlag(Color color, Date lastModified, String city, String beach, String lifeguardPost, String latitude, String longitude, String owner) {
         this.color = color;
         this.lastModified = lastModified;
         this.city = city;
@@ -54,11 +51,11 @@ public class HazardFlag {
         this.owner = owner;
     }
 
-    public int getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(int color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 

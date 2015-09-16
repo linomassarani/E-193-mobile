@@ -15,7 +15,7 @@ public class HazardFlagDAO {
                 Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
                 Calendar.getInstance().get(Calendar.MINUTE));
 
-        return new HazardFlag(HazardFlag.BLACK, date, city, beach, lifeguardPost, "", "", "933474");
+        return new HazardFlag(HazardFlag.Color.BLACK, date, city, beach, lifeguardPost, "", "", "933474");
     }
 
     public static void insertHazardFlagChanges(HazardFlag hf) {

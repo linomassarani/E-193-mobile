@@ -201,20 +201,20 @@ public class HazardsEditionActivity extends ActionBarActivity {
                 Toast.LENGTH_LONG).show();
     }
 
-    private void highlightHazardFlag(int color) {
+    private void highlightHazardFlag(HazardFlag.Color color) {
         undoHilightFlag();
 
         switch (color) {
-            case HazardFlag.BLACK:
+            case BLACK:
                 mBlackFlag.setBackgroundColor(getResources().getColor(R.color.text_hilight));
                 break;
-            case HazardFlag.GREEN:
+            case GREEN:
                 mGreenFlag.setBackgroundColor(getResources().getColor(R.color.text_hilight));
                 break;
-            case HazardFlag.RED:
+            case RED:
                 mRedFlag.setBackgroundColor(getResources().getColor(R.color.text_hilight));
                 break;
-            case HazardFlag.YELLOW:
+            case YELLOW:
                 mYellowFlag.setBackgroundColor(getResources().getColor(R.color.text_hilight));
                 break;
         }
