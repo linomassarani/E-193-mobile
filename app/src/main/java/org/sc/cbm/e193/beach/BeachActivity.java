@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import org.sc.cbm.e193.R;
 import org.sc.cbm.e193.beach.hazardsEdition.HazardsEditionActivity;
+import org.sc.cbm.e193.beach.insertion.wizard.MainActivity;
 
 public class BeachActivity extends ActionBarActivity {
 
@@ -50,7 +51,7 @@ public class BeachActivity extends ActionBarActivity {
     }
 
     public void startInsertion(View view) {
-        Intent intent = new Intent(this, org.sc.cbm.e193.beach.insertion.wizard.MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
