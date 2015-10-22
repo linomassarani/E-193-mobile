@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.sc.cbm.e193" >
 
-    <uses-sdk android:minSdkVersion="16" android:maxSdkVersion="22"/>
+    <uses-sdk
+        android:maxSdkVersion="22"
+        android:minSdkVersion="16" />
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -16,6 +18,7 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <!--
 android:uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -32,7 +35,6 @@ android:uses-permission
         android:label="@string/app_name"
         android:logo="@drawable/ic_cbmsc_logo"
         android:theme="@style/MainTheme" >
-
         <activity
             android:name=".view.SplashScreenActivity"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" >
@@ -42,18 +44,14 @@ android:uses-permission
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".view.CidadeActivity"
-            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
-            android:launchMode="singleTop"/>
-
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
         <activity
             android:name=".view.LoginActivity"
-            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
             android:launchMode="singleTop"
-            />
-
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
         <activity
             android:name=".view.MenuActivity"
             android:label="@string/app_name"
@@ -62,7 +60,6 @@ android:uses-permission
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.CidadeActivity" />
         </activity>
-
         <activity
             android:name=".beach.BeachActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -74,7 +71,7 @@ android:uses-permission
                 android:value="org.sc.cbm.e193.view.MenuActivity" />
         </activity>
         <activity
-            android:name=".beach.insertion.wizard.MainActivity"
+            android:name=".beach.edition.insertion.wizard.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/praia_insercao_wizard_name"
             android:parentActivityName=".beach.BeachActivity"
@@ -84,9 +81,9 @@ android:uses-permission
                 android:value=".beach.BeachActivity" />
         </activity>
         <activity
-            android:name=".beach.insertion.wizard.ui.gvm.GVMListViewCursorAdaptorActivity"
+            android:name=".beach.edition.insertion.wizard.ui.gvm.GVMListViewCursorAdaptorActivity"
             android:label="GVMs"
-            android:parentActivityName=".beach.insertion.wizard.MainActivity"
+            android:parentActivityName=".beach.edition.insertion.wizard.MainActivity"
             android:theme="@style/PraiaTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -97,12 +94,12 @@ android:uses-permission
                 android:resource="@xml/searchable" />
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".beach.insertion.wizard.MainActivity" />
+                android:value=".beach.edition.insertion.wizard.MainActivity" />
         </activity>
         <activity
-            android:name=".beach.insertion.wizard.ui.gvc.GVCListViewCursorAdaptorActivity"
+            android:name=".beach.edition.insertion.wizard.ui.gvc.GVCListViewCursorAdaptorActivity"
             android:label="GVCs"
-            android:parentActivityName=".beach.insertion.wizard.MainActivity"
+            android:parentActivityName=".beach.edition.insertion.wizard.MainActivity"
             android:theme="@style/PraiaTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -113,7 +110,7 @@ android:uses-permission
                 android:resource="@xml/searchable" />
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".beach.insertion.wizard.MainActivity" />
+                android:value=".beach.edition.insertion.wizard.MainActivity" />
         </activity>
 
         <meta-data
@@ -124,11 +121,19 @@ android:uses-permission
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".beach.hazardsEdition.HazardsEditionActivity"
-            android:label="@string/title_activity_hazards_edition"
+            android:name=".beach.edition.beachNow.BeachNowActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/title_activity_beach_now"
             android:parentActivityName=".beach.BeachActivity"
             android:theme="@style/PraiaTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.sc.cbm.e193.beach.BeachActivity" />
+        </activity>
+        <activity
+            android:name=".beach.edition.EditionActivity"
+            android:label="@string/title_activity_edition"
+            android:parentActivityName=".beach.BeachActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.sc.cbm.e193.beach.BeachActivity" />

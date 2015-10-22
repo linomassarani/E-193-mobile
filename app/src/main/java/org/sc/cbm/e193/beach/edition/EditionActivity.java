@@ -1,8 +1,8 @@
-package org.sc.cbm.e193.beach;
+package org.sc.cbm.e193.beach.edition;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -10,14 +10,15 @@ import android.view.View;
 import android.widget.Toast;
 
 import org.sc.cbm.e193.R;
-import org.sc.cbm.e193.beach.edition.EditionActivity;
+import org.sc.cbm.e193.beach.edition.beachNow.BeachNowActivity;
+import org.sc.cbm.e193.beach.edition.insertion.wizard.MainActivity;
 
-public class BeachActivity extends ActionBarActivity {
+public class EditionActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ac_beach);
+        setContentView(R.layout.ac_edition);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -27,6 +28,7 @@ public class BeachActivity extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_beach, menu);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -49,8 +51,13 @@ public class BeachActivity extends ActionBarActivity {
         Toast.makeText(this, R.string.notImplemented, Toast.LENGTH_SHORT).show();
     }
 
-    public void startEdition(View view) {
-        Intent intent = new Intent(this, EditionActivity.class);
+    public void startInsertion(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void startBeachNow(View view) {
+        Intent intent = new Intent(this, BeachNowActivity.class);
         startActivity(intent);
     }
 }

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- tela de login-->
+    <!-- tela de login -->
     <string name="ajuda">Ajuda?</string>
     <string name="title_help">Precisa de ajuda?</string>
     <string name="help_text">Ligue para o plantão da DiTI (048)3271-1171 ou abra um SAU no site do CBMSC.</string>
     <string name="login_in"> Conectando </string>
-
     <string name="app_name">E-193</string>
     <string name="action_settings">Settings</string>
     <string name="edit_message">Digite a mensagem</string>
@@ -32,8 +31,10 @@
     <string name="lorem_ipsum">nao sei</string>
     <string name="title_activity_screen_slide_pager">"INSERÇÃO"</string>
     <string name="preventions">" Editar Prevenção/Outros"</string>
-    <string name="resources">" Editar Recursos"</string>
-    <string name="hazard">" Editar Riscos"</string>
+    <string name="resources">" Atualizar Recursos"</string>
+    <string name="beach_now">" Praia Agora"</string>
+    <string name="title_activity_edition">Edição</string>
+    <string name="edition">" Edição"</string>
 
     <!-- tela escolha cidade -->
     <string name="msg_servidor">Escolha a cidade na lista abaixo:</string>
@@ -78,16 +79,20 @@
     <string name="label_incident_distance">Distância do posto</string>
     <string name="label_distance_left">Esquerda</string>
     <string name="label_distance">Distância do Posto (m)</string>
+
+    <!-- beach now-->
+    <string name="title_activity_beach_now">PRAIA AGORA</string>
     <string name="descr_image">Imagem</string>
     <string name="none">(NÃO INFORMADO)</string>
-    <string name="title_activity_hazards_edition">EDITAR RISCOS</string>
     <string name="choose_lifeguard_post">Escolha o local</string>
     <string name="select_an_item">Selecione uma opção...</string>
     <string name="last_modified">"Última modificação: "</string>
     <string name="select_flag">Escolha a bandeira</string>
+
+
+    <!-- others-->
     <string name="username">Usuario:</string>
     <string name="password">Senha:</string>
     <string name="do_login">Fazer login</string>
     <string name="login">Login</string>
-
 </resources>

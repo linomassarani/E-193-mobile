@@ -15,6 +15,16 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/edition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/edition"
+                android:textSize="@dimen/activity_main_buttons_text"
+                android:gravity="left|center_vertical"
+                android:drawableLeft="@drawable/ic_pencil"
+                android:onClick="startEdition"/>
+
+            <Button
                 android:id="@+id/gestao_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -24,45 +34,6 @@
                 android:drawableLeft="@drawable/ic_relatorios"
                 android:onClick="notImplemented"/>
 
-            <Button
-                android:id="@+id/new_incident"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/new_incident"
-                android:textSize="@dimen/activity_main_buttons_text"
-                android:gravity="left|center_vertical"
-                android:drawableLeft="@drawable/ic_insercao_ocorrencias_praia"
-                android:onClick="startInsertion"/>
-
-            <Button
-                android:id="@+id/preventions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/preventions"
-                android:textSize="@dimen/activity_main_buttons_text"
-                android:gravity="left|center_vertical"
-                android:drawableLeft="@drawable/ic_prevention"
-                android:onClick="notImplemented"/>
-
-            <Button
-                android:id="@+id/resources"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/resources"
-                android:textSize="@dimen/activity_main_buttons_text"
-                android:gravity="left|center_vertical"
-                android:drawableLeft="@drawable/ic_resources"
-                android:onClick="notImplemented"/>
-
-            <Button
-                android:id="@+id/hazard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/hazard"
-                android:textSize="@dimen/activity_main_buttons_text"
-                android:gravity="left|center_vertical"
-                android:drawableLeft="@drawable/ic_hazards"
-                android:onClick="startHazardsEdition"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
