@@ -4,33 +4,35 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import org.sc.cbm.e193.R;
-import org.sc.cbm.e193.beach.edition.beachNow.wizard.model.FlagNJellyNTempPage;
+import org.sc.cbm.e193.beach.edition.beachNow.wizard.model.FlagNJellyPage;
 import org.sc.cbm.e193.beach.edition.insertion.wizard.ui.PageFragmentCallbacks;
 
-public class FlagNJellyNTempFragment extends Fragment {
+public class FlagNJellyFragment extends Fragment {
     private static final String ARG_KEY = "key";
 
     private PageFragmentCallbacks mCallbacks;
     private String mKey;
-    private FlagNJellyNTempPage mPage;
+    private FlagNJellyPage mPage;
     private ImageButton mRedFlag;
     private ImageButton mBlackFlag;
     private ImageButton mYellowFlag;
     private ImageButton mGreenFlag;
-    private Switch mJellySwich;
+    private Switch mJellySwitch;
 
-    public static FlagNJellyNTempFragment create(String key) {
+    public static FlagNJellyFragment create(String key) {
         Bundle args = new Bundle();
         args.putString(ARG_KEY, key);
 
-        FlagNJellyNTempFragment fragment = new FlagNJellyNTempFragment();
+        FlagNJellyFragment fragment = new FlagNJellyFragment();
         fragment.setArguments(args);
 
         return fragment;
@@ -43,7 +45,7 @@ public class FlagNJellyNTempFragment extends Fragment {
 
         Bundle args = getArguments();
         mKey = args.getString(ARG_KEY);
-        mPage = (FlagNJellyNTempPage) mCallbacks.onGetPage(mKey);
+        mPage = (FlagNJellyPage) mCallbacks.onGetPage(mKey);
     }
 
     /*
@@ -53,17 +55,18 @@ public class FlagNJellyNTempFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fr_pg_flag_n_jelly_temp, container, false);
+        View rootView = inflater.inflate(R.layout.fr_pg_flag_n_jelly, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(mPage.getTitle());
 
         mRedFlag = (ImageButton) rootView.findViewById(R.id.redflag);
         mBlackFlag = (ImageButton) rootView.findViewById(R.id.blackflag);
         mYellowFlag = (ImageButton) rootView.findViewById(R.id.yellowflag);
         mGreenFlag = (ImageButton) rootView.findViewById(R.id.greenflag);
-        mJellySwich = (Switch) rootView.findViewById(R.id.jelly_activated_switch);
+        mJellySwitch = (Switch) rootView.findViewById(R.id.jelly_activated_switch);
 
-        String flagColor = mPage.getData().getString(FlagNJellyNTempPage.FLAG_DATA_KEY);
-        if(flagColor != null) {
+
+        String flagColor = mPage.getData().getString(FlagNJellyPage.FLAG_DATA_KEY);
+        if (flagColor != null) {
             if (flagColor == getResources().getString(R.string.black_flag)) {
                 highlightFlag(mBlackFlag);
             } else if (flagColor == getResources().getString(R.string.red_flag)) {
@@ -75,15 +78,17 @@ public class FlagNJellyNTempFragment extends Fragment {
             }
         }
 
-        String jellySwitch = mPage.getData().getString(FlagNJellyNTempPage.JELLY_ALERT_DATA_KEY);
-        if(jellySwitch != null) {
-            if(jellySwitch == getResources().getString(R.string.activated)) {
-                mJellySwich.setChecked(true);
+        String jellySwitch = mPage.getData().getString(FlagNJellyPage.JELLY_ALERT_DATA_KEY);
+        if (jellySwitch != null) {
+            if (jellySwitch == getResources().getString(R.string.activated)) {
+                mJellySwitch.setChecked(true);
             } else {
-                mJellySwich.setChecked(false);
+                mJellySwitch.setChecked(false);
             }
         } else {
-            mJellySwich.setChecked(false);
+            mJellySwitch.setChecked(false);
+            mPage.getData().putString(FlagNJellyPage.JELLY_ALERT_DATA_KEY, getResources().getString(R.string.deactivated));
+            mPage.notifyDataChanged();
         }
 
         return rootView;
@@ -104,7 +109,7 @@ public class FlagNJellyNTempFragment extends Fragment {
     private void highlightFlagNSubmit(View v, String flagColor) {
         highlightFlag(v);
 
-        mPage.getData().putString(FlagNJellyNTempPage.FLAG_DATA_KEY, flagColor);
+        mPage.getData().putString(FlagNJellyPage.FLAG_DATA_KEY, flagColor);
         mPage.notifyDataChanged();
     }
 
@@ -157,14 +162,14 @@ public class FlagNJellyNTempFragment extends Fragment {
             }
         });
 
-        mJellySwich.setOnClickListener(new View.OnClickListener() {
+        mJellySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                Switch s = (Switch) v;
-                if(s.isActivated()) {
-                    mPage.getData().putString(FlagNJellyNTempPage.FLAG_DATA_KEY, getResources().getString(R.string.activated));
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Switch s = (Switch) buttonView;
+                if (isChecked) {
+                    mPage.getData().putString(FlagNJellyPage.JELLY_ALERT_DATA_KEY, getResources().getString(R.string.activated));
                 } else {
-                    mPage.getData().putString(FlagNJellyNTempPage.FLAG_DATA_KEY, getResources().getString(R.string.deactivated));
+                    mPage.getData().putString(FlagNJellyPage.JELLY_ALERT_DATA_KEY, getResources().getString(R.string.deactivated));
                 }
                 mPage.notifyDataChanged();
             }

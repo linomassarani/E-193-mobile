@@ -9,6 +9,8 @@ import java.util.Date;
 
 public class LifeguardTower {
     public enum Weather {CLEAN, CLOUDY, RAINY}
+    public enum WindIntensity {LOW, MEDIUM, HIGH}
+    public enum WindDirection {SOUTH, SOUTHEAST, SOUTHWEST, NORTH, NORTHWEST, NORTHEAST, EAST, WEST}
     public enum JellyFishAlert {ACTIVATED, DEACTIVATED}
     public enum HazardFlag {BLACK, GREEN, YELLOW, RED}
 
@@ -35,6 +37,40 @@ public class LifeguardTower {
         this.hazardFlag = hazardFlag;
         this.weather = weather;
         this.jellyFishAlert = jellyFishAlert;
+    }
+
+    public static String windIntensityToPTBR(WindIntensity wi) {
+        switch (wi) {
+            case LOW:
+                return "fraca";
+            case MEDIUM:
+                return "média";
+            case HIGH:
+                return "forte";
+        }
+        return null;
+    }
+
+    public static String windDirectionToPTBR(WindDirection wd) {
+        switch (wd) {
+            case SOUTH:
+                return "sul";
+            case SOUTHEAST:
+                return "sudeste";
+            case SOUTHWEST:
+                return "sudoeste";
+            case NORTH:
+                return "norte";
+            case NORTHWEST:
+                return "noroeste";
+            case NORTHEAST:
+                return "nordeste";
+            case EAST:
+                return "leste";
+            case WEST:
+                return "oeste";
+        }
+        return null;
     }
 
     public String getCity() {

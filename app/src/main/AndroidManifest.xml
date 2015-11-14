@@ -126,16 +126,6 @@ android:uses-permission
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".beach.edition.beachNow.BeachNowActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_beach_now"
-            android:parentActivityName=".beach.BeachActivity"
-            android:theme="@style/PraiaTheme" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.sc.cbm.e193.beach.BeachActivity" />
-        </activity>
-        <activity
             android:name=".beach.edition.EditionActivity"
             android:label="@string/title_activity_edition"
             android:parentActivityName=".beach.BeachActivity" >

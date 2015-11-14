@@ -19,7 +19,8 @@ package org.sc.cbm.e193.beach.edition.beachNow.wizard.model;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
-import org.sc.cbm.e193.beach.edition.beachNow.wizard.ui.WindFragment;
+import org.sc.cbm.e193.beach.edition.beachNow.wizard.ui.FlagNJellyFragment;
+import org.sc.cbm.e193.beach.edition.beachNow.wizard.ui.TempFragment;
 import org.sc.cbm.e193.beach.edition.insertion.wizard.model.ModelCallbacks;
 import org.sc.cbm.e193.beach.edition.insertion.wizard.model.Page;
 import org.sc.cbm.e193.beach.edition.insertion.wizard.model.ReviewItem;
@@ -27,30 +28,27 @@ import org.sc.cbm.e193.beach.edition.insertion.wizard.model.ReviewItem;
 import java.util.ArrayList;
 
 /**
- * A page asking wind direction and intensity
+ * A page asking for water temperature
  */
-public class WindPage extends Page {
-    public static final String WIND_DIRECTION_DATA_KEY = "wind_direction";
-    public static final String WIND_INTENSITY_DATA_KEY = "wind_intensity";
+public class TempPage extends Page {
+    public static final String WATER_TEMPERATURE_DATA_KEY = "temp";
 
-    public WindPage(ModelCallbacks callbacks, String title) {
+    public TempPage(ModelCallbacks callbacks, String title) {
         super(callbacks, title);
     }
 
     @Override
     public Fragment createFragment() {
-        return WindFragment.create(getKey());
+        return TempFragment.create(getKey());
     }
 
     @Override
     public void getReviewItems(ArrayList<ReviewItem> dest) {
-        dest.add(new ReviewItem("Direção do vento", mData.getString(WIND_DIRECTION_DATA_KEY), getKey(), -1));
-        dest.add(new ReviewItem("Intensidade do vento", mData.getString(WIND_INTENSITY_DATA_KEY), getKey(), -1));
+        dest.add(new ReviewItem("Temperatura da água", mData.getString(WATER_TEMPERATURE_DATA_KEY), getKey(), -1));
     }
 
     @Override
     public boolean isCompleted() {
-        return !TextUtils.isEmpty(mData.getString(WIND_DIRECTION_DATA_KEY)) &&
-                !TextUtils.isEmpty(mData.getString(WIND_INTENSITY_DATA_KEY));
+        return !TextUtils.isEmpty(mData.getString(WATER_TEMPERATURE_DATA_KEY));
     }
 }

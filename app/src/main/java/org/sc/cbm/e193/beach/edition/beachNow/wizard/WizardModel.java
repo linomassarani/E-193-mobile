@@ -18,11 +18,12 @@ package org.sc.cbm.e193.beach.edition.beachNow.wizard;
 
 import android.content.Context;
 
-import org.sc.cbm.e193.beach.edition.beachNow.wizard.model.FlagNJellyNTempPage;
+import org.sc.cbm.e193.beach.edition.beachNow.wizard.model.FlagNJellyPage;
+import org.sc.cbm.e193.beach.edition.beachNow.wizard.model.TempPage;
+import org.sc.cbm.e193.beach.edition.beachNow.wizard.model.WindPage;
 import org.sc.cbm.e193.beach.edition.insertion.wizard.model.AbstractWizardModel;
 import org.sc.cbm.e193.beach.edition.beachNow.wizard.model.LocationPage;
 import org.sc.cbm.e193.beach.edition.insertion.wizard.model.PageList;
-import org.sc.cbm.e193.beach.edition.insertion.wizard.model.SingleFixedChoicePage;
 
 public class WizardModel extends AbstractWizardModel {
     public WizardModel(Context context) {
@@ -34,7 +35,11 @@ public class WizardModel extends AbstractWizardModel {
         return new PageList(
                 new LocationPage(this, "Localização")
                         .setRequired(true),
-                new FlagNJellyNTempPage(this, "Segurança")
+                new FlagNJellyPage(this, "Segurança")
+                        .setRequired(true),
+                new TempPage(this, "Temperatura da água (ºC)")
+                        .setRequired(true),
+                new WindPage(this, "Vento")
                         .setRequired(true)
         );
     }

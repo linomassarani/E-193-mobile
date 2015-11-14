@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 import org.sc.cbm.e193.R;
 import org.sc.cbm.e193.beach.dao.OthersDAO;
-import org.sc.cbm.e193.beach.edition.insertion.automation.Automator;
 import org.sc.cbm.e193.beach.edition.beachNow.wizard.model.LocationPage;
+import org.sc.cbm.e193.beach.edition.insertion.automation.Automator;
 import org.sc.cbm.e193.beach.edition.insertion.wizard.ui.PageFragmentCallbacks;
 
 import java.util.ArrayList;
@@ -62,7 +62,7 @@ public class LocationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        rootView = inflater.inflate(R.layout.ac_beach_now, container, false);
+        rootView = inflater.inflate(R.layout.fr_pg_location2, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(mPage.getTitle());
 
 
@@ -75,7 +75,7 @@ public class LocationFragment extends Fragment {
         al.addAll(new ArrayList(Arrays.asList(OthersDAO.getCities())));
 
         ArrayAdapter<String> adapter = new ArrayAdapter(rootView.getContext(),
-                android.R.layout.simple_spinner_item,al);
+                android.R.layout.simple_spinner_item, al);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         mCityView.setAdapter(adapter);
@@ -108,8 +108,7 @@ public class LocationFragment extends Fragment {
         int beachPos = beachAdapter.getPosition(mPage.getData().getString(LocationPage.BEACH_DATA_KEY));
         if (beachPos != -1) {
             mBeachView.setSelection(beachPos);
-        }
-        else {
+        } else {
             String autoBeach = Automator.getInstance().getUserBeach();
             if (autoBeach != null)
                 mBeachView.setSelection(beachAdapter.getPosition(autoBeach));
@@ -135,8 +134,7 @@ public class LocationFragment extends Fragment {
         int lifeguardPostPos = lifeguardPostAdapter.getPosition(mPage.getData().getString(LocationPage.LIFEGUARD_POST_DATA_KEY));
         if (lifeguardPostPos != -1) {
             mLifeguardPostView.setSelection(lifeguardPostPos);
-        }
-        else {
+        } else {
             String autoLifeguardPost = Automator.getInstance().getUserLifeguardPost();
             if (autoLifeguardPost != null)
                 mLifeguardPostView.setSelection(lifeguardPostAdapter.getPosition(autoLifeguardPost));
@@ -184,9 +182,11 @@ public class LocationFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String item = (String) parent.getItemAtPosition(position);
-                mPage.getData().putString(LocationPage.CITY_DATA_KEY, item);
-                mPage.notifyDataChanged();
-                if(!item.matches(getResources().getString(R.string.select_an_item)) && position != -1)
+                if (!item.matches(getResources().getString(R.string.select_an_item))) {
+                    mPage.getData().putString(LocationPage.CITY_DATA_KEY, item);
+                    mPage.notifyDataChanged();
+                }
+                if (!item.matches(getResources().getString(R.string.select_an_item)) && position != -1)
                     initiateBeachView();
                 else {
                     mBeachView.setAdapter(new ArrayAdapter<String>(view.getContext(),
@@ -206,9 +206,11 @@ public class LocationFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String item = (String) parent.getItemAtPosition(position);
-                mPage.getData().putString(LocationPage.BEACH_DATA_KEY, item);
-                mPage.notifyDataChanged();
-                if(!item.matches(getResources().getString(R.string.select_an_item))
+                if (!item.matches(getResources().getString(R.string.select_an_item))) {
+                    mPage.getData().putString(LocationPage.BEACH_DATA_KEY, item);
+                    mPage.notifyDataChanged();
+                }
+                if (!item.matches(getResources().getString(R.string.select_an_item))
                         && position != -1
                         && mCityView.getSelectedItemPosition() != -1)
                     initiateLifeguardPostView();
@@ -228,9 +230,11 @@ public class LocationFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String item = (String) parent.getItemAtPosition(position);
-                mPage.getData().putString(LocationPage.LIFEGUARD_POST_DATA_KEY, item);
-                mPage.notifyDataChanged();
-                if(item != null && !item.matches(getResources().getString(R.string.select_an_item)))
+                if (!item.matches(getResources().getString(R.string.select_an_item))) {
+                    mPage.getData().putString(LocationPage.LIFEGUARD_POST_DATA_KEY, item);
+                    mPage.notifyDataChanged();
+                }
+                if (item != null && !item.matches(getResources().getString(R.string.select_an_item)))
                     spinnersCompleted();
             }
 

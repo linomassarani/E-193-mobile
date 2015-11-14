@@ -6,28 +6,26 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import org.sc.cbm.e193.R;
-import org.sc.cbm.e193.beach.dao.OthersDAO;
-import org.sc.cbm.e193.beach.edition.insertion.wizard.model.LocationPage;
+import org.sc.cbm.e193.beach.edition.beachNow.wizard.model.WindPage;
 import org.sc.cbm.e193.beach.edition.insertion.wizard.ui.PageFragmentCallbacks;
+import org.sc.cbm.e193.beach.pojo.LifeguardTower;
 
 public class WindFragment extends Fragment {
     private static final String ARG_KEY = "key";
 
     private PageFragmentCallbacks mCallbacks;
     private String mKey;
-    private LocationPage mPage;
-    private Spinner mCityView;
-    private Spinner mBeachView;
-    private Spinner mLifeguardPostView;
-
-    public WindFragment() {
-    }
+    private WindPage mPage;
+    private RadioGroup mIntensityRG;
+    private RadioGroup mDirectionAboveRG;
+    private RadioGroup mDirectionBelowRG;
+    private View mRootView;
+    private View mLastCheckedIntensityRadioButton;
+    private View mLastCheckedDirectionRadioButton;
 
     public static WindFragment create(String key) {
         Bundle args = new Bundle();
@@ -46,7 +44,7 @@ public class WindFragment extends Fragment {
 
         Bundle args = getArguments();
         mKey = args.getString(ARG_KEY);
-        mPage = (LocationPage) mCallbacks.onGetPage(mKey);
+        mPage = (WindPage) mCallbacks.onGetPage(mKey);
     }
 
     /*
@@ -56,65 +54,59 @@ public class WindFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fr_pg_location, container, false);
-        ((TextView) rootView.findViewById(android.R.id.title)).setText(mPage.getTitle());
+        mRootView = inflater.inflate(R.layout.fr_pg_wind, container, false);
 
-        mCityView = (Spinner) rootView.findViewById(R.id.city);
-
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(rootView.getContext(),
-               android.R.layout.simple_spinner_item,
-                OthersDAO.getCities());
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        mCityView.setAdapter(adapter);
-        int cityPos = adapter.getPosition(mPage.getData().getString(LocationPage.CITY_DATA_KEY));
-        if (cityPos == -1) {
-            mCityView.setSelection(0);
-        } else {
-            mCityView.setSelection(cityPos);
+        mIntensityRG = (RadioGroup) mRootView.findViewById(R.id.intensity);
+        String windIntensity = mPage.getData().getString(WindPage.WIND_INTENSITY_DATA_KEY);
+        if(windIntensity != null) {
+            checkWindIntensityRadioButton(windIntensity);
         }
 
-        mBeachView = (Spinner) rootView.findViewById(R.id.beach);
-        mLifeguardPostView = (Spinner) rootView.findViewById(R.id.lifeguard_post);
+        mDirectionAboveRG = (RadioGroup) mRootView.findViewById(R.id.direction_above);
+        mDirectionBelowRG = (RadioGroup) mRootView.findViewById(R.id.direction_below);
+        String mDirection = mPage.getData().getString(WindPage.WIND_INTENSITY_DATA_KEY);
+        if(mDirection != null) {
+            checkWindDirectionRadioButton(mDirection);
+        }
 
-        return rootView;
+
+        return mRootView;
     }
 
-    private void initiateLifeguardPostView(View rootView, int cityPos, int beachPos) {
-        int lifeguardPostPos;
-        if(cityPos != -1 && beachPos != -1) {
-            ArrayAdapter<CharSequence> lifeguardPostAdapter = new ArrayAdapter<CharSequence>(rootView.getContext(),
-                    android.R.layout.simple_spinner_item,
-                    OthersDAO.getLifeguardPosts(
-                            (String) mCityView.getSelectedItem(),
-                            (String) mBeachView.getSelectedItem()));
-            lifeguardPostAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            mLifeguardPostView.setAdapter(lifeguardPostAdapter);
-
-            lifeguardPostPos = lifeguardPostAdapter.getPosition(mPage.getData().getString(LocationPage.LIFEGUARD_POST_DATA_KEY));
-            if (lifeguardPostPos != -1)
-                mLifeguardPostView.setSelection(beachPos);
-            else
-                mLifeguardPostView.setSelection(0);
+    private void checkWindDirectionRadioButton(String mDirection) {
+        if (mDirection.matches(LifeguardTower.windDirectionToPTBR(LifeguardTower.WindDirection.SOUTH))) {
+            mDirectionAboveRG.check(R.id.south);
+        }
+        else if (mDirection.matches(LifeguardTower.windDirectionToPTBR(LifeguardTower.WindDirection.SOUTHEAST))){
+            mDirectionAboveRG.check(R.id.southeast);
+        }
+        else if (mDirection.matches(LifeguardTower.windDirectionToPTBR(LifeguardTower.WindDirection.SOUTHWEST))){
+            mDirectionAboveRG.check(R.id.southwest);
+        }
+        else if (mDirection.matches(LifeguardTower.windDirectionToPTBR(LifeguardTower.WindDirection.NORTH))){
+            mDirectionAboveRG.check(R.id.north);
+        }
+        else if (mDirection.matches(LifeguardTower.windDirectionToPTBR(LifeguardTower.WindDirection.NORTHEAST))){
+            mDirectionBelowRG.check(R.id.northeast);
+        }
+        else if (mDirection.matches(LifeguardTower.windDirectionToPTBR(LifeguardTower.WindDirection.NORTHWEST))){
+            mDirectionBelowRG.check(R.id.northwest);
+        }
+        else if (mDirection.matches(LifeguardTower.windDirectionToPTBR(LifeguardTower.WindDirection.EAST))){
+            mDirectionBelowRG.check(R.id.east);
+        }
+        else if (mDirection.matches(LifeguardTower.windDirectionToPTBR(LifeguardTower.WindDirection.WEST))){
+            mDirectionBelowRG.check(R.id.west);
         }
     }
 
-    private int initiateBeachView(View rootView, int cityPos) {
-        int beachPos = -1;
-        if(cityPos != -1) {
-            ArrayAdapter<CharSequence> beachAdapter = new ArrayAdapter<CharSequence>(rootView.getContext(),
-                    android.R.layout.simple_spinner_item,
-                    OthersDAO.getBeaches((String) mCityView.getSelectedItem()));
-            beachAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            mBeachView.setAdapter(beachAdapter);
-
-            beachPos = beachAdapter.getPosition(mPage.getData().getString(LocationPage.BEACH_DATA_KEY));
-            if (beachPos != -1)
-                mBeachView.setSelection(beachPos);
-            else
-                mBeachView.setSelection(0);
-        }
-        return beachPos;
+    private void checkWindIntensityRadioButton(String windIntensity) {
+        if (windIntensity.matches(LifeguardTower.windIntensityToPTBR(LifeguardTower.WindIntensity.LOW)))
+            mIntensityRG.check(R.id.low);
+        else if (windIntensity.matches(LifeguardTower.windIntensityToPTBR(LifeguardTower.WindIntensity.MEDIUM)))
+            mIntensityRG.check(R.id.medium);
+        else if (windIntensity.matches(LifeguardTower.windIntensityToPTBR(LifeguardTower.WindIntensity.HIGH)))
+            mIntensityRG.check(R.id.high);
     }
 
     @Override
@@ -141,53 +133,84 @@ public class WindFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mCityView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        mIntensityRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String item = (String) parent.getItemAtPosition(position);
-                mPage.getData().putString(LocationPage.CITY_DATA_KEY, item);
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.low:
+                        mPage.getData().putString(WindPage.WIND_INTENSITY_DATA_KEY, LifeguardTower.windIntensityToPTBR(LifeguardTower.WindIntensity.LOW));
+                        break;
+                    case R.id.medium:
+                        mPage.getData().putString(WindPage.WIND_INTENSITY_DATA_KEY, LifeguardTower.windIntensityToPTBR(LifeguardTower.WindIntensity.MEDIUM));
+                        break;
+                    case R.id.high:
+                        mPage.getData().putString(WindPage.WIND_INTENSITY_DATA_KEY, LifeguardTower.windIntensityToPTBR(LifeguardTower.WindIntensity.HIGH));
+                }
                 mPage.notifyDataChanged();
 
-                initiateBeachView(view, position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
+                if(mLastCheckedIntensityRadioButton != null)
+                    mLastCheckedIntensityRadioButton.setBackgroundColor(0);
+                mLastCheckedIntensityRadioButton = mRootView.findViewById(checkedId);
+                mRootView.findViewById(checkedId).setBackgroundColor(getResources().getColor(R.color.text_hilight));
             }
         });
 
-        mBeachView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        mDirectionAboveRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String item = (String) parent.getItemAtPosition(position);
-                mPage.getData().putString(LocationPage.BEACH_DATA_KEY, item);
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == -1 || ((RadioButton) mRootView.findViewById(checkedId)).isChecked() == false) return;
+                switch (checkedId) {
+                    case R.id.south:
+                        mPage.getData().putString(WindPage.WIND_DIRECTION_DATA_KEY, LifeguardTower.windDirectionToPTBR(LifeguardTower.WindDirection.SOUTH));
+                        break;
+                    case R.id.southwest:
+                        mPage.getData().putString(WindPage.WIND_DIRECTION_DATA_KEY, LifeguardTower.windDirectionToPTBR(LifeguardTower.WindDirection.SOUTHWEST));
+                        break;
+                    case R.id.southeast:
+                        mPage.getData().putString(WindPage.WIND_DIRECTION_DATA_KEY, LifeguardTower.windDirectionToPTBR(LifeguardTower.WindDirection.SOUTHEAST));
+                        break;
+                    case R.id.north:
+                        mPage.getData().putString(WindPage.WIND_DIRECTION_DATA_KEY, LifeguardTower.windDirectionToPTBR(LifeguardTower.WindDirection.NORTH));
+                }
                 mPage.notifyDataChanged();
-
-                initiateLifeguardPostView(view, mCityView.getSelectedItemPosition(),
-                            position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
+                highlightWindDirectionRadioButton(checkedId);
+                mDirectionBelowRG.clearCheck();
             }
         });
 
-        mLifeguardPostView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        mDirectionBelowRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String item = (String) parent.getItemAtPosition(position);
-                mPage.getData().putString(LocationPage.LIFEGUARD_POST_DATA_KEY, item);
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == -1 || ((RadioButton) mRootView.findViewById(checkedId)).isChecked() == false) return;
+                switch (checkedId) {
+                    case R.id.northeast:
+                        mPage.getData().putString(WindPage.WIND_DIRECTION_DATA_KEY, LifeguardTower.windDirectionToPTBR(LifeguardTower.WindDirection.NORTHEAST));
+                        break;
+                    case R.id.northwest:
+                        mPage.getData().putString(WindPage.WIND_DIRECTION_DATA_KEY, LifeguardTower.windDirectionToPTBR(LifeguardTower.WindDirection.NORTHWEST));
+                        break;
+                    case R.id.east:
+                        mPage.getData().putString(WindPage.WIND_DIRECTION_DATA_KEY, LifeguardTower.windDirectionToPTBR(LifeguardTower.WindDirection.EAST));
+                        break;
+                    case R.id.west:
+                        mPage.getData().putString(WindPage.WIND_DIRECTION_DATA_KEY, LifeguardTower.windDirectionToPTBR(LifeguardTower.WindDirection.WEST));
+                }
                 mPage.notifyDataChanged();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
+                highlightWindDirectionRadioButton(checkedId);
+                mDirectionAboveRG.clearCheck();
             }
         });
     }
+
+    private void highlightWindDirectionRadioButton(int checkedId) {
+        if(mLastCheckedDirectionRadioButton != null) {
+            mLastCheckedDirectionRadioButton.setBackgroundColor(0);
+            ((RadioButton) mLastCheckedDirectionRadioButton).setChecked(false);
+        }
+        mLastCheckedDirectionRadioButton = mRootView.findViewById(checkedId);
+        mRootView.findViewById(checkedId).setBackgroundColor(getResources().getColor(R.color.text_hilight));
+    }
+
 
     @Override
     public void setMenuVisibility(boolean menuVisible) {

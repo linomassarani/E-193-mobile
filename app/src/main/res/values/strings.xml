@@ -102,4 +102,8 @@
     <string name="jelly_alert">Alerta de água-viva</string>
     <string name="activated">ativado</string>
     <string name="deactivated">desativado</string>
+    <string name="water_temp_text">Temperatura da água</string>
+    <string name="celcius">ºC</string>
+    <string name="wind_direction">Direção do vento</string>
+    <string name="wind_intesity">Intensidade do vento</string>
 </resources>

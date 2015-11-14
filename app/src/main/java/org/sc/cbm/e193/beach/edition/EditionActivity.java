@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import org.sc.cbm.e193.R;
-import org.sc.cbm.e193.beach.edition.beachNow.BeachNowActivity;
 import org.sc.cbm.e193.beach.edition.insertion.wizard.MainActivity;
 import org.sc.cbm.e193.beach.edition.insertion.wizard.WizardModel;
 

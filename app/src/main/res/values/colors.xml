@@ -3,6 +3,7 @@
     <color name="bg_dark_block">#182a40</color>
     <color name="text_dark_block">#ffffff</color>
     <color name="text_dark">#999999</color>
+    <color name="black">#000000</color>
     <color name="bg_button_blue">#33b5e5</color>
     <color name="step_pager_previous_tab_color">#4433b5e5</color>
     <!--<color name="step_pager_previous_tab_color">#53ff4347</color>-->

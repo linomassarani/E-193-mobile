@@ -27,12 +27,11 @@ import org.sc.cbm.e193.beach.edition.insertion.wizard.ui.LocationFragment;
 import java.util.ArrayList;
 
 /**
- * A page asking for city, beach and lifeguard post
+ * A page asking for beach, sand and sea, pictures
  */
 public class ImagesPage extends Page {
-    public static final String CITY_DATA_KEY = "city";
-    public static final String BEACH_DATA_KEY = "beach";
-    public static final String LIFEGUARD_POST_DATA_KEY = "lifeguardPost";
+    public static final String SEA_DATA_KEY = "seaPicture";
+    public static final String SAND_DATA_KEY = "sandPicture";
 
     public ImagesPage(ModelCallbacks callbacks, String title) {
         super(callbacks, title);
@@ -45,15 +44,13 @@ public class ImagesPage extends Page {
 
     @Override
     public void getReviewItems(ArrayList<ReviewItem> dest) {
-        dest.add(new ReviewItem("Cidade", mData.getString(CITY_DATA_KEY), getKey(), -1));
-        dest.add(new ReviewItem("Praia", mData.getString(BEACH_DATA_KEY), getKey(), -1));
-        dest.add(new ReviewItem("Posto", mData.getString(LIFEGUARD_POST_DATA_KEY), getKey(), -1));
+        dest.add(new ReviewItem("Foto da faixa de areia", "Clique para rever...", getKey(), -1));
+        dest.add(new ReviewItem("Foto do mar", "Clique para rever...", getKey(), -1));
     }
 
     @Override
     public boolean isCompleted() {
-        return !TextUtils.isEmpty(mData.getString(CITY_DATA_KEY)) &&
-                !TextUtils.isEmpty(mData.getString(BEACH_DATA_KEY)) &&
-                !TextUtils.isEmpty(mData.getString(LIFEGUARD_POST_DATA_KEY));
+        return !TextUtils.isEmpty(mData.getString(SEA_DATA_KEY)) &&
+                !TextUtils.isEmpty(mData.getString(SAND_DATA_KEY));
     }
 }
