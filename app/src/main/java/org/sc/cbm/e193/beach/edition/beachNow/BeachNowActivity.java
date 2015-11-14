@@ -78,11 +78,11 @@ public class BeachNowActivity extends ActionBarActivity {
             }
         };
 
-        findViewById(R.id.flags).setVisibility(View.GONE);
-        mRedFlag = (ImageButton) findViewById(R.id.redflag);
-        mBlackFlag = (ImageButton) findViewById(R.id.blackflag);
-        mYellowFlag = (ImageButton) findViewById(R.id.yellowflag);
-        mGreenFlag = (ImageButton) findViewById(R.id.greenflag);
+//        findViewById(R.id.flags).setVisibility(View.GONE);
+//        mRedFlag = (ImageButton) findViewById(R.id.redflag);
+//        mBlackFlag = (ImageButton) findViewById(R.id.blackflag);
+//        mYellowFlag = (ImageButton) findViewById(R.id.yellowflag);
+//        mGreenFlag = (ImageButton) findViewById(R.id.greenflag);
 
         mRedFlag.setOnClickListener(mFlagClickListener);
         mBlackFlag.setOnClickListener(mFlagClickListener);
@@ -176,8 +176,8 @@ public class BeachNowActivity extends ActionBarActivity {
     }
 
     private void setFlagsAsGone() {
-        findViewById(R.id.flags).setVisibility(View.GONE);
-        findViewById(R.id.flag_text).setVisibility(View.GONE);
+//        findViewById(R.id.flags).setVisibility(View.GONE);
+//        findViewById(R.id.flag_text).setVisibility(View.GONE);
     }
 
     /**
@@ -185,8 +185,8 @@ public class BeachNowActivity extends ActionBarActivity {
      * The purpose is request flag change
      */
     private void spinnersCompleted() {
-        findViewById(R.id.flags).setVisibility(View.VISIBLE);
-        findViewById(R.id.flag_text).setVisibility(View.VISIBLE);
+//        findViewById(R.id.flags).setVisibility(View.VISIBLE);
+//        findViewById(R.id.flag_text).setVisibility(View.VISIBLE);
 
         mHazardFlag = HazardFlagDAO.getLastFlag((String) mCityView.getSelectedItem(),
                 (String) mBeachView.getSelectedItem(),

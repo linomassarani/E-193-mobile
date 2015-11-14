@@ -87,7 +87,7 @@
     <string name="choose_lifeguard_post">Escolha o local</string>
     <string name="select_an_item">Selecione uma opção...</string>
     <string name="last_modified">"Última modificação: "</string>
-    <string name="select_flag">Escolha a bandeira</string>
+    <string name="select_flag">Bandeira no Posto</string>
 
 
     <!-- others-->
@@ -95,4 +95,11 @@
     <string name="password">Senha:</string>
     <string name="do_login">Fazer login</string>
     <string name="login">Login</string>
+    <string name="black_flag">preta</string>
+    <string name="red_flag">vermelha</string>
+    <string name="yellow_flag">amarela</string>
+    <string name="green_flag">verde</string>
+    <string name="jelly_alert">Alerta de água-viva</string>
+    <string name="activated">ativado</string>
+    <string name="deactivated">desativado</string>
 </resources>

@@ -2,6 +2,10 @@ package org.sc.cbm.e193.beach.pojo;
 
 import java.util.Date;
 
+/**
+ * Use LifeguardTower instead
+ */
+@Deprecated
 public class HazardFlag {
     public enum Color {BLACK, GREEN, YELLOW, RED}
 

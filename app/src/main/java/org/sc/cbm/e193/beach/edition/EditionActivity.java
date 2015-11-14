@@ -12,6 +12,7 @@ import android.widget.Toast;
 import org.sc.cbm.e193.R;
 import org.sc.cbm.e193.beach.edition.beachNow.BeachNowActivity;
 import org.sc.cbm.e193.beach.edition.insertion.wizard.MainActivity;
+import org.sc.cbm.e193.beach.edition.insertion.wizard.WizardModel;
 
 public class EditionActivity extends ActionBarActivity {
 
@@ -53,11 +54,13 @@ public class EditionActivity extends ActionBarActivity {
 
     public void startInsertion(View view) {
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra(MainActivity.WIZARD_MODEL, WizardModel.class.getName());
         startActivity(intent);
     }
 
     public void startBeachNow(View view) {
-        Intent intent = new Intent(this, BeachNowActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra(MainActivity.WIZARD_MODEL, org.sc.cbm.e193.beach.edition.beachNow.wizard.WizardModel.class.getName());
         startActivity(intent);
     }
 }

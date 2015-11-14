@@ -18,6 +18,7 @@ package org.sc.cbm.e193.beach.edition.insertion.wizard;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -38,18 +39,26 @@ import org.sc.cbm.e193.beach.edition.insertion.wizard.ui.PageFragmentCallbacks;
 import org.sc.cbm.e193.beach.edition.insertion.wizard.ui.ReviewFragment;
 import org.sc.cbm.e193.beach.edition.insertion.wizard.ui.StepPagerStrip;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import java.util.Objects;
 
+/**
+ * You must pass to intent what wizardModel MainActivity will use, so do:
+ * intent.putExtra("wizardModel", WizardModel.class.getName());
+ */
 public class MainActivity extends ActionBarActivity implements
         PageFragmentCallbacks,
         ReviewFragment.Callbacks,
         ModelCallbacks {
+    public static final String WIZARD_MODEL = "wizardModel";
     private ViewPager mPager;
     private MyPagerAdapter mPagerAdapter;
 
     private boolean mEditingAfterReview;
 
-    private AbstractWizardModel mWizardModel = new WizardModel(this);
+    private AbstractWizardModel mWizardModel;
 
     private boolean mConsumePageSelectedEvent;
 
@@ -65,6 +74,39 @@ public class MainActivity extends ActionBarActivity implements
 
         if (savedInstanceState != null) {
             mWizardModel.load(savedInstanceState.getBundle("model"));
+        }
+        /**
+         * We gonna use more then one wizard model, to prevent code duplication we must let this class
+         * know what wizard model we want use. So, before startIntent of this MainActivity do:
+         *  intent.putExtra("wizardModel", WizardModel.class.getName());
+         *
+         *  Here wizardModel class is retrieved from intent putExtras and is instantiated
+         */
+        else {
+            String wizardClassPath = getIntent().getStringExtra(WIZARD_MODEL);
+            try {
+                if (wizardClassPath == null) throw new Exception(
+                        "You must pass to intent what wizardModel MainActivity will use, so do:\n" +
+                                " * intent.putExtra(\"wizardModel\", WizardModel.class.getName());");
+                Class wizardClass = Class.forName(wizardClassPath);
+                Class[]types = {Context.class};
+                Constructor constructor = wizardClass.getConstructor(types);
+                Object[] parameters = {this};
+                mWizardModel = (AbstractWizardModel) constructor.newInstance(parameters);
+
+            } catch(ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch(NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch(InvocationTargetException e) {
+                e.printStackTrace();
+            } catch(InstantiationException e) {
+                e.printStackTrace();
+            } catch(IllegalAccessException e) {
+                e.printStackTrace();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
 
         mWizardModel.registerListener(this);

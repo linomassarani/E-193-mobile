@@ -1,5 +1,5 @@
 <LinearLayout
-    style="@style/DefaultContentWrapper"
+    style="@style/PraiaInsercaoWizardPageContainer"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
@@ -64,73 +64,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20px"></Spinner>
             </LinearLayout>
-
-            <TextView
-                style="@style/PraiaInsercaoWizardPageTitle"
-                android:id="@+id/flag_text"
-                android:text="@string/select_flag"
-                android:layout_marginTop="16dp"
-                android:layout_marginLeft="0dp"/>
-
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/flags">
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:id="@+id/blackflag"
-                    android:src="@drawable/ic_hazards"
-                    android:layout_centerHorizontal="true"
-                    android:adjustViewBounds="true"
-                    android:cropToPadding="false"
-                    android:layout_below="@+id/hlTopBar"
-                    android:background="@color/none"
-                    android:scaleType="fitXY" />
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:id="@+id/greenflag"
-                    android:src="@drawable/ic_hazards"
-                    android:layout_centerHorizontal="true"
-                    android:adjustViewBounds="true"
-                    android:cropToPadding="false"
-                    android:layout_below="@+id/hlTopBar"
-                    android:background="#00000000"
-                    android:scaleType="fitXY" />
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:id="@+id/yellowflag"
-                    android:src="@drawable/ic_hazards"
-                    android:layout_centerHorizontal="true"
-                    android:adjustViewBounds="true"
-                    android:cropToPadding="false"
-                    android:layout_below="@+id/hlTopBar"
-                    android:background="#00000000"
-                    android:scaleType="fitXY" />
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:id="@+id/redflag"
-                    android:src="@drawable/ic_hazards"
-                    android:layout_centerHorizontal="true"
-                    android:adjustViewBounds="true"
-                    android:cropToPadding="false"
-                    android:layout_below="@+id/hlTopBar"
-                    android:background="#00000000"
-                    android:scaleType="fitXY" />
-        </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
