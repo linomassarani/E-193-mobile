@@ -28,7 +28,10 @@
                     android:drawableTop="@drawable/ic_wind_south"
                     android:paddingLeft="12dp"
                     android:paddingRight="12dp"
-                    android:paddingTop="12dp" />
+                    android:paddingTop="12dp"
+                    android:layout_marginLeft="9dp"
+                    android:text="@string/south"
+                    android:gravity="center"/>
 
                 <RadioButton
                     android:id="@+id/southeast"
@@ -39,7 +42,9 @@
                     android:gravity="center"
                     android:paddingLeft="12dp"
                     android:paddingRight="12dp"
-                    android:paddingTop="12dp" />
+                    android:paddingTop="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:text="@string/southeast" />
 
                 <RadioButton
                     android:id="@+id/southwest"
@@ -51,7 +56,8 @@
                     android:gravity="center"
                     android:paddingLeft="12dp"
                     android:paddingRight="12dp"
-                    android:paddingTop="12dp" />
+                    android:paddingTop="12dp"
+                    android:text="@string/southwest"/>
 
                 <RadioButton
                     android:id="@+id/north"
@@ -61,7 +67,9 @@
                     android:drawableTop="@drawable/ic_wind_north"
                     android:paddingLeft="12dp"
                     android:paddingRight="12dp"
-                    android:paddingTop="12dp" />
+                    android:paddingTop="12dp"
+                    android:text="@string/north"
+                    android:gravity="center"/>
             </RadioGroup>
 
             <RadioGroup
@@ -79,7 +87,8 @@
                     android:gravity="center"
                     android:paddingLeft="12dp"
                     android:paddingRight="12dp"
-                    android:paddingTop="12dp" />
+                    android:paddingTop="12dp"
+                    android:text="@string/northeast"/>
 
                 <RadioButton
                     android:id="@+id/northwest"
@@ -91,7 +100,8 @@
                     android:gravity="center"
                     android:paddingLeft="12dp"
                     android:paddingRight="12dp"
-                    android:paddingTop="12dp" />
+                    android:paddingTop="12dp"
+                    android:text="@string/northwest"/>
 
                 <RadioButton
                     android:id="@+id/east"
@@ -101,7 +111,10 @@
                     android:drawableTop="@drawable/ic_wind_east"
                     android:paddingLeft="12dp"
                     android:paddingRight="12dp"
-                    android:paddingTop="12dp" />
+                    android:paddingTop="12dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="@string/east"
+                    android:gravity="center"/>
 
                 <RadioButton
                     android:id="@+id/west"
@@ -112,7 +125,9 @@
                     android:gravity="center"
                     android:paddingLeft="12dp"
                     android:paddingRight="12dp"
-                    android:paddingTop="12dp" />
+                    android:paddingTop="12dp"
+                    android:layout_marginLeft="9dp"
+                    android:text="@string/west"/>
             </RadioGroup>
             <TextView
                 style="@style/PraiaInsercaoWizardPageTitle"
@@ -133,7 +148,8 @@
                     android:drawableTop="@drawable/ic_wind_intensity_low"
                     android:paddingLeft="12dp"
                     android:paddingRight="12dp"
-                    android:paddingTop="12dp" />
+                    android:paddingTop="12dp"
+                    android:text="@string/low"/>
 
                 <RadioButton
                     android:id="@+id/medium"
@@ -144,7 +160,8 @@
                     android:gravity="center"
                     android:paddingLeft="12dp"
                     android:paddingRight="12dp"
-                    android:paddingTop="12dp" />
+                    android:paddingTop="12dp"
+                    android:text="@string/medium"/>
 
                 <RadioButton
                     android:id="@+id/high"
@@ -156,7 +173,8 @@
                     android:gravity="center"
                     android:paddingLeft="12dp"
                     android:paddingRight="12dp"
-                    android:paddingTop="12dp" />
+                    android:paddingTop="12dp"
+                    android:text="@string/hight"/>
             </RadioGroup>
 
         </LinearLayout>

@@ -19,6 +19,7 @@ package org.sc.cbm.e193.beach.edition.beachNow.wizard.model;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
+import org.sc.cbm.e193.beach.edition.beachNow.wizard.ui.ImagesFragment;
 import org.sc.cbm.e193.beach.edition.insertion.wizard.model.ModelCallbacks;
 import org.sc.cbm.e193.beach.edition.insertion.wizard.model.Page;
 import org.sc.cbm.e193.beach.edition.insertion.wizard.model.ReviewItem;
@@ -39,7 +40,7 @@ public class ImagesPage extends Page {
 
     @Override
     public Fragment createFragment() {
-        return LocationFragment.create(getKey());
+        return ImagesFragment.create(getKey());
     }
 
     @Override

@@ -19,6 +19,7 @@ package org.sc.cbm.e193.beach.edition.beachNow.wizard;
 import android.content.Context;
 
 import org.sc.cbm.e193.beach.edition.beachNow.wizard.model.FlagNJellyPage;
+import org.sc.cbm.e193.beach.edition.beachNow.wizard.model.ImagesPage;
 import org.sc.cbm.e193.beach.edition.beachNow.wizard.model.TempPage;
 import org.sc.cbm.e193.beach.edition.beachNow.wizard.model.WindPage;
 import org.sc.cbm.e193.beach.edition.insertion.wizard.model.AbstractWizardModel;
@@ -40,6 +41,8 @@ public class WizardModel extends AbstractWizardModel {
                 new TempPage(this, "Temperatura da água (ºC)")
                         .setRequired(true),
                 new WindPage(this, "Vento")
+                        .setRequired(true),
+                new ImagesPage(this, "Fotos da praia")
                         .setRequired(true)
         );
     }

@@ -1,8 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/PraiaInsercaoWizardPageContainer">
 
-    <TextView style="@style/PraiaInsercaoWizardPageTitle"
-        android:visibility="gone"/>
+    <TextView
+        style="@style/PraiaInsercaoWizardPageTitle"
+        android:visibility="gone" />
 
     <ScrollView style="@style/DefaultScrollView">
 
@@ -12,11 +13,11 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/flag_text"
+                android:id="@+id/whater_pic"
                 style="@style/PraiaInsercaoWizardPageTitle"
                 android:layout_marginLeft="0dp"
                 android:layout_marginTop="16dp"
-                android:text="@string/select_flag" />
+                android:text="@string/whater_pic" />
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/flags"
@@ -24,96 +25,72 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-
-                <ImageButton
-                    android:id="@+id/blackflag"
+                <FrameLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/hlTopBar"
-                    android:layout_centerHorizontal="true"
-                    android:adjustViewBounds="true"
-                    android:background="@color/none"
-                    android:cropToPadding="false"
-                    android:padding="12dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_blackflag" />
+                    android:layout_height="wrap_content">
 
-                <ImageButton
-                    android:id="@+id/greenflag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/hlTopBar"
-                    android:layout_centerHorizontal="true"
-                    android:adjustViewBounds="true"
-                    android:background="#00000000"
-                    android:cropToPadding="false"
-                    android:padding="12dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_greenflag" />
+                    <ImageButton
+                        android:id="@+id/ic_whaterpic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="120dip"
+                        android:layout_below="@+id/hlTopBar"
+                        android:layout_centerHorizontal="true"
+                        android:adjustViewBounds="true"
+                        android:alpha="0.6"
+                        android:background="@color/none"
+                        android:cropToPadding="false"
+                        android:padding="12dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_watherpic" />
 
-                <ImageButton
-                    android:id="@+id/yellowflag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/hlTopBar"
-                    android:layout_centerHorizontal="true"
-                    android:adjustViewBounds="true"
-                    android:background="#00000000"
-                    android:cropToPadding="false"
-                    android:padding="12dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_yellowflag" />
-
-                <ImageButton
-                    android:id="@+id/redflag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/hlTopBar"
-                    android:layout_centerHorizontal="true"
-                    android:adjustViewBounds="true"
-                    android:background="#00000000"
-                    android:cropToPadding="false"
-                    android:padding="12dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_redflag" />
+                    <ImageView
+                        android:id="@+id/add_wather"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_plus" />
+                </FrameLayout>
 
             </LinearLayout>
 
             <TextView
-                android:id="@+id/jelly_activated_text"
+                android:id="@+id/sand_pic"
                 style="@style/PraiaInsercaoWizardPageTitle"
                 android:layout_marginLeft="0dp"
                 android:layout_marginTop="16dp"
-                android:text="@string/jelly_alert" />
+                android:text="@string/sand_pic" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
-                    style="@style/PraiaInsercaoWizardFormLabel"
+                <FrameLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:capitalize="characters"
-                    android:text="@string/deactivated" />
+                    android:layout_height="wrap_content">
 
-                <Switch
-                    android:id="@+id/jelly_activated_switch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:scaleX="1.2"
-                    android:scaleY="1.2"
-                    />
+                    <ImageButton
+                        android:id="@+id/ic_sandsample"
+                        android:layout_width="wrap_content"
+                        android:layout_height="120dip"
+                        android:layout_below="@+id/hlTopBar"
+                        android:layout_centerHorizontal="true"
+                        android:adjustViewBounds="true"
+                        android:background="@color/none"
+                        android:cropToPadding="false"
+                        android:padding="12dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_sandsample"
+                        android:alpha="0.6"/>
 
-                <TextView
-                    style="@style/PraiaInsercaoWizardFormLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/activated" />
-
+                    <ImageView
+                        android:id="@+id/add_sand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_plus"/>
+                </FrameLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

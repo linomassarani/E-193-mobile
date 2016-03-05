@@ -80,6 +80,60 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/dangerous_location_text"
+                style="@style/PraiaInsercaoWizardPageTitle"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/dangerous_location" />
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/dangerous_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/local_flag_minus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/hlTopBar"
+                    android:layout_centerHorizontal="true"
+                    android:clickable="false"
+                    android:adjustViewBounds="true"
+                    android:background="#00000000"
+                    android:cropToPadding="false"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_minus"/>
+
+                <TextView
+                    android:id="@+id/local_flags_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:background="@drawable/ic_localredflag"
+
+                    android:text="0"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="36dp"
+                    />
+
+                <ImageButton
+                    android:id="@+id/local_flag_plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/hlTopBar"
+                    android:layout_centerHorizontal="true"
+                    android:clickable="false"
+                    android:adjustViewBounds="true"
+                    android:background="#00000000"
+                    android:cropToPadding="false"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_plus"/>
+
+            </LinearLayout>
+
+            <TextView
                 android:id="@+id/jelly_activated_text"
                 style="@style/PraiaInsercaoWizardPageTitle"
                 android:layout_marginLeft="0dp"
@@ -91,12 +145,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
+                <!--TextView
                     style="@style/PraiaInsercaoWizardFormLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:capitalize="characters"
-                    android:text="@string/deactivated" />
+                    android:text="@string/deactivated" /-->
 
                 <Switch
                     android:id="@+id/jelly_activated_switch"
@@ -106,11 +160,11 @@
                     android:scaleY="1.2"
                     />
 
-                <TextView
+                <!--TextView
                     style="@style/PraiaInsercaoWizardFormLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/activated" />
+                    android:text="@string/activated" /-->
 
             </LinearLayout>
         </LinearLayout>

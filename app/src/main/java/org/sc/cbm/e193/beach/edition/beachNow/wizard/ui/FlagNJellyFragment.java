@@ -1,10 +1,11 @@
 package org.sc.cbm.e193.beach.edition.beachNow.wizard.ui;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
@@ -26,6 +27,10 @@ public class FlagNJellyFragment extends Fragment {
     private ImageButton mBlackFlag;
     private ImageButton mYellowFlag;
     private ImageButton mGreenFlag;
+    private ImageButton mLocalFlagMinus;
+    private ImageButton mLocalFlagPlus;
+    private TextView mLocalFlagNum;
+
     private Switch mJellySwitch;
 
     public static FlagNJellyFragment create(String key) {
@@ -63,7 +68,11 @@ public class FlagNJellyFragment extends Fragment {
         mYellowFlag = (ImageButton) rootView.findViewById(R.id.yellowflag);
         mGreenFlag = (ImageButton) rootView.findViewById(R.id.greenflag);
         mJellySwitch = (Switch) rootView.findViewById(R.id.jelly_activated_switch);
+        mLocalFlagMinus = (ImageButton) rootView.findViewById(R.id.local_flag_minus);
+        mLocalFlagPlus = (ImageButton) rootView.findViewById(R.id.local_flag_plus);
 
+        mLocalFlagNum = (TextView) rootView.findViewById(R.id.local_flags_num);
+        mLocalFlagNum.getBackground().setAlpha(80);
 
         String flagColor = mPage.getData().getString(FlagNJellyPage.FLAG_DATA_KEY);
         if (flagColor != null) {
@@ -90,6 +99,11 @@ public class FlagNJellyFragment extends Fragment {
             mPage.getData().putString(FlagNJellyPage.JELLY_ALERT_DATA_KEY, getResources().getString(R.string.deactivated));
             mPage.notifyDataChanged();
         }
+
+        String localFlagsNum = mPage.getData().getString(FlagNJellyPage.LOCAL_FLAGS_NUM_KEY);
+        if(localFlagsNum != null)
+            mLocalFlagNum.setText(localFlagsNum);
+
 
         return rootView;
     }
@@ -171,6 +185,48 @@ public class FlagNJellyFragment extends Fragment {
                 } else {
                     mPage.getData().putString(FlagNJellyPage.JELLY_ALERT_DATA_KEY, getResources().getString(R.string.deactivated));
                 }
+                mPage.notifyDataChanged();
+            }
+        });
+
+        mLocalFlagMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int currentNum = Integer.parseInt(mLocalFlagNum.getText().toString());
+                if (currentNum != 0) {
+                    currentNum--;
+                    mLocalFlagNum.setScaleX(0);
+                    mLocalFlagNum.setScaleY(0);
+
+                    mLocalFlagNum.setText(String.valueOf(currentNum));
+
+                    PropertyValuesHolder pvhSX = PropertyValuesHolder.ofFloat(View.SCALE_X, 1);
+                    PropertyValuesHolder pvhSY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 1);
+                    ObjectAnimator animation = ObjectAnimator.ofPropertyValuesHolder(mLocalFlagNum, pvhSX, pvhSY);
+                    animation.start();
+
+                    mPage.getData().putString(FlagNJellyPage.LOCAL_FLAGS_NUM_KEY, String.valueOf(currentNum));
+                    mPage.notifyDataChanged();
+                }
+            }
+        });
+
+        mLocalFlagPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int currentNum = Integer.parseInt(mLocalFlagNum.getText().toString());
+                currentNum++;
+                mLocalFlagNum.setScaleX(0);
+                mLocalFlagNum.setScaleY(0);
+
+                mLocalFlagNum.setText(String.valueOf(currentNum));
+
+                PropertyValuesHolder pvhSX = PropertyValuesHolder.ofFloat(View.SCALE_X, 1);
+                PropertyValuesHolder pvhSY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 1);
+                ObjectAnimator animation = ObjectAnimator.ofPropertyValuesHolder(mLocalFlagNum, pvhSX, pvhSY);
+                animation.start();
+
+                mPage.getData().putString(FlagNJellyPage.LOCAL_FLAGS_NUM_KEY, String.valueOf(currentNum));
                 mPage.notifyDataChanged();
             }
         });

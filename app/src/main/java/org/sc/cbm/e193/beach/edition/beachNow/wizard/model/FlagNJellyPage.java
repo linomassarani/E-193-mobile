@@ -32,6 +32,7 @@ import java.util.ArrayList;
 public class FlagNJellyPage extends Page {
     public static final String FLAG_DATA_KEY = "flag";
     public static final String JELLY_ALERT_DATA_KEY = "jelly_alert";
+    public static final String LOCAL_FLAGS_NUM_KEY = "local_flag_num";
 
     public FlagNJellyPage(ModelCallbacks callbacks, String title) {
         super(callbacks, title);
@@ -45,6 +46,7 @@ public class FlagNJellyPage extends Page {
     @Override
     public void getReviewItems(ArrayList<ReviewItem> dest) {
         dest.add(new ReviewItem("Bandeira", mData.getString(FLAG_DATA_KEY), getKey(), -1));
+        dest.add(new ReviewItem("Local Perigoso", mData.getString(LOCAL_FLAGS_NUM_KEY), getKey(), -1));
         dest.add(new ReviewItem("Alerta de água-viva", mData.getString(JELLY_ALERT_DATA_KEY), getKey(), -1));
     }
 

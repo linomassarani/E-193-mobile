@@ -106,4 +106,19 @@
     <string name="celcius">ºC</string>
     <string name="wind_direction">Direção do vento</string>
     <string name="wind_intesity">Intensidade do vento</string>
+    <string name="south">sul</string>
+    <string name="northwest">noroeste</string>
+    <string name="east">leste</string>
+    <string name="west">oeste</string>
+    <string name="north">norte</string>
+    <string name="southwest">sudoeste</string>
+    <string name="southeast">sudeste</string>
+    <string name="northeast">nordeste</string>
+    <string name="low">fraco</string>
+    <string name="medium">moderado</string>
+    <string name="hight">forte</string>
+    <string name="dangerous_location">Local Perigoso</string>
+    <string name="whater_pic">Foto do mar</string>
+    <string name="sand_pic">Foto da faixa de areia</string>
+    <string name="notHorizontalPicAlert">A foto precisa ser horizontal (paisagem)</string>
 </resources>
